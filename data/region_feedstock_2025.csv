@@ -1,0 +1,6 @@
+region,estimated_t,share_pct,p05_t,p95_t,recorded_trees,latitude,longitude,coordinate_status,estimate_status
+Central,72152,31.1,61000,81900,221685,1.300,103.837,illustrative region anchor,2025 proxy allocation not observed
+West,48256,20.8,44500,51000,154243,1.345,103.702,illustrative region anchor,2025 proxy allocation not observed
+East,42920,18.5,39600,47500,115923,1.348,103.938,illustrative region anchor,2025 proxy allocation not observed
+North,36888,15.9,27500,50900,80424,1.423,103.815,illustrative region anchor,2025 proxy allocation not observed
+North-East,31784,13.7,27500,38100,123637,1.385,103.895,illustrative region anchor,2025 proxy allocation not observed

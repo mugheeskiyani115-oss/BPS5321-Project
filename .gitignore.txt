@@ -1,0 +1,24 @@
+# Python temporary files
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Credentials and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Temporary outputs
+*.log
+.DS_Store
+Thumbs.db
+
+# Archives and large raster files
+*.zip
+*.tif
+*.tiff

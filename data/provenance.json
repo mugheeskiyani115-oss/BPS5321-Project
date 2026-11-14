@@ -1,0 +1,17 @@
+{
+  "version": "0.2 demonstration", "reference_year": 2025,
+  "region_estimates": "Five-region shares and uncertainty ranges transcribed from submitted EDA notebook outputs; estimated_t renormalized to exactly 232000 tonnes using the displayed shares. Rounded P05/P95 intervals are from original 2000 Dirichlet weight scenarios; not validated confidence intervals.",
+  "historical_total_tonnes": 232000,
+  "national_total_source": "NEA Waste Statistics and Overall Recycling, 2025; https://www.nea.gov.sg/our-services/waste-management/waste-statistics-and-overall-recycling",
+  "trees": "Trees.sg 2021 community archive, attributed to NParks, from original notebook; 695912 area-matched records",
+  "landcover": "ESA WorldCover 2021 from original notebook",
+  "planning_areas": "URA MP2019 from original notebook, not shipped with this package because original processed GeoPackage was not uploaded",
+  "model_score": "R2 0.364, MAE 0.997 in log(1+tonnes of managed tree biomass proxy / grid cell); 5-fold GroupKFold by planning area; not waste prediction",
+  "reported_weight_rank_spearman_median": 0.967,
+  "site_coordinates": "Representative illustrative map anchors by region, not actual land parcels, approved sites or GIS-calculated centroids",
+  "routing": "Haversine from supply area proxy to hub anchor * user assumed multiplier + first-last-mile distance; not Singapore road routing",
+  "carbon": "The 0.372 tCO2 wet-t stored and 0.095 tCO2e wet-t net benefit are worked-case results reported in original interim document. 0.100 and 0.177 split of their 0.277 difference is a new illustrative parameter decomposition, not verified lifecycle inventory.",
+  "economics": "S$92 revenue and S$310 cost per wet tonne from interim illustrative worked case, not site quotations. Additional hub overhead and travel cost are user scenarios.",
+  "carbon_credits": "No issuance, eligibility, methodology match or market price has been demonstrated. Singapore carbon tax is not a carbon credit sales price.",
+  "validation_status": "No independent regional 2025 operator record supplied; operational validation pending."
+}
