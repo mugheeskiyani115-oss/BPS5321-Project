@@ -1,0 +1,7 @@
+size_class,label,short,capacity_tpd,technology,carbon_class,turnkey_usd_low,turnkey_usd_high,availability,workers_per_shift,labour_scaling,has_supervisor,source
+K2,2 t/day batch kiln,Kiln,2,batch (pilot),small,50000,150000,0.575,3.0,linear,0,"Turnkey + uptime (batch 50-65%) + batch staffing 10-20 per shift at 10 t/day (1.5 per t/day, linear): pyrolysisplant.com"
+B5,5 t/day batch,Batch,5,batch,small,150000,400000,0.575,7.5,linear,0,"Turnkey + uptime + batch staffing: pyrolysisplant.com"
+S10,10 t/day semi-continuous,Semi,10,semi-continuous,industrial,400000,1000000,0.70,6.0,rule,1,"Turnkey: pyrolysisplant.com; uptime 0.70 assumed between batch and continuous; staffed like continuous (4-8 per shift at 10 t/day)"
+C20,20 t/day continuous,Cont-20,20,continuous,industrial,1000000,3000000,0.86,6.0,rule,1,"Turnkey + uptime (80-92%) + continuous staffing 4-8 per shift at 10 t/day: pyrolysisplant.com; scaled by capacity^0.25"
+C50,50 t/day continuous,Cont-50,50,continuous,industrial,3000000,8000000,0.86,6.0,rule,1,"As C20"
+C100,100 t/day multi-line,Cont-100,100,multi-line continuous,industrial,8000000,25000000,0.86,6.0,rule,1,"As C20"

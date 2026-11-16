@@ -1,0 +1,11 @@
+site_id,name,subzone,planning_area,region,b2_cluster_ha,latitude,longitude,site_status
+S01,Kallang Way (Geylang),Kallang Way,GEYLANG,Central,36.4,1.32435,103.87527,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S02,Pasir Ris Wafer Fab Park (Pasir Ris),Pasir Ris Wafer Fab Park,PASIR RIS,East,455.7,1.38435,103.93217,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S03,Loyang West (Pasir Ris),Loyang West,PASIR RIS,East,219.9,1.3768,103.97157,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S04,Senoko South (Sembawang),Senoko South,SEMBAWANG,North,467.5,1.45778,103.80419,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S05,Reservoir View (Sungei Kadut),Reservoir View,SUNGEI KADUT,North,353.7,1.42217,103.74733,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S06,Defu Industrial Park (Hougang),Defu Industrial Park,HOUGANG,North-East,530.1,1.35856,103.89813,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S07,Sengkang West (Sengkang),Sengkang West,SENGKANG,North-East,126.8,1.3945,103.86354,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S08,Tuas View (Tuas),Tuas View,TUAS,West,4844.5,1.29207,103.63243,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S09,Penjuru Crescent (Jurong East),Penjuru Crescent,JURONG EAST,West,299.6,1.30672,103.73427,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"
+S10,Wenya (Jurong West),Wenya,JURONG WEST,West,115.0,1.35621,103.70799,"MP2019 Business 2 zoning; parcel availability, tenancy and permits NOT checked"

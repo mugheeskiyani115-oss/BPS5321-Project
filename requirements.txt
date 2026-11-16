@@ -1,5 +1,8 @@
-streamlit>=1.39,<2
+# App + model (streamlit run app.py)
+streamlit>=1.50,<2
+pydeck>=0.9
 pandas>=2.0
 numpy>=1.24
 scipy>=1.11
 plotly>=5.20
+pytest>=8

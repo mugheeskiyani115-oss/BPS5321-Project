@@ -1,62 +1,78 @@
-# BioTwin Singapore — interactive research prototype
+# BioTwin Quest — Singapore horticultural waste → biochar
 
-**What it is:** a working Streamlit web app that explores Singapore's horticultural waste proxy allocation and **illustrative** pyrolysis/biochar siting, carbon, transport and economic scenarios.
+**Research question:** where, and at what scale, should Singapore process woody horticultural waste into biochar,
+and what are the cost, transport and net-carbon trade-offs?
 
-**What it is not:** a verified digital twin, a production grade forecasting model, real road routing, a certified carbon accounting ledger, or a built NSGA-II engine. These were overclaimed in the interim presentation; the final deck and report now distinguish them.
+BioTwin Quest is a game-style decision-support app built on a tested planning model. Players choose sites and plant
+sizes on a 3D OpenStreetMap of Singapore and are scored against an NSGA-II optimiser. Every number they are scored on
+comes from the model; budgets and star thresholds are the only game rules.
 
-## Quick start
-
-```bash
-python -m pip install -r requirements.txt
-streamlit run app.py
-```
-
-Your browser should open the app at `http://localhost:8501`. To share an actual URL, deploy the folder on **Streamlit Community Cloud** (or another Python web host); no hosted link has been created with this submission.
-
-## Features that actually run
-
-1. 2025 regional waste proxy map using 5 regions from the submitted notebook; the five displayed shares sum to 100% and regional allocations are normalized to NEA's reported 232,000 t national total.
-2. Sensitivity bands (from 2,000 proxy weight draws) are labelled **weight sensitivity only**, not prediction accuracy.
-3. Select one or more illustrative hub anchors directly on the interactive map (point, box or lasso selection), with an accessible region selector as fallback.
-4. Linear programming allocates the same annual throughput to the selected hub capacities under assumed available feedstock, with approximate great-circle plus local routing distance.
-5. Compare a one-hub scenario to a multi-hub scenario, including annual cost, haul burden, greenhouse gases and gate fee breakeven.
-6. Exact enumeration of all 31 nonempty combinations of 5 candidate anchor regions; plot small-set Pareto efficient configurations. **No claim of NSGA-II**.
-7. Separate gross carbon storage, illustrative net climate benefit and **assumed** issued credits (default zero).
-8. Optional upload of genuinely independent 2025 regional operator data to compute WAPE and measured vs estimated ranking; without records, the app explicitly reports *not validated*.
-
-## Data and key caveats
-
-- `data/region_feedstock_2025.csv` uses *rounded shares and ranges* printed by the original notebook; its 55-area CSV and GIS layers were **not uploaded**. The regional headline is not independent validation.
-- The map anchors are **illustrative representative positions**, not parcel coordinates or actual candidate sites. Existing locations, roads, permitted land, depot locations and land-use permissions are not checked.
-- Plant capacity is split equally between selected anchors. Total throughput is held constant when comparing central and distributed options. Spatial availability is an assumed percentage of each proxy estimate.
-- S$92/t and S$310/t are **reported worked-case assumptions** from the original submission, not vendor quotations. Additional annual overhead and route costs are scenario inputs.
-- Gross storage = 0.372 tCO2/wet t, net before new transport = 0.095 tCO2e/wet t from the interim case. The app *illustratively decomposes* the difference into process 0.100 and foregone energy benefit 0.177; these numbers must be replaced with a complete process inventory.
-- The 2026 Singapore carbon tax (S$45/tCO2e) is **not** a tradable carbon credit price. Carbon credit eligibility is not established; default revenue is zero.
-- The Random Forest's R² = 0.364 is for **log managed-tree biomass proxy per grid cell**, not for monthly waste forecasting or evidence of international transfer.
-- The original EDA notebook uses a Colab/Google Drive workflow and downloads external data. It has saved outputs, but the detailed raw files and second notebook mentioned in its introduction were not supplied. Therefore, rebuilding the full 55-area dataset from scratch cannot be verified with the uploads alone.
-
-## Regenerate 55 planning area inputs
-
-The revised EDA notebook contains an end cell to export an optional `planning_area_estimates.csv` (true coordinates from original URA geometries). Rerun it in a network-enabled environment with access to its input datasets, then copy the output into this folder's `data/`. The app uses those 55 supply origins automatically while retaining just five illustrative hub anchors.
-
-## Independent data validation
-
-Download `data/operator_validation_TEMPLATE.csv`. Fill `observed_t` with *actual* regional 2025 collection or operator records, including publisher. Upload the completed CSV in the app's Validation tab. Do not copy model values into this template; that would create circular validation.
-
-## Reproducibility and tests
+## Run it
 
 ```bash
-python -m pytest -q tests
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+PYTHONPATH= streamlit run app.py                                            # http://localhost:8501
+PYTHONPATH= PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests      # 38 tests incl. headless app runs
 ```
 
-Outputs can be exported as CSV from the app. Every calculation is deterministic for a chosen scenario. `biotwin_core.py` is separated from UI logic to permit independent tests and later substitution of verified road, waste and vendor datasets.
+(`PYTHONPATH=` clears a ROS path that some machines load and that breaks Python packages.)
 
-## Sources
+Rebuild data (needs internet): `pip install -r requirements-pipeline.txt`, then
+`python -I pipeline/build_data.py all` and `python -I pipeline/build_game_refs.py`.
 
-- NEA Waste Statistics and Overall Recycling: https://www.nea.gov.sg/our-services/waste-management/waste-statistics-and-overall-recycling
-- NCCS Carbon Tax: https://www.nccs.gov.sg/singapores-climate-action/mitigation-efforts/carbontax/
-- EMA: https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter2
-- Puro.earth Biochar methodology: https://puro.earth/methodologies/biochar/
-- REopt Web Tool (interface inspiration only): https://reopt.nlr.gov/tool/
+## Pages
 
-Prepared for NUS BPS5231, 12 November 2026.
+| Page | What it does |
+|---|---|
+| 🏠 Mission hub | Level and XP, five missions (unlock in order), badges |
+| 🎮 Play | 3D map: click an empty industrial plot, build one of six plant sizes, watch cost / credits / haul update, submit for stars. The Decade mission simulates 2026–2035 |
+| 🏆 Trophies | Mission records, badge cabinet, submission history (CSV) |
+| 🔬 Lab | The analysis without game rules: feedstock map, supply forecast + 10-year credit outlook, itemised plant economics, free NSGA-II run, validation upload |
+| 📚 Sources | Every parameter with its tag and link; JTC rent per site; research-PDF claim checks; datasets |
+
+Missions: 🌱 First Spark (2,000 t/yr, lowest cost) → 🏙️ City Loop (9,000 t/yr, lowest cost) → 🌍 Carbon Captain
+(most credits) → 🤖 Beat the AI (not dominated on cost, carbon and haul) → 📅 Decade Run (ten stochastic years).
+
+## Model (one basis, no toggles)
+
+- **Carbon — Notebook 2:** 0.165 t biochar, 0.372 tCO2e stored, 0.234 registry credit, −0.009 net vs current use per
+  wet tonne; small kilns ≈ 0.12.
+- **Plant cost — itemised Singapore:** vendor turnkey capex (pyrolysisplant.com) + crews to cover operating hours at MOM
+  2025 median wages + 17% CPF (Employment Act 44-h week) + SP Group electricity (US DOE grinding energy) + maintenance
+  8% of capex/yr (Trollip et al. 2025) + JTC posted land rent at each site. Chosen because generic vendor opex
+  (US$30–90/t) leaves out Singapore wages and land, and the research PDF's Singapore range has no source; the itemised
+  model lands inside that range for continuous plants (US$179/t at 20 t/day).
+- **Haulage:** truck-day costing (S$800/day tipper with operator; EPA bulk density for branches) on OSRM road times →
+  median S$22/t, in line with the handoff's ~S$20/t. Emissions: DESNZ 2025 rigid HGV factor.
+- **Credits:** Senken CORC index (€120.67, June 2026) and price paths; Puro.earth fees per credit + annual verification.
+- **Gate-fee benchmark:** NEA incineration fee S$89.60/t incl. GST (S$82.20 excl.).
+- **Supply:** NEA national series; projection method chosen by backtest; 55 planning areas by proxy allocation.
+
+Parameter tags (`data/params/parameters.csv`): 20 web, 4 Notebook 2, 4 derived, 13 assumptions, 1 research-PDF
+fallback (seasonal woody swing, no web source found).
+
+## Code
+
+| Path | Role |
+|---|---|
+| `biotwin/` | Model: `data`, `pathway` (carbon + itemised costs), `network` (roads, LP, layout evaluation), `optimise` (NSGA-II), `forecast`, `outlook` (10-year credits), `validation`, `game` (missions, scoring, badges, decade simulation) |
+| `ui/`, `ui_pages/`, `app.py` | Streamlit UI (dark theme, pydeck 3D maps on OpenFreeMap) |
+| `pipeline/` | `build_data.py` (open data), `build_game_refs.py` (optimiser references, fingerprinted) |
+| `data/` | Inputs and parameters with provenance |
+| `biotwin_core.py`, `tests/test_core.py` | Interim-case model kept for its original tests |
+
+## Key findings
+
+- Labour dominates Singapore running costs, so a single 50 t/day plant is cheapest for 9,000 t/yr (≈S$354/t net cost);
+  small batch kilns cost S$790–860/t at resident wages.
+- Biochar roughly ties with today's biomass-power fate on carbon (Notebook 2: −0.009 tCO2e/t).
+- Credits help but do not close the gap: break-even credit price ≈ €1,070/tCO2e for the cheapest layout vs a 2040
+  high path of €215 (10-year PV −S$21.4M without credits, −S$18.8M with them).
+- Real road distances are 1.38× straight-line; the trend in national supply is weak and not robust.
+
+## Still needed
+
+Independent tonnage records (NEA WRMS / NParks / town councils / collectors), a Singapore operating-cost or plant
+quote, a biochar buyer quote, the Notebook 2 country profile (to replace derived values), and NEA's position on
+small-kiln emissions.

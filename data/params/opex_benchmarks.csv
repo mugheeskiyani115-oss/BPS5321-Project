@@ -1,0 +1,5 @@
+benchmark,technology,usd_per_t_low,usd_per_t_high,basis,source,url,used
+Vendor generic,batch,60,90,per tonne feedstock,pyrolysisplant.com batch vs continuous table (10 t/day),https://pyrolysisplant.com/cost/,"No: generic, excludes Singapore wages and land"
+Vendor generic,continuous,30,60,per tonne feedstock,pyrolysisplant.com batch vs continuous table (10 t/day),https://pyrolysisplant.com/cost/,"No: generic, excludes Singapore wages and land"
+Research PDF Singapore,batch (high fixed carbon),200,350,per tonne (basis unstated),Team research PDF (no source given),,No: unsourced; shown as a cross-check
+Research PDF Singapore,continuous,150,250,per tonne (basis unstated),Team research PDF (no source given),,No: unsourced; shown as a cross-check

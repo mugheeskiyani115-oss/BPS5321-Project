@@ -1,0 +1,43 @@
+key,value,low,high,unit,tag,source,url,note
+national_waste_2025_t,232000,,,t/yr,web,"NEA Annex A Table 1, CY2025: horticultural waste generated 232k t (recycled 176k, disposed 55k)",https://www.nea.gov.sg/docs/default-source/default-document-library/annex-tables-and-charts.pdf,Checked 16 Nov 2026
+wood_horti_fuel_2025_t,342000,,,t/yr,web,"NEA Annex A footnote: wood and horticultural waste recycled includes 342,000 t sent to facilities (e.g. biomass power plants) as fuel",https://www.nea.gov.sg/docs/default-source/default-document-library/annex-tables-and-charts.pdf,Wood + horticultural combined
+woody_share,0.70,0.50,0.90,fraction of collected mass,notebook,Team Notebook 2 / handoff (tested 0.5-0.9),,NEA does not record the split (NEA garden-waste page: leaves bagged + branches bundled together)
+seasonal_woody_amplitude,0.10,0,0.15,fraction,pdf,"Research PDF fallback: +/-10% seasonal swing, leafier in the Nov-Jan NE monsoon",,No web source found for Singapore
+collectable_share,0.25,0.05,1.00,fraction of woody waste,assumption,Share of each area's woody waste a new operator could contract away from current outlets,,Replace with contract evidence
+biochar_yield_t_per_wet_t,0.165,,,t biochar / wet t,notebook,Team Notebook 2 worked example (industrial pyrolysis),,
+stable_co2_per_t_biochar,2.2545,,2.933,tCO2e / t biochar,derived,"Notebook 2: 0.372 tCO2e stored / 0.165 t biochar",,Upper bound 2.933 = 0.80 C x 44/12 with no permanence discount
+process_emissions_industrial,0.134,,,tCO2e / wet t,derived,"Notebook 2: credit 0.234 = stored 0.372 - process - haul (~0.004)",,
+small_kiln_extra_emissions,0.114,,,tCO2e / wet t,derived,"Notebook 2 / handoff: small kilns ~0.12 vs 0.234 tCO2e/t credit",,Attributed to process emissions
+baseline_avoided,0.243,,,tCO2e / wet t,notebook,"Notebook 2: emissions already avoided by current use (biomass power / waste-to-energy)",,Net vs current use = 0.234 - 0.243 = -0.009
+biochar_price_usd,100,,,US$ / t biochar,notebook,Team Notebook 2 conservative price,,"Web check: no reliable wholesale survey found; 2026 vendor guides quote US$300-1,200 bulk (unverified)"
+haul_ef_kg_per_tkm,0.19748,,,kg CO2e / t-km,web,"UK DESNZ GHG conversion factors 2025: rigid HGV, average laden, diesel (via Climatiq mirror)",https://www.climatiq.io/data/emission-factor/bb0de585-5708-47a4-ab6c-e9c93df37eeb,Combustion only
+tipper_day_rate_sgd,800,,,S$ / truck-day,web,"Antbuildz listing: 28-ton tipper truck with operator, S$800/day (excl. GST)",https://antbuildz.com/equipments/tipper_truck,Cross-check: 24-ft lorry with driver S$180-200 per trip (Rodex / Carousell listings)
+truck_body_m3,20,,,m3,assumption,Tipper body volume for loose branches,,
+feed_bulk_density_t_m3,0.2076,0.12,0.28,t / m3,web,"US EPA via Seattle Public Utilities: yard trimmings, branches 350 lb/yd3 (green wood chips 473 lb/yd3)",https://www.seattle.gov/documents/Departments/SPU/Services/Recycling/GeneralMeasurementStandardsReportingGuidelines-VolumeWeightConversionFactorsRecyclables.pdf,
+truck_hours_per_day,8,,,h,assumption,Working day per truck,,
+truck_handling_h_per_trip,0.5,,,h,assumption,"Loading, weighing and tipping time per trip",,
+truck_time_factor,1.3,,,x OSRM time,assumption,"OSRM durations are free-flow car times (median 53 km/h); loaded trucks are slower",,
+road_factor_fallback,1.35,1.32,1.49,road km / straight km,derived,"OSRM on OSM roads: median 1.38, IQR 1.32-1.49 over 765 pairs",,Only for pairs without a road route (islands)
+discount_rate,0.08,0.05,0.12,per year,assumption,Investor hurdle rate for annualising capex,,
+plant_life_years,15,10,20,years,assumption,Economic life of plant,,
+preprocessing_capex_uplift,0.20,0.10,0.30,fraction of turnkey capex,web,"pyrolysisplant.com: 'Feedstock Pre-Processing Adds 10-30% to CAPEX' (biomass drying + size reduction US$15-50k)",https://pyrolysisplant.com/cost/,Vendor (APChemi) marketing data
+operator_wage_sgd_month,4168,,,S$ / month gross,web,"MOM Occupational Wages 2025, Table 1, SSOC 81311 chemical processing/products plant/machine operator, median gross, June 2025",https://stats.mom.gov.sg/Pages/Occupational-Wages-Tables2025.aspx,Full-time residents
+worker_wage_sgd_month,2692,,,S$ / month gross,web,"MOM Occupational Wages 2025, Table 1, SSOC 96101 general waste collection / recycling / material recovery worker, median gross",https://stats.mom.gov.sg/Pages/Occupational-Wages-Tables2025.aspx,Full-time residents; foreign-worker staffing would cost less
+supervisor_wage_sgd_month,4312,,,S$ / month gross,web,"MOM Occupational Wages 2025, Table 1, SSOC 81000 stationary plant/machine supervisor/general foreman, median gross",https://stats.mom.gov.sg/Pages/Occupational-Wages-Tables2025.aspx,One per site for plants >= 10 t/day
+employer_cpf_rate,0.17,,,fraction of wage,web,CPF Board: employer contribution for employees aged 55 and below,https://www.cpf.gov.sg/employer/employer-obligations/how-much-cpf-contributions-to-pay,
+normal_hours_per_week,44,,,h,web,MOM Employment Act: normal hours of work up to 44 per week,https://www.mom.gov.sg/employment-practices/hours-of-work-overtime-and-rest-days,Sets crews needed to staff the plant's operating hours
+leave_allowance,1.07,,,x,assumption,Cover for annual and sick leave,,
+labour_scaling_exponent,0.25,,,,assumption,"Engineering rule of thumb: operating labour of continuous plants scales with capacity^~0.25; manual batch kilns scale linearly",,
+electricity_kwh_per_t,60,26,130,kWh / wet t,web,"US DOE FCIC Particle Scale Impacts report (2023): grinding wet biomass 59.9 kWh/dry t (dry 26.2); applied per wet tonne to also cover conveyors and fans",https://www.energy.gov/sites/default/files/2023-07/FCIC%20Particle%20Scale%20Impacts%20Report.pdf,
+electricity_price_sgd_kwh,0.2859,,,S$ / kWh,web,"SP Group regulated tariff 1 Oct-31 Dec 2026: 28.59 cents/kWh before GST",https://www.spgroup.com.sg/our-services/utilities/tariff-information,Non-domestic low-tension rate is not published on that page; regulated tariff used as proxy
+maintenance_share_capex,0.08,0.03,0.20,fraction of capex / yr,web,"Trollip et al. (2025), Biofuels Bioprod. Bioref.: planned 4% + unplanned 4% of fixed capital per year (review range 3-20%)",https://doi.org/10.1002/bbb.2812,
+site_fixed_area_m2,300,,,m2,assumption,"Process module, office, weighbridge, biochar store; a PYREG PX1500 module alone needs ~90 m2",https://pyreg.com/wp-content/uploads/210421_Pyreg_Presentation-Waste-to-Value.pdf,
+storage_days,7,,,days of feed,assumption,Feedstock buffer on site,,
+stack_height_m,3,,,m,assumption,Feedstock pile height,,
+access_allowance,1.5,,,x storage area,assumption,Roads and clearances around piles,,
+gate_fee_cap_sgd,82.20,,,S$ / wet t (excl. GST),web,"NEA refuse disposal fee at TuasOne, Keppel Seghers Tuas and Tuas South WtE plants: $89.60/t incl. GST (Senoko $93.60)",https://www.nea.gov.sg/our-services/waste-management/waste-management-infrastructure/refuse-disposal-facility,Generators would not pay more than incineration; 89.60 / 1.09 = 82.20
+corc_spot_eur,120.67,,,EUR / tCO2e,web,"Senken 'Carbon removal prices 2026 to 2040' (Aug 2026): Puro.earth / Nasdaq CORCCHAR index, June 2026",https://www.senken.io/reports/carbon-removal-prices-2026-2040-en.pdf,
+puro_fee_eur_per_corc,8.48,7.50,8.48,EUR / CORC,web,"Puro.earth fees example: EUR 84,000 / 9,900 CORCs = EUR 8.48; base EUR 7.50 at 10,001 CORCs (smaller suppliers pay more per unit)",https://puro.earth/certified-carbon-credits/fees/fees-example/,
+puro_annual_fee_eur,1400,,,EUR / yr,web,Puro.earth fee structure: annual fee per 12-month period,https://puro.earth/fees,
+verification_gbp_per_year,7500,5000,10000,GBP / yr,web,"The Carbon Workbench (2026): annual verification GBP 5,000-10,000 (third-party estimate)",https://thecarbonworkbench.com/learn/carbon-verification-costs,Applied per plant when credits are sold
+validation_gbp_once,13000,8000,18000,GBP one-off,web,"The Carbon Workbench (2026): validation GBP 8,000-18,000 (third-party estimate)",https://thecarbonworkbench.com/learn/carbon-verification-costs,Annualised over plant life

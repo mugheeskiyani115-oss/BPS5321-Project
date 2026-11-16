@@ -1,0 +1,73 @@
+{
+ "nature_reserves": {
+  "source": "NParks Nature Reserves Gazette, data.gov.sg d_dfd037f5064cb2e2b2e358ceeccb4af7",
+  "retrieved": "2026-11-16"
+ },
+ "planning_areas": {
+  "source": "URA Master Plan 2019 subzone boundary (no sea), data.gov.sg d_8594ae9ff96d0c708bc2af633048edfb",
+  "note": "Subzones dissolved to planning areas; REGION_N gives the five URA regions",
+  "n_planning_areas": 55,
+  "retrieved": "2026-11-16"
+ },
+ "trees": {
+  "source": "NParks Trees.sg via github.com/cheeaun/sgtreesdata (community copy, Oct 2021; (c) NParks)",
+  "url": "https://raw.githubusercontent.com/cheeaun/sgtreesdata/main/data/trees.csv",
+  "n_trees_loaded": 696228,
+  "n_trees_matched": 695912,
+  "allometry": "AGB = 0.0673 (rho D^2 H)^0.976, Chave et al. 2014; girth-class midpoints; relative index only",
+  "retrieved": "2026-11-16"
+ },
+ "landcover": {
+  "source": "ESA WorldCover 2021 v200, 10 m, tile N00E102 (CC BY 4.0)",
+  "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N00E102_Map.tif",
+  "note": "Green = tree, shrub, grass, herbaceous wetland, mangrove; managed = outside gazetted nature reserves",
+  "retrieved": "2026-11-16"
+ },
+ "planning_area_estimates": {
+  "method": "equal-weight mix of proxy shares; Dirichlet(1) weight sensitivity",
+  "proxies": [
+   "agb_t",
+   "n_trees",
+   "green_managed_km2"
+  ],
+  "national_t": 232000,
+  "n_weight_samples": 2000,
+  "median_rank_spearman": 0.967,
+  "status": "proxy allocation, NOT observed regional waste",
+  "retrieved": "2026-11-16"
+ },
+ "candidate_sites": {
+  "source": "URA Master Plan 2019 Land Use layer, data.gov.sg d_90d86daa5bfaa371668b84fa5f01424f",
+  "rule": "Contiguous BUSINESS 2 clusters (40 m merge); largest per region, then next largest >= 4.0 km apart; islands excluded; top 10",
+  "caveat": "Zoning only; not vacant land, not approved sites",
+  "retrieved": "2026-11-16"
+ },
+ "facilities": {
+  "source": "OpenStreetMap via Nominatim (ODbL)",
+  "queries": [
+   "Senoko Waste-to-Energy Plant",
+   "Keppel Seghers Tuas Waste-to-Energy Plant",
+   "TuasOne Waste-to-Energy Plant",
+   "Tuas South Incineration Plant",
+   "Tuas Nexus",
+   "Gee Hoe Seng"
+  ],
+  "found": 5,
+  "caveat": "Names geocoded from OSM; biomass power plants not identified by name in OSM",
+  "retrieved": "2026-11-16"
+ },
+ "fx": {
+  "source": "European Central Bank reference rates",
+  "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+  "date": "2026-11-13",
+  "retrieved": "2026-11-16"
+ },
+ "road_distances": {
+  "source": "OSRM table service on OpenStreetMap roads (router.project-osrm.org; ODbL data)",
+  "origins": "planning-area representative points (inside polygon), not collection depots",
+  "n_pairs": 825,
+  "fallback": "straight line x 1.35 for islands or points >2 km from a road",
+  "median_road_to_straight_ratio": 1.38,
+  "retrieved": "2026-11-16"
+ }
+}

@@ -1,0 +1,56 @@
+planning_area,pwc_sector,collector,confidence,method
+ANG MO KIO,Ang Mo Kio-Toa Payoh,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BEDOK,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BISHAN,Ang Mo Kio-Toa Payoh,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BOON LAY,Jurong,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BUKIT BATOK,Jurong,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BUKIT MERAH,Clementi-Bukit Merah,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BUKIT PANJANG,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+BUKIT TIMAH,Clementi-Bukit Merah,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+CENTRAL WATER CATCHMENT,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+CHANGI,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+CHANGI BAY,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+CHOA CHU KANG,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+CLEMENTI,Clementi-Bukit Merah,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+DOWNTOWN CORE,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+GEYLANG,City-Punggol,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+HOUGANG,City-Punggol,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+JURONG EAST,Jurong,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+JURONG WEST,Jurong,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+KALLANG,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+LIM CHU KANG,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+MANDAI,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+MARINA EAST,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+MARINA SOUTH,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+MARINE PARADE,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+MUSEUM,City-Punggol,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+NEWTON,Clementi-Bukit Merah,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+NORTH-EASTERN ISLANDS,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,not on map,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+NOVENA,Ang Mo Kio-Toa Payoh,800 Super Waste Management Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+ORCHARD,Clementi-Bukit Merah,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+OUTRAM,City-Punggol,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+PASIR RIS,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+PAYA LEBAR,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+PIONEER,Jurong,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+PUNGGOL,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+QUEENSTOWN,Clementi-Bukit Merah,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+RIVER VALLEY,Clementi-Bukit Merah,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+ROCHOR,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SELETAR,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SEMBAWANG,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SENGKANG,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SERANGOON,City-Punggol,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SIMPANG,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SINGAPORE RIVER,City-Punggol,Cora Environment Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SOUTHERN ISLANDS,Clementi-Bukit Merah,Cora Environment Pte Ltd,not on map,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+STRAITS VIEW,City-Punggol,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+SUNGEI KADUT,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+TAMPINES,Pasir Ris-Bedok,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+TANGLIN,Clementi-Bukit Merah,Cora Environment Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+TENGAH,Jurong,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+TOA PAYOH,Ang Mo Kio-Toa Payoh,800 Super Waste Management Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+TUAS,Jurong,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+WESTERN ISLANDS,Jurong,ALBA W&H Smart City Pte Ltd,not on map,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+WESTERN WATER CATCHMENT,Jurong,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+WOODLANDS,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,clear,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate
+YISHUN,Woodlands-Yishun,ALBA W&H Smart City Pte Ltd,boundary,centroid read against NEA schematic map pwc-boundary-map_7-oct-2025.png; approximate

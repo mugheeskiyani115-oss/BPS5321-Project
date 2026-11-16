@@ -22,3 +22,6 @@ Thumbs.db
 *.zip
 *.tif
 *.tiff
+
+# Raw downloads cached by pipeline/build_data.py (re-downloadable, ~220 MB)
+data/raw/
