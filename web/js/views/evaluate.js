@@ -23,9 +23,9 @@ export function mount(root, { meta, geo, store, go }) {
           <div class="step-h"><span class="n done">1</span><h3>Location</h3></div>
           <div id="region"></div>
           <div class="stats">
-            <div class="stat"><div class="v" id="stWoody">—</div><div class="k">woody waste t/yr</div></div>
+            <div class="stat"><div class="v" id="stWoody">—</div><div class="k">woody waste <span class="nw">t/yr</span></div></div>
             <div class="stat"><div class="v" id="stPlots">—</div><div class="k">candidate plots</div></div>
-            <div class="stat"><div class="v" id="stRent">—</div><div class="k">median land S$/m²</div></div>
+            <div class="stat"><div class="v" id="stRent">—</div><div class="k">median land <span class="nw">S$/m²</span></div></div>
           </div>
           <div id="mode"></div>
           <p class="muted" id="modeHint" style="margin-top:.6rem"></p>

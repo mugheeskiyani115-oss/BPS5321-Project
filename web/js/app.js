@@ -51,7 +51,7 @@ store.subscribe(() => setNav(routeName()));
 
 async function boot() {
   try {
-    [ctx.meta, ctx.geo] = await Promise.all([api.meta(), api.geo()]);
+    [ctx.meta, ctx.geo] = await Promise.all([api.meta(), api.geo(), document.fonts?.ready]);
   } catch (e) {
     document.getElementById("boot").classList.add("gone");
     viewEl.innerHTML = `<div class="page empty"><h2>Can't load BioTwin data</h2><p>${e.message}</p>

@@ -9,7 +9,7 @@ window.addEventListener("resize", () => charts.forEach((c) => c.resize()));
 function base() {
   return {
     backgroundColor: "transparent",
-    textStyle: { fontFamily: "Inter, -apple-system, sans-serif", color: C.text2 },
+    textStyle: { fontFamily: "Montserrat, -apple-system, sans-serif", color: C.text2 },
     animation: !reduceMotion, animationDuration: 900, animationEasing: "cubicOut",
     animationDurationUpdate: 700, animationEasingUpdate: "cubicInOut",
     tooltip: { trigger: "axis", backgroundColor: C.tip, borderColor: "rgba(255,255,255,.08)", textStyle: { color: "#f5f5f7", fontSize: 12 },
