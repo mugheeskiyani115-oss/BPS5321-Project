@@ -6,7 +6,7 @@ Endpoints
   GET  /api/meta       regions, sites, plants, facilities, planning areas, input defaults
   GET  /api/geo        planning-area polygons (GeoJSON) for the 3D map
   POST /api/evaluate   run one scenario -> outputs, pro forma, business as usual, findings, comparisons, flows
-  GET  /api/evidence   parameter register, waste-data check, research-PDF checks
+  GET  /api/evidence   parameter register, waste-data check
   POST /api/validate   compare uploaded independent tonnages with the estimates
 """
 from __future__ import annotations
@@ -229,7 +229,6 @@ def _evidence() -> dict:
     return clean({
         "parameters": b.params.reset_index()[["key", "value", "low", "high", "unit", "tag", "source", "url", "note"]],
         "waste_data_check": pd.read_csv(DATA / "params" / "waste_data_check.csv"),
-        "pdf_checks": pd.read_csv(DATA / "params" / "pdf_claim_checks.csv"),
         "plants": b.plants.reset_index(),
         "estimates": {u: vd.estimates_by(b.areas, b.areas.estimated_t, u) for u in vd.UNITS},
         "units": vd.UNITS,

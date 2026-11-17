@@ -33,7 +33,7 @@ again after any change to `data/params/parameters.csv`.
 | Evaluate | **1 Location:** pick a region (the map flies there). Let the tool pick the cheapest plot, or click plots on the map or in the list; several plots make a decentralised network. **2 Plant:** pick a size, or let the tool size it. **3 Business inputs:** gate fee slider marked at the incineration fee, sell credits, and advanced inputs with defaults and a reset. Then **Get results**. |
 | Results | Map with trucks driving real road routes to the plant, key metrics, process flow, business as usual vs your plant, findings, year-by-year cash flow (each year or cumulative, plus a table), comparisons (cost per tonne, other plots, plant sizes), assumptions, and Save / Download CSV / Edit inputs |
 | Saved | Saved evaluations side by side, with charts and CSV export (stored in the browser) |
-| Evidence | Waste-data check, every parameter with its tag and source link, validation upload, research-PDF checks |
+| Evidence | Waste-data check, every parameter with its tag and source link, validation upload |
 
 ### Animations
 

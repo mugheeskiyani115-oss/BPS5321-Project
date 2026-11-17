@@ -1,4 +1,4 @@
-// Evidence: waste-data check, sources, validation upload, research-PDF checks.
+// Evidence: waste-data check, sources, validation upload.
 import { api } from "../api.js";
 import { csvCell, download, esc, fmt, reveal, tabs, toast } from "../ui.js";
 
@@ -13,13 +13,13 @@ export function mount(root) {
   const body = root.querySelector("#body");
   const show = (v) => {
     if (!data) return;
-    body.innerHTML = { waste: waste, sources: sources, validation: validation, pdf: pdf }[v](data);
+    body.innerHTML = { waste: waste, sources: sources, validation: validation }[v](data);
     if (v === "sources") wireSources(body, data);
     if (v === "validation") wireValidation(body, data);
     reveal(body);
   };
   const t = tabs(root.querySelector("#tabs"), [{ value: "waste", label: "Waste data" }, { value: "sources", label: "Sources" },
-    { value: "validation", label: "Validation" }, { value: "pdf", label: "Research PDF" }], "waste", show);
+    { value: "validation", label: "Validation" }], "waste", show);
   api.evidence().then((d) => { data = d; show("waste"); t.set("waste"); }).catch((e) => {
     body.innerHTML = `<p>Couldn't load evidence: ${esc(e.message)}</p>`;
   });
@@ -102,7 +102,3 @@ function wireValidation(body, d) {
   });
 }
 
-function pdf(d) {
-  return `<p class="reveal" style="max-width:780px;margin-bottom:1rem">The research PDF was checked against its own links. It is used only where nothing better was found online.</p>
-    ${table(d.pdf_checks, [["topic", "Topic"], ["claim_in_research_pdf", "Claim"], ["status", "Status"], ["evidence_checked_16_nov_2026", "Evidence"], ["used_in_model_as", "Used as"]])}`;
-}
