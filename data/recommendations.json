@@ -1,0 +1,3499 @@
+{
+ "fingerprint": "5b811621ec8959e5",
+ "targets": {
+  "2000.0": {
+   "target_t": 2000.0,
+   "fingerprint": "5b811621ec8959e5",
+   "cheapest": {
+    "layout": {
+     "S08": "S10"
+    },
+    "n_sites": 1,
+    "net_cost_sgd": 1015851.7737534486,
+    "net_cost_sgd_per_t": 507.9258868767243,
+    "net_climate_t": -11.443434374692913,
+    "registry_credit_t": 474.5565656253071,
+    "mean_haul_km": 3.6166557998098914,
+    "capex_total_sgd": 1082004.0,
+    "label": "10 t/day semi-continuous at S08"
+   },
+   "most_credits": {
+    "layout": {
+     "S06": "S10",
+     "S08": "S10"
+    },
+    "n_sites": 2,
+    "net_cost_sgd": 2019987.592869716,
+    "net_cost_sgd_per_t": 1009.993796434858,
+    "net_climate_t": -10.781339435452537,
+    "registry_credit_t": 475.21866056454746,
+    "mean_haul_km": 1.9402963222922107,
+    "capex_total_sgd": 2164008.0,
+    "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08"
+   },
+   "shortest_haul": {
+    "layout": {
+     "S04": "K2",
+     "S06": "K2",
+     "S08": "S10",
+     "S10": "K2"
+    },
+    "n_sites": 4,
+    "net_cost_sgd": 2080288.608537854,
+    "net_cost_sgd_per_t": 1040.144304268927,
+    "net_climate_t": -69.62701572905797,
+    "registry_credit_t": 416.372984270942,
+    "mean_haul_km": 1.914349968320092,
+    "capex_total_sgd": 1545720.0,
+    "label": "2 t/day batch kiln at S04 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+   },
+   "options": [
+    {
+     "layout": {
+      "S08": "S10"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1015851.7737534486,
+     "net_cost_sgd_per_t": 507.9258868767243,
+     "net_climate_t": -11.443434374692913,
+     "registry_credit_t": 474.5565656253071,
+     "mean_haul_km": 3.6166557998098914,
+     "capex_total_sgd": 1082004.0,
+     "label": "10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S09": "S10"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1018328.7346385629,
+     "net_cost_sgd_per_t": 509.16436731928144,
+     "net_climate_t": -11.393697658170254,
+     "registry_credit_t": 474.60630234182975,
+     "mean_haul_km": 3.490727309525717,
+     "capex_total_sgd": 1082004.0,
+     "label": "10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "S10"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1035941.7459341099,
+     "net_cost_sgd_per_t": 517.9708729670549,
+     "net_climate_t": -11.26139665268073,
+     "registry_credit_t": 474.73860334731927,
+     "mean_haul_km": 3.1557541337876094,
+     "capex_total_sgd": 1082004.0,
+     "label": "10 t/day semi-continuous at S06"
+    },
+    {
+     "layout": {
+      "S01": "S10"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1042881.6347779336,
+     "net_cost_sgd_per_t": 521.4408173889668,
+     "net_climate_t": -11.182988958636827,
+     "registry_credit_t": 474.8170110413632,
+     "mean_haul_km": 2.957233539185833,
+     "capex_total_sgd": 1082004.0,
+     "label": "10 t/day semi-continuous at S01"
+    },
+    {
+     "layout": {
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1364385.8103734723,
+     "net_cost_sgd_per_t": 682.1929051867362,
+     "net_climate_t": -58.78440113012289,
+     "registry_credit_t": 427.2155988698771,
+     "mean_haul_km": 2.3240356748098923,
+     "capex_total_sgd": 1236576.0,
+     "label": "10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S08": "S10",
+      "S09": "K2"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1365226.7741991663,
+     "net_cost_sgd_per_t": 682.6133870995832,
+     "net_climate_t": -58.77246464900287,
+     "registry_credit_t": 427.22753535099713,
+     "mean_haul_km": 2.293813674809891,
+     "capex_total_sgd": 1236576.0,
+     "label": "10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09"
+    },
+    {
+     "layout": {
+      "S06": "K2",
+      "S08": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1377425.5165244448,
+     "net_cost_sgd_per_t": 688.7127582622225,
+     "net_climate_t": -58.73839594247289,
+     "registry_credit_t": 427.2616040575271,
+     "mean_haul_km": 2.2075550498098915,
+     "capex_total_sgd": 1236576.0,
+     "label": "2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S04": "K2"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1394860.9437658668,
+     "net_cost_sgd_per_t": 697.4304718829334,
+     "net_climate_t": -11.182988958636827,
+     "registry_credit_t": 474.8170110413632,
+     "mean_haul_km": 2.9572335391858324,
+     "capex_total_sgd": 1236576.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S04"
+    },
+    {
+     "layout": {
+      "S08": "B5",
+      "S10": "B5"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1633690.9309660422,
+     "net_cost_sgd_per_t": 816.8454654830211,
+     "net_climate_t": -238.88117036047498,
+     "registry_credit_t": 247.11882963952502,
+     "mean_haul_km": 2.1930584375,
+     "capex_total_sgd": 850146.0,
+     "label": "5 t/day batch at S08 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S08": "B5",
+      "S09": "B5"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1633914.7815807567,
+     "net_cost_sgd_per_t": 816.9573907903783,
+     "net_climate_t": -238.86589651672497,
+     "registry_credit_t": 247.13410348327503,
+     "mean_haul_km": 2.1543865625,
+     "capex_total_sgd": 850146.0,
+     "label": "5 t/day batch at S08 + 5 t/day batch at S09"
+    },
+    {
+     "layout": {
+      "S06": "B5",
+      "S08": "B5"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 1647844.2062012926,
+     "net_cost_sgd_per_t": 823.9221031006463,
+     "net_climate_t": -238.7807247504,
+     "registry_credit_t": 247.2192752496,
+     "mean_haul_km": 1.9387399999999997,
+     "capex_total_sgd": 850146.0,
+     "label": "5 t/day batch at S06 + 5 t/day batch at S08"
+    },
+    {
+     "layout": {
+      "S04": "K2",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 1715823.069251339,
+     "net_cost_sgd_per_t": 857.9115346256694,
+     "net_climate_t": -69.69570559092483,
+     "registry_credit_t": 416.30429440907517,
+     "mean_haul_km": 2.088265964539516,
+     "capex_total_sgd": 1391148.0,
+     "label": "2 t/day batch kiln at S04 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S08": "S10",
+      "S09": "K2",
+      "S10": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 1716110.557224642,
+     "net_cost_sgd_per_t": 858.055278612321,
+     "net_climate_t": -69.66108443558795,
+     "registry_credit_t": 416.33891556441205,
+     "mean_haul_km": 2.000608593320092,
+     "capex_total_sgd": 1391148.0,
+     "label": "10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S05": "K2",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 1716992.4154503953,
+     "net_cost_sgd_per_t": 858.4962077251977,
+     "net_climate_t": -69.02207908713746,
+     "registry_credit_t": 416.97792091286254,
+     "mean_haul_km": 2.181137074367804,
+     "capex_total_sgd": 1391148.0,
+     "label": "2 t/day batch kiln at S05 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S05": "K2",
+      "S08": "S10",
+      "S09": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 1717833.3792760891,
+     "net_cost_sgd_per_t": 858.9166896380445,
+     "net_climate_t": -69.0101426060175,
+     "registry_credit_t": 416.9898573939825,
+     "mean_haul_km": 2.150915074367804,
+     "capex_total_sgd": 1391148.0,
+     "label": "2 t/day batch kiln at S05 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09"
+    },
+    {
+     "layout": {
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 1728309.2995499205,
+     "net_cost_sgd_per_t": 864.1546497749603,
+     "net_climate_t": -69.62701572905797,
+     "registry_credit_t": 416.372984270942,
+     "mean_haul_km": 1.9143499683200922,
+     "capex_total_sgd": 1391148.0,
+     "label": "2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S05": "K2",
+      "S06": "K2",
+      "S08": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 1730032.121601368,
+     "net_cost_sgd_per_t": 865.016060800684,
+     "net_climate_t": -68.97607389948746,
+     "registry_credit_t": 417.02392610051254,
+     "mean_haul_km": 2.0646564493678037,
+     "capex_total_sgd": 1391148.0,
+     "label": "2 t/day batch kiln at S05 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S08": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2002014.3422354304,
+     "net_cost_sgd_per_t": 1001.0071711177152,
+     "net_climate_t": -10.817096851137705,
+     "registry_credit_t": 475.1829031488623,
+     "mean_haul_km": 2.030830593320092,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2019987.592869716,
+     "net_cost_sgd_per_t": 1009.993796434858,
+     "net_climate_t": -10.781339435452537,
+     "registry_credit_t": 475.21866056454746,
+     "mean_haul_km": 1.9402963222922107,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S04": "K2",
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 2080288.608537854,
+     "net_cost_sgd_per_t": 1040.144304268927,
+     "net_climate_t": -69.62701572905797,
+     "registry_credit_t": 416.372984270942,
+     "mean_haul_km": 1.914349968320092,
+     "capex_total_sgd": 1545720.0,
+     "label": "2 t/day batch kiln at S04 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2366610.851143228,
+     "net_cost_sgd_per_t": 1183.305425571614,
+     "net_climate_t": -58.6225916634877,
+     "registry_credit_t": 427.3774083365123,
+     "mean_haul_km": 1.9143499683200922,
+     "capex_total_sgd": 2318580.0,
+     "label": "2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S04": "K2",
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 2718590.160131162,
+     "net_cost_sgd_per_t": 1359.295080065581,
+     "net_climate_t": -58.6225916634877,
+     "registry_credit_t": 427.3774083365123,
+     "mean_haul_km": 1.914349968320092,
+     "capex_total_sgd": 2473152.0,
+     "label": "2 t/day batch kiln at S04 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S10"
+    }
+   ]
+  },
+  "5000.0": {
+   "target_t": 5000.0,
+   "fingerprint": "5b811621ec8959e5",
+   "cheapest": {
+    "layout": {
+     "S09": "C20"
+    },
+    "n_sites": 1,
+    "net_cost_sgd": 1785732.7514886227,
+    "net_cost_sgd_per_t": 357.14655029772456,
+    "net_climate_t": -30.96399158733675,
+    "registry_credit_t": 1184.0360084126633,
+    "mean_haul_km": 6.002118277635143,
+    "capex_total_sgd": 3091440.0,
+    "label": "20 t/day continuous at S09"
+   },
+   "most_credits": {
+    "layout": {
+     "S01": "S10",
+     "S06": "S10",
+     "S08": "S10",
+     "S09": "S10"
+    },
+    "n_sites": 4,
+    "net_cost_sgd": 4064728.706254337,
+    "net_cost_sgd_per_t": 812.9457412508674,
+    "net_climate_t": -27.212320505252137,
+    "registry_credit_t": 1187.7876794947479,
+    "mean_haul_km": 2.2025729240958274,
+    "capex_total_sgd": 4328016.0,
+    "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+   },
+   "shortest_haul": {
+    "layout": {
+     "S01": "K2",
+     "S06": "S10",
+     "S08": "S10",
+     "S09": "S10",
+     "S10": "B5"
+    },
+    "n_sites": 5,
+    "net_cost_sgd": 4224277.0015752595,
+    "net_cost_sgd_per_t": 844.855400315052,
+    "net_climate_t": -150.3320366737321,
+    "registry_credit_t": 1064.667963326268,
+    "mean_haul_km": 2.196175270518018,
+    "capex_total_sgd": 3825657.0,
+    "label": "2 t/day batch kiln at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+   },
+   "options": [
+    {
+     "layout": {
+      "S09": "C20"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1785732.7514886227,
+     "net_cost_sgd_per_t": 357.14655029772456,
+     "net_climate_t": -30.96399158733675,
+     "registry_credit_t": 1184.0360084126633,
+     "mean_haul_km": 6.002118277635143,
+     "capex_total_sgd": 3091440.0,
+     "label": "20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "C20"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1808078.2197710504,
+     "net_cost_sgd_per_t": 361.6156439542101,
+     "net_climate_t": -30.13229701208911,
+     "registry_credit_t": 1184.867702987911,
+     "mean_haul_km": 5.159810625976595,
+     "capex_total_sgd": 3091440.0,
+     "label": "20 t/day continuous at S06"
+    },
+    {
+     "layout": {
+      "S01": "C20"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 1812043.9971871933,
+     "net_cost_sgd_per_t": 362.40879943743863,
+     "net_climate_t": -29.677224386040734,
+     "registry_credit_t": 1185.3227756139593,
+     "mean_haul_km": 4.698930915577173,
+     "capex_total_sgd": 3091440.0,
+     "label": "20 t/day continuous at S01"
+    },
+    {
+     "layout": {
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2057144.56768937,
+     "net_cost_sgd_per_t": 411.428913537874,
+     "net_climate_t": -29.529940488925604,
+     "registry_credit_t": 1185.4700595110744,
+     "mean_haul_km": 4.5497675601840575,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S04": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2058059.7560894522,
+     "net_cost_sgd_per_t": 411.61195121789046,
+     "net_climate_t": -29.4643942510545,
+     "registry_credit_t": 1185.5356057489455,
+     "mean_haul_km": 4.483384900804657,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S03": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2060586.9543107469,
+     "net_cost_sgd_per_t": 412.11739086214936,
+     "net_climate_t": -29.29864676183206,
+     "registry_credit_t": 1185.701353238168,
+     "mean_haul_km": 4.3155223433584595,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2071699.6921654795,
+     "net_cost_sgd_per_t": 414.3399384330959,
+     "net_climate_t": -28.80289122605086,
+     "registry_credit_t": 1186.1971087739491,
+     "mean_haul_km": 3.813440577325331,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2077414.4238885315,
+     "net_cost_sgd_per_t": 415.4828847777063,
+     "net_climate_t": -28.714359754620318,
+     "registry_credit_t": 1186.2856402453797,
+     "mean_haul_km": 3.72377937474222,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2094516.5568924919,
+     "net_cost_sgd_per_t": 418.90331137849836,
+     "net_climate_t": -28.473792313930744,
+     "registry_credit_t": 1186.5262076860693,
+     "mean_haul_km": 3.4801421044469767,
+     "capex_total_sgd": 2164008.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2418863.1013512462,
+     "net_cost_sgd_per_t": 483.77262027024926,
+     "net_climate_t": -76.27142912345107,
+     "registry_credit_t": 1138.728570876549,
+     "mean_haul_km": 3.4255915773253305,
+     "capex_total_sgd": 2318580.0,
+     "label": "10 t/day semi-continuous at S06 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2424577.833074298,
+     "net_cost_sgd_per_t": 484.91556661485964,
+     "net_climate_t": -76.1828976520203,
+     "registry_credit_t": 1138.8171023479797,
+     "mean_haul_km": 3.33593037474222,
+     "capex_total_sgd": 2318580.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2442161.856331952,
+     "net_cost_sgd_per_t": 488.43237126639036,
+     "net_climate_t": -76.04445343869088,
+     "registry_credit_t": 1138.9555465613091,
+     "mean_haul_km": 3.195719504446977,
+     "capex_total_sgd": 2318580.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 2 t/day batch kiln at S08"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "K2",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 2768153.5249292795,
+     "net_cost_sgd_per_t": 553.6307049858559,
+     "net_climate_t": -123.7235154519135,
+     "registry_credit_t": 1091.2764845480865,
+     "mean_haul_km": 3.021081073439,
+     "capex_total_sgd": 2473152.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "S10",
+      "S09": "K2",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 2773868.2566523314,
+     "net_cost_sgd_per_t": 554.7736513304662,
+     "net_climate_t": -123.63498398048296,
+     "registry_credit_t": 1091.365016019517,
+     "mean_haul_km": 2.9314198708558887,
+     "capex_total_sgd": 2473152.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 2786066.99897761,
+     "net_cost_sgd_per_t": 557.213399795522,
+     "net_climate_t": -123.60091527395298,
+     "registry_credit_t": 1091.399084726047,
+     "mean_haul_km": 2.8969164208558897,
+     "capex_total_sgd": 2473152.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "K2",
+      "S08": "S10",
+      "S09": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 2786907.962803304,
+     "net_cost_sgd_per_t": 557.3815925606608,
+     "net_climate_t": -123.5889787928329,
+     "registry_credit_t": 1091.411021207167,
+     "mean_haul_km": 2.8848276208558894,
+     "capex_total_sgd": 2473152.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 2792268.038701767,
+     "net_cost_sgd_per_t": 558.4536077403534,
+     "net_climate_t": -28.35962352934189,
+     "registry_credit_t": 1186.640376470658,
+     "mean_haul_km": 3.3645164364410682,
+     "capex_total_sgd": 4173444.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2868277.1948184907,
+     "net_cost_sgd_per_t": 573.6554389636981,
+     "net_climate_t": -147.47146666033473,
+     "registry_credit_t": 1067.5285333396653,
+     "mean_haul_km": 2.8410134295473393,
+     "capex_total_sgd": 2589081.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "B5"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2868418.595208414,
+     "net_cost_sgd_per_t": 573.6837190416828,
+     "net_climate_t": -147.44162545753488,
+     "registry_credit_t": 1067.5583745424651,
+     "mean_haul_km": 2.8107914295473395,
+     "capex_total_sgd": 2589081.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 5 t/day batch at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2874185.6727890037,
+     "net_cost_sgd_per_t": 574.8371345578007,
+     "net_climate_t": -147.3809751375195,
+     "registry_credit_t": 1067.6190248624805,
+     "mean_haul_km": 2.7493671637832784,
+     "capex_total_sgd": 2589081.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S08 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "S10",
+      "S09": "B5"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2874327.0731789265,
+     "net_cost_sgd_per_t": 574.8654146357853,
+     "net_climate_t": -147.35113393471966,
+     "registry_credit_t": 1067.6488660652803,
+     "mean_haul_km": 2.719145163783279,
+     "capex_total_sgd": 2589081.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S08 + 5 t/day batch at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "B5",
+      "S08": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 2888256.497799462,
+     "net_cost_sgd_per_t": 577.6512995598924,
+     "net_climate_t": -147.26596216839448,
+     "registry_credit_t": 1067.7340378316055,
+     "mean_haul_km": 2.6328865387832785,
+     "capex_total_sgd": 2589081.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3035367.7381820776,
+     "net_cost_sgd_per_t": 607.0735476364156,
+     "net_climate_t": -28.053902406291627,
+     "registry_credit_t": 1186.9460975937084,
+     "mean_haul_km": 3.0548940715937194,
+     "capex_total_sgd": 3246012.0,
+     "label": "10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3036125.5341618676,
+     "net_cost_sgd_per_t": 607.2251068323735,
+     "net_climate_t": -28.027637115777907,
+     "registry_credit_t": 1186.972362884222,
+     "mean_haul_km": 3.0282936153311626,
+     "capex_total_sgd": 3246012.0,
+     "label": "10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3051277.1350033022,
+     "net_cost_sgd_per_t": 610.2554270006605,
+     "net_climate_t": -27.635773742398897,
+     "registry_credit_t": 1187.364226257601,
+     "mean_haul_km": 2.6314297573415733,
+     "capex_total_sgd": 3246012.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3058315.6635589683,
+     "net_cost_sgd_per_t": 611.6631327117937,
+     "net_climate_t": -27.548485313340052,
+     "registry_credit_t": 1187.45151468666,
+     "mean_haul_km": 2.5430274593277207,
+     "capex_total_sgd": 3246012.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "S10",
+      "S09": "B5",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3225226.752862534,
+     "net_cost_sgd_per_t": 645.0453505725068,
+     "net_climate_t": -194.98736281340962,
+     "registry_credit_t": 1020.0126371865904,
+     "mean_haul_km": 2.5011270137832784,
+     "capex_total_sgd": 2743653.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S08 + 5 t/day batch at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3238125.0586235835,
+     "net_cost_sgd_per_t": 647.6250117247167,
+     "net_climate_t": -194.97119882855952,
+     "registry_credit_t": 1020.0288011714405,
+     "mean_haul_km": 2.4847567637832784,
+     "capex_total_sgd": 2743653.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "K2",
+      "S08": "S10",
+      "S09": "B5"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3238266.4590135063,
+     "net_cost_sgd_per_t": 647.6532918027012,
+     "net_climate_t": -194.94135762575945,
+     "registry_credit_t": 1020.0586423742405,
+     "mean_haul_km": 2.454534763783278,
+     "capex_total_sgd": 2743653.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 5 t/day batch at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3239156.1774830697,
+     "net_cost_sgd_per_t": 647.8312354966139,
+     "net_climate_t": -194.90219104708444,
+     "registry_credit_t": 1020.0978089529156,
+     "mean_haul_km": 2.4148683887832783,
+     "capex_total_sgd": 2743653.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3239997.1413087635,
+     "net_cost_sgd_per_t": 647.9994282617527,
+     "net_climate_t": -194.89025456596437,
+     "registry_credit_t": 1020.1097454340356,
+     "mean_haul_km": 2.4027795887832784,
+     "capex_total_sgd": 2743653.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3401913.965457623,
+     "net_cost_sgd_per_t": 680.3827930915246,
+     "net_climate_t": -75.36035712666194,
+     "registry_credit_t": 1139.639642873338,
+     "mean_haul_km": 2.5028935858435664,
+     "capex_total_sgd": 3400584.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3404013.7983004223,
+     "net_cost_sgd_per_t": 680.8027596600845,
+     "net_climate_t": -75.29656566246467,
+     "registry_credit_t": 1139.7034343375353,
+     "mean_haul_km": 2.438288092429103,
+     "capex_total_sgd": 3400584.0,
+     "label": "2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3409367.1395342336,
+     "net_cost_sgd_per_t": 681.8734279068467,
+     "net_climate_t": -75.27662561843317,
+     "registry_credit_t": 1139.7233743815668,
+     "mean_haul_km": 2.4180935977652145,
+     "capex_total_sgd": 3400584.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S04": "K2",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3410268.074653802,
+     "net_cost_sgd_per_t": 682.0536149307604,
+     "net_climate_t": -42.20290280046629,
+     "registry_credit_t": 1172.7970971995337,
+     "mean_haul_km": 2.5067658054724418,
+     "capex_total_sgd": 3400584.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "K2",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3422406.845685206,
+     "net_cost_sgd_per_t": 684.4813691370412,
+     "net_climate_t": -75.23062043078335,
+     "registry_credit_t": 1139.7693795692167,
+     "mean_haul_km": 2.3715013477652147,
+     "capex_total_sgd": 3400584.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S03": "K2",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3566648.7705879556,
+     "net_cost_sgd_per_t": 713.3297541175912,
+     "net_climate_t": -242.68897050594,
+     "registry_credit_t": 972.31102949406,
+     "mean_haul_km": 2.3493219626698667,
+     "capex_total_sgd": 2898225.0,
+     "label": "2 t/day batch kiln at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3583094.416711853,
+     "net_cost_sgd_per_t": 716.6188833423706,
+     "net_climate_t": -242.67562485691008,
+     "registry_credit_t": 972.3243751430899,
+     "mean_haul_km": 2.335806012669867,
+     "capex_total_sgd": 2898225.0,
+     "label": "2 t/day batch kiln at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "K2",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3591100.010167429,
+     "net_cost_sgd_per_t": 718.2200020334858,
+     "net_climate_t": -242.6495128461329,
+     "registry_credit_t": 972.3504871538671,
+     "mean_haul_km": 2.309360792113552,
+     "capex_total_sgd": 2898225.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3666240.0989437336,
+     "net_cost_sgd_per_t": 733.2480197887468,
+     "net_climate_t": -266.49941741401017,
+     "registry_credit_t": 948.5005825859898,
+     "mean_haul_km": 2.2325475126698673,
+     "capex_total_sgd": 3014154.0,
+     "label": "5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "B5",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3687356.3456111033,
+     "net_cost_sgd_per_t": 737.4712691222206,
+     "net_climate_t": -266.4958628745999,
+     "registry_credit_t": 948.5041371254001,
+     "mean_haul_km": 2.228947614543242,
+     "capex_total_sgd": 3014154.0,
+     "label": "5 t/day batch at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3754650.6287547424,
+     "net_cost_sgd_per_t": 750.9301257509485,
+     "net_climate_t": -123.0498508971632,
+     "registry_credit_t": 1091.9501491028368,
+     "mean_haul_km": 2.338820029535552,
+     "capex_total_sgd": 3555156.0,
+     "label": "2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "K2",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3762585.6930850465,
+     "net_cost_sgd_per_t": 752.5171386170093,
+     "net_climate_t": -123.04954378439334,
+     "registry_credit_t": 1091.9504562156067,
+     "mean_haul_km": 2.338508997765215,
+     "capex_total_sgd": 3555156.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3771096.2748786397,
+     "net_cost_sgd_per_t": 754.219254975728,
+     "net_climate_t": -123.03650524813338,
+     "registry_credit_t": 1091.9634947518666,
+     "mean_haul_km": 2.325304079535552,
+     "capex_total_sgd": 3555156.0,
+     "label": "2 t/day batch kiln at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 3773196.1077214405,
+     "net_cost_sgd_per_t": 754.6392215442881,
+     "net_climate_t": -122.99529528257449,
+     "registry_credit_t": 1092.0047047174255,
+     "mean_haul_km": 2.283568242429103,
+     "capex_total_sgd": 3555156.0,
+     "label": "2 t/day batch kiln at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3850800.0646272036,
+     "net_cost_sgd_per_t": 770.1600129254407,
+     "net_climate_t": -146.86253305408127,
+     "registry_credit_t": 1068.1374669459187,
+     "mean_haul_km": 2.224309351915649,
+     "capex_total_sgd": 3671085.0,
+     "label": "5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S03": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3853996.8307972453,
+     "net_cost_sgd_per_t": 770.799366159449,
+     "net_climate_t": -146.85642224230673,
+     "registry_credit_t": 1068.1435777576933,
+     "mean_haul_km": 2.2181205613802244,
+     "capex_total_sgd": 3671085.0,
+     "label": "10 t/day semi-continuous at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "B5",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3875358.2037778916,
+     "net_cost_sgd_per_t": 775.0716407555783,
+     "net_climate_t": -146.85096972858923,
+     "registry_credit_t": 1068.1490302714108,
+     "mean_haul_km": 2.2125984693024776,
+     "capex_total_sgd": 3671085.0,
+     "label": "5 t/day batch at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3876687.932741751,
+     "net_cost_sgd_per_t": 775.3375865483501,
+     "net_climate_t": -146.84315787324294,
+     "registry_credit_t": 1068.156842126757,
+     "mean_haul_km": 2.204686928542747,
+     "capex_total_sgd": 3671085.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S03": "K2",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 3936086.2353588175,
+     "net_cost_sgd_per_t": 787.2172470717635,
+     "net_climate_t": -271.81318080762946,
+     "registry_credit_t": 943.1868191923705,
+     "mean_haul_km": 2.2004910613802244,
+     "capex_total_sgd": 3052797.0,
+     "label": "2 t/day batch kiln at S01 + 2 t/day batch kiln at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S03": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4024509.997043957,
+     "net_cost_sgd_per_t": 804.9019994087914,
+     "net_climate_t": -27.34253670784142,
+     "registry_credit_t": 1187.6574632921586,
+     "mean_haul_km": 2.3344507877673495,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 4036239.612005787,
+     "net_cost_sgd_per_t": 807.2479224011574,
+     "net_climate_t": -271.81069621971244,
+     "registry_credit_t": 943.1893037802876,
+     "mean_haul_km": 2.197974768168387,
+     "capex_total_sgd": 3168726.0,
+     "label": "2 t/day batch kiln at S01 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4038801.9227939914,
+     "net_cost_sgd_per_t": 807.7603845587983,
+     "net_climate_t": -27.223413445304686,
+     "registry_credit_t": 1187.7765865546953,
+     "mean_haul_km": 2.2138074187813346,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4064728.706254337,
+     "net_cost_sgd_per_t": 812.9457412508674,
+     "net_climate_t": -27.212320505252137,
+     "registry_credit_t": 1187.7876794947479,
+     "mean_haul_km": 2.2025729240958274,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 4124113.4730989523,
+     "net_cost_sgd_per_t": 824.8226946197905,
+     "net_climate_t": -150.33436438890135,
+     "registry_credit_t": 1064.6656356110987,
+     "mean_haul_km": 2.1985326891625254,
+     "capex_total_sgd": 3709728.0,
+     "label": "2 t/day batch kiln at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 4224277.0015752595,
+     "net_cost_sgd_per_t": 844.855400315052,
+     "net_climate_t": -150.3320366737321,
+     "registry_credit_t": 1064.667963326268,
+     "mean_haul_km": 2.196175270518018,
+     "capex_total_sgd": 3825657.0,
+     "label": "2 t/day batch kiln at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 4408870.603061912,
+     "net_cost_sgd_per_t": 881.7741206123824,
+     "net_climate_t": -75.05750346210971,
+     "registry_credit_t": 1139.9424965378903,
+     "mean_haul_km": 2.196175270518018,
+     "capex_total_sgd": 4482588.0,
+     "label": "2 t/day batch kiln at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    }
+   ]
+  },
+  "9000.0": {
+   "target_t": 9000.0,
+   "fingerprint": "5b811621ec8959e5",
+   "cheapest": {
+    "layout": {
+     "S09": "C50"
+    },
+    "n_sites": 1,
+    "net_cost_sgd": 3187236.945571671,
+    "net_cost_sgd_per_t": 354.1374383968523,
+    "net_climate_t": -57.80663036496753,
+    "registry_credit_t": 2129.1933696350325,
+    "mean_haul_km": 7.167606488965337,
+    "capex_total_sgd": 8501460.0,
+    "label": "50 t/day continuous at S09"
+   },
+   "most_credits": {
+    "layout": {
+     "S01": "C20",
+     "S03": "S10",
+     "S06": "S10",
+     "S08": "S10",
+     "S09": "S10",
+     "S10": "S10"
+    },
+    "n_sites": 6,
+    "net_cost_sgd": 6823334.301890031,
+    "net_cost_sgd_per_t": 758.148255765559,
+    "net_climate_t": -49.89885229184529,
+    "registry_credit_t": 2137.1011477081547,
+    "mean_haul_km": 2.718335635589243,
+    "capex_total_sgd": 8501460.0,
+    "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+   },
+   "shortest_haul": {
+    "layout": {
+     "S01": "C20",
+     "S03": "S10",
+     "S06": "S10",
+     "S08": "S10",
+     "S09": "S10",
+     "S10": "S10"
+    },
+    "n_sites": 6,
+    "net_cost_sgd": 6823334.301890031,
+    "net_cost_sgd_per_t": 758.148255765559,
+    "net_climate_t": -49.89885229184529,
+    "registry_credit_t": 2137.1011477081547,
+    "mean_haul_km": 2.718335635589243,
+    "capex_total_sgd": 8501460.0,
+    "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+   },
+   "options": [
+    {
+     "layout": {
+      "S09": "C50"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 3187236.945571671,
+     "net_cost_sgd_per_t": 354.1374383968523,
+     "net_climate_t": -57.80663036496753,
+     "registry_credit_t": 2129.1933696350325,
+     "mean_haul_km": 7.167606488965337,
+     "capex_total_sgd": 8501460.0,
+     "label": "50 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S08": "S10",
+      "S09": "C20",
+      "S10": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3193129.6385516208,
+     "net_cost_sgd_per_t": 354.7921820612912,
+     "net_climate_t": -103.52748631664463,
+     "registry_credit_t": 2083.4725136833554,
+     "mean_haul_km": 5.968810521822162,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S08 + 20 t/day continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "K2",
+      "S10": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3208113.190113549,
+     "net_cost_sgd_per_t": 356.45702112372766,
+     "net_climate_t": -102.98520357710822,
+     "registry_credit_t": 2084.014796422892,
+     "mean_haul_km": 5.663697914336493,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S06 + 2 t/day batch kiln at S08 + 20 t/day continuous at S10"
+    },
+    {
+     "layout": {
+      "S05": "K2",
+      "S06": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3210895.5837032716,
+     "net_cost_sgd_per_t": 356.76617596703016,
+     "net_climate_t": -102.70920121422114,
+     "registry_credit_t": 2084.290798785779,
+     "mean_haul_km": 5.508406597698394,
+     "capex_total_sgd": 4328016.0,
+     "label": "2 t/day batch kiln at S05 + 10 t/day semi-continuous at S06 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "C20",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3212178.628012423,
+     "net_cost_sgd_per_t": 356.9087364458248,
+     "net_climate_t": -101.96008406272358,
+     "registry_credit_t": 2085.0399159372764,
+     "mean_haul_km": 5.086919667096331,
+     "capex_total_sgd": 4328016.0,
+     "label": "20 t/day continuous at S06 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3213661.1241644933,
+     "net_cost_sgd_per_t": 357.07345824049924,
+     "net_climate_t": -100.95509394098872,
+     "registry_credit_t": 2086.0449060590113,
+     "mean_haul_km": 4.52146711958951,
+     "capex_total_sgd": 4328016.0,
+     "label": "20 t/day continuous at S01 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S02": "C50"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 3230261.2646053345,
+     "net_cost_sgd_per_t": 358.91791828948163,
+     "net_climate_t": -57.35668418568048,
+     "registry_credit_t": 2129.6433158143195,
+     "mean_haul_km": 6.914446574438281,
+     "capex_total_sgd": 8501460.0,
+     "label": "50 t/day continuous at S02"
+    },
+    {
+     "layout": {
+      "S06": "C50"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 3231373.002163385,
+     "net_cost_sgd_per_t": 359.04144468482053,
+     "net_climate_t": -57.219222680146686,
+     "registry_credit_t": 2129.7807773198533,
+     "mean_haul_km": 6.837104562007405,
+     "capex_total_sgd": 8501460.0,
+     "label": "50 t/day continuous at S06"
+    },
+    {
+     "layout": {
+      "S01": "C50"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 3234760.1802882156,
+     "net_cost_sgd_per_t": 359.41779780980175,
+     "net_climate_t": -55.34703322014184,
+     "registry_credit_t": 2131.652966779858,
+     "mean_haul_km": 5.7837267459670265,
+     "capex_total_sgd": 8501460.0,
+     "label": "50 t/day continuous at S01"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "S10",
+      "S09": "K2",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3563640.3202216527,
+     "net_cost_sgd_per_t": 395.9600355801836,
+     "net_climate_t": -148.503728587041,
+     "registry_credit_t": 2038.496271412959,
+     "mean_haul_km": 4.351061478541549,
+     "capex_total_sgd": 4482588.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S06": "C20",
+      "S09": "C20"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 3575008.3661062997,
+     "net_cost_sgd_per_t": 397.2231517895888,
+     "net_climate_t": -54.62685853958101,
+     "registry_credit_t": 2132.373141460419,
+     "mean_haul_km": 5.378524148482441,
+     "capex_total_sgd": 6182880.0,
+     "label": "20 t/day continuous at S06 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S06": "K2",
+      "S08": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 3576724.215736008,
+     "net_cost_sgd_per_t": 397.41380174844534,
+     "net_climate_t": -148.4901205502415,
+     "registry_credit_t": 2038.5098794497585,
+     "mean_haul_km": 4.343404986294899,
+     "capex_total_sgd": 4482588.0,
+     "label": "20 t/day continuous at S01 + 2 t/day batch kiln at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S09": "C20"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 3578498.4397111856,
+     "net_cost_sgd_per_t": 397.6109377456873,
+     "net_climate_t": -53.51389928493063,
+     "registry_credit_t": 2133.4861007150694,
+     "mean_haul_km": 4.752323321028768,
+     "capex_total_sgd": 6182880.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "B5",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3663388.055278708,
+     "net_cost_sgd_per_t": 407.0431172531898,
+     "net_climate_t": -172.1936401498292,
+     "registry_credit_t": 2014.8063598501708,
+     "mean_haul_km": 4.218368189087834,
+     "capex_total_sgd": 4598517.0,
+     "label": "20 t/day continuous at S01 + 5 t/day batch at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3663439.1206773887,
+     "net_cost_sgd_per_t": 407.04879118637655,
+     "net_climate_t": -172.18614844587592,
+     "registry_credit_t": 2014.813851554124,
+     "mean_haul_km": 4.214153020208216,
+     "capex_total_sgd": 4598517.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S08 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "S10",
+      "S09": "B5"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3663580.5210673115,
+     "net_cost_sgd_per_t": 407.0645023408124,
+     "net_climate_t": -172.15630724307607,
+     "registry_credit_t": 2014.843692756924,
+     "mean_haul_km": 4.197363020208216,
+     "capex_total_sgd": 4598517.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S08 + 5 t/day batch at S09"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3835689.844964677,
+     "net_cost_sgd_per_t": 426.1877605516308,
+     "net_climate_t": -53.296480301864904,
+     "registry_credit_t": 2133.703519698135,
+     "mean_haul_km": 4.629993643162366,
+     "capex_total_sgd": 5255448.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S06": "C20",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3840993.7853153325,
+     "net_cost_sgd_per_t": 426.77708725725915,
+     "net_climate_t": -52.721188230610096,
+     "registry_credit_t": 2134.27881176939,
+     "mean_haul_km": 4.306308504158123,
+     "capex_total_sgd": 5255448.0,
+     "label": "20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3844979.466863729,
+     "net_cost_sgd_per_t": 427.21994076263655,
+     "net_climate_t": -52.16982182419224,
+     "registry_credit_t": 2134.8301781758078,
+     "mean_haul_km": 3.9960850180004335,
+     "capex_total_sgd": 5255448.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S06": "S10",
+      "S08": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 3864032.808914254,
+     "net_cost_sgd_per_t": 429.33697876825045,
+     "net_climate_t": -52.02481783801613,
+     "registry_credit_t": 2134.975182161984,
+     "mean_haul_km": 3.9144992674457493,
+     "capex_total_sgd": 5255448.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4107111.0439439,
+     "net_cost_sgd_per_t": 456.3456715493222,
+     "net_climate_t": -51.86511889489793,
+     "registry_credit_t": 2135.134881105102,
+     "mean_haul_km": 3.824645474590089,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S04": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4107699.3731989725,
+     "net_cost_sgd_per_t": 456.4110414665525,
+     "net_climate_t": -51.77661435449636,
+     "registry_credit_t": 2135.2233856455036,
+     "mean_haul_km": 3.774848847982827,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4110558.121954515,
+     "net_cost_sgd_per_t": 456.72868021716835,
+     "net_climate_t": -51.64150365988144,
+     "registry_credit_t": 2135.3584963401186,
+     "mean_haul_km": 3.6988295072816837,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4116272.8536775666,
+     "net_cost_sgd_per_t": 457.3636504086185,
+     "net_climate_t": -51.552972188450894,
+     "registry_credit_t": 2135.447027811549,
+     "mean_haul_km": 3.649017728068845,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4127399.6657000124,
+     "net_cost_sgd_per_t": 458.59996285555695,
+     "net_climate_t": -51.05390558036379,
+     "registry_credit_t": 2135.946094419636,
+     "mean_haul_km": 3.36822045572219,
+     "capex_total_sgd": 4328016.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 4476897.482827422,
+     "net_cost_sgd_per_t": 497.43305364749136,
+     "net_climate_t": -98.584363973574,
+     "registry_credit_t": 2088.415636026426,
+     "mean_haul_km": 3.187588039055524,
+     "capex_total_sgd": 4482588.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "B5",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 4745925.542904934,
+     "net_cost_sgd_per_t": 527.3250603227705,
+     "net_climate_t": -289.9038698890254,
+     "registry_credit_t": 1897.0961301109746,
+     "mean_haul_km": 3.1389225851429234,
+     "capex_total_sgd": 4096158.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 5 t/day batch at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 4828691.025089267,
+     "net_cost_sgd_per_t": 536.5212250099186,
+     "net_climate_t": -146.1603980052157,
+     "registry_credit_t": 2040.8396019947843,
+     "mean_haul_km": 3.0325985220535148,
+     "capex_total_sgd": 4637160.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S05": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 4829628.544876179,
+     "net_cost_sgd_per_t": 536.625393875131,
+     "net_climate_t": -126.9405984396085,
+     "registry_credit_t": 2060.0594015603915,
+     "mean_haul_km": 3.163257492428279,
+     "capex_total_sgd": 4637160.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S05 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "C20",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4845150.453405729,
+     "net_cost_sgd_per_t": 538.3500503784143,
+     "net_climate_t": -50.986055035749814,
+     "registry_credit_t": 2136.01394496425,
+     "mean_haul_km": 3.3300446941185706,
+     "capex_total_sgd": 6337452.0,
+     "label": "10 t/day semi-continuous at S01 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 4846586.373546853,
+     "net_cost_sgd_per_t": 538.5095970607614,
+     "net_climate_t": -50.9321426935694,
+     "registry_credit_t": 2136.0678573064306,
+     "mean_haul_km": 3.299711190764481,
+     "capex_total_sgd": 6337452.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 4927953.791908437,
+     "net_cost_sgd_per_t": 547.5504213231598,
+     "net_climate_t": -169.97262709623078,
+     "registry_credit_t": 2017.0273729037692,
+     "mean_haul_km": 2.9687265637201823,
+     "capex_total_sgd": 4753089.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5094449.373209428,
+     "net_cost_sgd_per_t": 566.0499303566031,
+     "net_climate_t": -50.8999772006423,
+     "registry_credit_t": 2136.1000227993577,
+     "mean_haul_km": 3.2816134408227158,
+     "capex_total_sgd": 5410020.0,
+     "label": "10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "B5",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "K2",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5098685.54259588,
+     "net_cost_sgd_per_t": 566.5206158439867,
+     "net_climate_t": -337.43564629063485,
+     "registry_credit_t": 1849.5643537093652,
+     "mean_haul_km": 2.959031739155151,
+     "capex_total_sgd": 4250730.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 2 t/day batch kiln at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5100164.1049324805,
+     "net_cost_sgd_per_t": 566.6849005480534,
+     "net_climate_t": -50.811445729211755,
+     "registry_credit_t": 2136.1885542707882,
+     "mean_haul_km": 3.2318016616098766,
+     "capex_total_sgd": 5410020.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5112436.864372278,
+     "net_cost_sgd_per_t": 568.0485404858086,
+     "net_climate_t": -50.3760367718387,
+     "registry_credit_t": 2136.6239632281613,
+     "mean_haul_km": 2.9868210405773397,
+     "capex_total_sgd": 5410020.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5115562.132093327,
+     "net_cost_sgd_per_t": 568.3957924548141,
+     "net_climate_t": -50.317771256555716,
+     "registry_credit_t": 2136.6822287434443,
+     "mean_haul_km": 2.9540382466613355,
+     "capex_total_sgd": 5410020.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5280209.601854142,
+     "net_cost_sgd_per_t": 586.6899557615714,
+     "net_climate_t": -217.62670253585634,
+     "registry_credit_t": 1969.3732974641437,
+     "mean_haul_km": 2.8576466454308327,
+     "capex_total_sgd": 4907661.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S02": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5289054.575115252,
+     "net_cost_sgd_per_t": 587.6727305683613,
+     "net_climate_t": -204.9698772524141,
+     "registry_credit_t": 1982.030122747586,
+     "mean_haul_km": 2.9310694414345604,
+     "capex_total_sgd": 4907661.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S02 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S04": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5463661.747589376,
+     "net_cost_sgd_per_t": 607.0735275099306,
+     "net_climate_t": -98.08728645365636,
+     "registry_credit_t": 2088.9127135463436,
+     "mean_haul_km": 2.907909916985405,
+     "capex_total_sgd": 5564592.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S04 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5464769.567537612,
+     "net_cost_sgd_per_t": 607.1966186152903,
+     "net_climate_t": -97.99270641922658,
+     "registry_credit_t": 2089.0072935807734,
+     "mean_haul_km": 2.854694944763183,
+     "capex_total_sgd": 5564592.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5465829.008123926,
+     "net_cost_sgd_per_t": 607.3143342359917,
+     "net_climate_t": -97.98051519506089,
+     "registry_credit_t": 2089.019484804939,
+     "mean_haul_km": 2.8478356148929898,
+     "capex_total_sgd": 5564592.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S02": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5473596.922044675,
+     "net_cost_sgd_per_t": 608.1774357827417,
+     "net_climate_t": -83.58679176208898,
+     "registry_credit_t": 2103.413208237911,
+     "mean_haul_km": 2.9283684051217014,
+     "capex_total_sgd": 5564592.0,
+     "label": "10 t/day semi-continuous at S01 + 2 t/day batch kiln at S02 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "S10",
+      "S07": "K2",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5480255.5915761115,
+     "net_cost_sgd_per_t": 608.9172879529012,
+     "net_climate_t": -77.26825453560377,
+     "registry_credit_t": 2109.731745464396,
+     "mean_haul_km": 2.9326184449910664,
+     "capex_total_sgd": 5564592.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 2 t/day batch kiln at S07 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "B5",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5545423.040657924,
+     "net_cost_sgd_per_t": 616.1581156286582,
+     "net_climate_t": -408.86676881060816,
+     "registry_credit_t": 1778.1332311893918,
+     "mean_haul_km": 2.764284884324944,
+     "capex_total_sgd": 4521231.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "B5",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5729858.784229746,
+     "net_cost_sgd_per_t": 636.6509760255274,
+     "net_climate_t": -289.21942677844777,
+     "registry_credit_t": 1897.7805732215522,
+     "mean_haul_km": 2.7538241726012695,
+     "capex_total_sgd": 5178162.0,
+     "label": "10 t/day semi-continuous at S01 + 5 t/day batch at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5730177.537075691,
+     "net_cost_sgd_per_t": 636.68639300841,
+     "net_climate_t": -289.18452391587834,
+     "registry_credit_t": 1897.8154760841217,
+     "mean_haul_km": 2.7341862556427916,
+     "capex_total_sgd": 5178162.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5835795.107263038,
+     "net_cost_sgd_per_t": 648.421678584782,
+     "net_climate_t": -50.310817317905276,
+     "registry_credit_t": 2136.6891826820947,
+     "mean_haul_km": 2.950125648676661,
+     "capex_total_sgd": 7419456.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5914715.107293507,
+     "net_cost_sgd_per_t": 657.1905674770563,
+     "net_climate_t": -169.54381537437553,
+     "registry_credit_t": 2017.4561846256245,
+     "mean_haul_km": 2.727457843481188,
+     "capex_total_sgd": 5835093.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 5918156.999776823,
+     "net_cost_sgd_per_t": 657.5729999752026,
+     "net_climate_t": -169.5415801255274,
+     "registry_credit_t": 2017.4584198744726,
+     "mean_haul_km": 2.726200192158911,
+     "capex_total_sgd": 5835093.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "S10",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6102716.965460294,
+     "net_cost_sgd_per_t": 678.0796628289215,
+     "net_climate_t": -49.90469576559872,
+     "registry_credit_t": 2137.0953042344013,
+     "mean_haul_km": 2.721623436184346,
+     "capex_total_sgd": 6492024.0,
+     "label": "10 t/day semi-continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6823334.301890031,
+     "net_cost_sgd_per_t": 758.148255765559,
+     "net_climate_t": -49.89885229184529,
+     "registry_credit_t": 2137.1011477081547,
+     "mean_haul_km": 2.718335635589243,
+     "capex_total_sgd": 8501460.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    }
+   ]
+  },
+  "15000.0": {
+   "target_t": 15000.0,
+   "fingerprint": "5b811621ec8959e5",
+   "cheapest": {
+    "layout": {
+     "S09": "C50"
+    },
+    "n_sites": 1,
+    "net_cost_sgd": 3335341.5242681927,
+    "net_cost_sgd_per_t": 222.35610161787952,
+    "net_climate_t": -103.71375073072477,
+    "registry_credit_t": 3541.2862492692752,
+    "mean_haul_km": 9.655408389280021,
+    "capex_total_sgd": 8501460.0,
+    "label": "50 t/day continuous at S09"
+   },
+   "most_credits": {
+    "layout": {
+     "S01": "C20",
+     "S03": "S10",
+     "S04": "S10",
+     "S06": "C20",
+     "S08": "S10",
+     "S09": "S10"
+    },
+    "n_sites": 6,
+    "net_cost_sgd": 7644824.959598068,
+    "net_cost_sgd_per_t": 509.6549973065379,
+    "net_climate_t": -86.77883524230037,
+    "registry_credit_t": 3558.2211647576996,
+    "mean_haul_km": 3.938402282864285,
+    "capex_total_sgd": 10510896.0,
+    "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+   },
+   "shortest_haul": {
+    "layout": {
+     "S01": "C20",
+     "S03": "S10",
+     "S06": "C20",
+     "S08": "S10",
+     "S09": "S10",
+     "S10": "B5"
+    },
+    "n_sites": 6,
+    "net_cost_sgd": 7460473.559825377,
+    "net_cost_sgd_per_t": 497.36490398835844,
+    "net_climate_t": -206.3886309242962,
+    "registry_credit_t": 3438.611369075704,
+    "mean_haul_km": 3.932003552865078,
+    "capex_total_sgd": 9853965.0,
+    "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+   },
+   "options": [
+    {
+     "layout": {
+      "S09": "C50"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 3335341.5242681927,
+     "net_cost_sgd_per_t": 222.35610161787952,
+     "net_climate_t": -103.71375073072477,
+     "registry_credit_t": 3541.2862492692752,
+     "mean_haul_km": 9.655408389280021,
+     "capex_total_sgd": 8501460.0,
+     "label": "50 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50"
+     },
+     "n_sites": 1,
+     "net_cost_sgd": 3359568.776557523,
+     "net_cost_sgd_per_t": 223.9712517705015,
+     "net_climate_t": -96.68088851877155,
+     "registry_credit_t": 3548.3191114812284,
+     "mean_haul_km": 7.281206035639843,
+     "capex_total_sgd": 8501460.0,
+     "label": "50 t/day continuous at S01"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S08": "K2"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 3705038.8191782045,
+     "net_cost_sgd_per_t": 247.00258794521363,
+     "net_climate_t": -143.7905689876702,
+     "registry_credit_t": 3501.20943101233,
+     "mean_haul_km": 7.03077745853437,
+     "capex_total_sgd": 8656032.0,
+     "label": "50 t/day continuous at S01 + 2 t/day batch kiln at S08"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S08": "K2",
+      "S10": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 4053353.814773822,
+     "net_cost_sgd_per_t": 270.22358765158816,
+     "net_climate_t": -190.96417633073042,
+     "registry_credit_t": 3454.0358236692696,
+     "mean_haul_km": 6.801929758534371,
+     "capex_total_sgd": 8810604.0,
+     "label": "50 t/day continuous at S01 + 2 t/day batch kiln at S08 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S08": "K2",
+      "S09": "K2"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 4054194.7785995165,
+     "net_cost_sgd_per_t": 270.27965190663446,
+     "net_climate_t": -190.95223984961012,
+     "registry_credit_t": 3454.04776015039,
+     "mean_haul_km": 6.797900158534371,
+     "capex_total_sgd": 8810604.0,
+     "label": "50 t/day continuous at S01 + 2 t/day batch kiln at S08 + 2 t/day batch kiln at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S08": "B5"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 4153057.6759883836,
+     "net_cost_sgd_per_t": 276.8705117325589,
+     "net_climate_t": -214.4580992585452,
+     "registry_credit_t": 3430.541900741455,
+     "mean_haul_km": 6.656150583534371,
+     "capex_total_sgd": 8926533.0,
+     "label": "50 t/day continuous at S01 + 5 t/day batch at S08"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S08": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 4333111.054340702,
+     "net_cost_sgd_per_t": 288.8740702893801,
+     "net_climate_t": -93.83316228517833,
+     "registry_credit_t": 3551.1668377148217,
+     "mean_haul_km": 6.319850882850333,
+     "capex_total_sgd": 9583464.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S08"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S09": "S10"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 4334099.353816535,
+     "net_cost_sgd_per_t": 288.93995692110235,
+     "net_climate_t": -93.41562188266153,
+     "registry_credit_t": 3551.5843781173385,
+     "mean_haul_km": 6.178894700783716,
+     "capex_total_sgd": 9583464.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 4674595.992759752,
+     "net_cost_sgd_per_t": 311.63973285065015,
+     "net_climate_t": -91.91568086481129,
+     "registry_credit_t": 3553.0843191351887,
+     "mean_haul_km": 5.6725342194354935,
+     "capex_total_sgd": 7264884.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 4677685.688428519,
+     "net_cost_sgd_per_t": 311.8457125619013,
+     "net_climate_t": -91.25105938229035,
+     "registry_credit_t": 3553.7489406177096,
+     "mean_haul_km": 5.448166694447023,
+     "capex_total_sgd": 7264884.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S09": "S10"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 4699782.575769663,
+     "net_cost_sgd_per_t": 313.3188383846442,
+     "net_climate_t": -90.62334044912404,
+     "registry_credit_t": 3554.376659550876,
+     "mean_haul_km": 5.236256987753937,
+     "capex_total_sgd": 7264884.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 5045281.273169944,
+     "net_cost_sgd_per_t": 336.3520848779963,
+     "net_climate_t": -137.9122508841142,
+     "registry_credit_t": 3507.087749115886,
+     "mean_haul_km": 5.0463341044206045,
+     "capex_total_sgd": 7419456.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S03": "K2",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5397536.046213372,
+     "net_cost_sgd_per_t": 359.83573641422475,
+     "net_climate_t": -185.63651131106462,
+     "registry_credit_t": 3459.3634886889354,
+     "mean_haul_km": 5.003379687753938,
+     "capex_total_sgd": 7574028.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 2 t/day batch kiln at S03 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S06": "K2",
+      "S08": "K2",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5407039.23785192,
+     "net_cost_sgd_per_t": 360.4692825234613,
+     "net_climate_t": -185.23753729699456,
+     "registry_credit_t": 3459.7624627030054,
+     "mean_haul_km": 4.86869127573928,
+     "capex_total_sgd": 7574028.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 2 t/day batch kiln at S06 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S08": "B5",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 5492577.294599584,
+     "net_cost_sgd_per_t": 366.1718196399723,
+     "net_climate_t": -208.8456165365992,
+     "registry_credit_t": 3436.154383463401,
+     "mean_haul_km": 4.761449779420604,
+     "capex_total_sgd": 7689957.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 5 t/day batch at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 5651534.437227521,
+     "net_cost_sgd_per_t": 376.76896248183476,
+     "net_climate_t": -89.64911503771782,
+     "registry_credit_t": 3555.350884962282,
+     "mean_haul_km": 4.907371223319965,
+     "capex_total_sgd": 8346888.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 5654592.82720605,
+     "net_cost_sgd_per_t": 376.97285514707,
+     "net_climate_t": -89.5220203608942,
+     "registry_credit_t": 3555.477979639106,
+     "mean_haul_km": 4.864465721725407,
+     "capex_total_sgd": 8346888.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S08": "S10",
+      "S10": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 5655260.834768917,
+     "net_cost_sgd_per_t": 377.0173889845945,
+     "net_climate_t": -89.45106069956046,
+     "registry_credit_t": 3555.5489393004395,
+     "mean_haul_km": 4.840510667598868,
+     "capex_total_sgd": 8346888.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 5672459.8445680095,
+     "net_cost_sgd_per_t": 378.1639896378673,
+     "net_climate_t": -89.15798956790923,
+     "registry_credit_t": 3555.842010432091,
+     "mean_haul_km": 4.741573684393273,
+     "capex_total_sgd": 8346888.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S08": "K2",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5841492.273270136,
+     "net_cost_sgd_per_t": 389.43281821800906,
+     "net_climate_t": -256.61580459692914,
+     "registry_credit_t": 3388.384195403071,
+     "mean_haul_km": 4.733999931446183,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 2 t/day batch kiln at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S03": "K2",
+      "S08": "B5",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5844832.067643013,
+     "net_cost_sgd_per_t": 389.6554711762009,
+     "net_climate_t": -256.5698769635492,
+     "registry_credit_t": 3388.430123036451,
+     "mean_haul_km": 4.718495362753937,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 2 t/day batch kiln at S03 + 5 t/day batch at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S06": "K2",
+      "S08": "B5",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5854590.75005552,
+     "net_cost_sgd_per_t": 390.30605000370133,
+     "net_climate_t": -256.4973793352947,
+     "registry_credit_t": 3388.5026206647053,
+     "mean_haul_km": 4.694021111098193,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 2 t/day batch kiln at S06 + 5 t/day batch at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5922950.301287669,
+     "net_cost_sgd_per_t": 394.86335341917794,
+     "net_climate_t": -88.21622430910747,
+     "registry_credit_t": 3556.7837756908925,
+     "mean_haul_km": 4.42364604318023,
+     "capex_total_sgd": 7419456.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5926072.054444747,
+     "net_cost_sgd_per_t": 395.0714702963165,
+     "net_climate_t": -88.1072934842473,
+     "registry_credit_t": 3556.8927065157527,
+     "mean_haul_km": 4.38687242058204,
+     "capex_total_sgd": 7419456.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5926394.7118387455,
+     "net_cost_sgd_per_t": 395.0929807892497,
+     "net_climate_t": -87.98824318887273,
+     "registry_credit_t": 3557.0117568111273,
+     "mean_haul_km": 4.34668259701348,
+     "capex_total_sgd": 7419456.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 5943196.2403509235,
+     "net_cost_sgd_per_t": 396.2130826900616,
+     "net_climate_t": -87.83749433744606,
+     "registry_credit_t": 3557.162505662554,
+     "mean_haul_km": 4.295791755265265,
+     "capex_total_sgd": 7419456.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6275761.104351512,
+     "net_cost_sgd_per_t": 418.3840736234341,
+     "net_climate_t": -135.54962038387293,
+     "registry_credit_t": 3509.450379616127,
+     "mean_haul_km": 4.248740930346813,
+     "capex_total_sgd": 7574028.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "K2",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6291132.716410058,
+     "net_cost_sgd_per_t": 419.4088477606705,
+     "net_climate_t": -135.50333062808204,
+     "registry_credit_t": 3509.496669371918,
+     "mean_haul_km": 4.233114113862136,
+     "capex_total_sgd": 7574028.0,
+     "label": "20 t/day continuous at S01 + 2 t/day batch kiln at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S07": "K2",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6307043.1739990385,
+     "net_cost_sgd_per_t": 420.4695449332692,
+     "net_climate_t": -135.4054368132679,
+     "registry_credit_t": 3509.594563186732,
+     "mean_haul_km": 4.2000664415869355,
+     "capex_total_sgd": 7574028.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 2 t/day batch kiln at S07 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 6655045.833943333,
+     "net_cost_sgd_per_t": 443.66972226288885,
+     "net_climate_t": -87.83398203368961,
+     "registry_credit_t": 3557.1660179663104,
+     "mean_haul_km": 4.294606047427692,
+     "capex_total_sgd": 9428892.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "C20",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 6655184.554660115,
+     "net_cost_sgd_per_t": 443.67897031067434,
+     "net_climate_t": -87.73505194646032,
+     "registry_credit_t": 3557.2649480535397,
+     "mean_haul_km": 4.2612085431304845,
+     "capex_total_sgd": 9428892.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6726183.439092079,
+     "net_cost_sgd_per_t": 448.4122292728053,
+     "net_climate_t": -206.89168617637233,
+     "registry_credit_t": 3438.1083138236277,
+     "mean_haul_km": 4.101828430346813,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6742155.3920764895,
+     "net_cost_sgd_per_t": 449.4770261384326,
+     "net_climate_t": -206.88829438079574,
+     "registry_credit_t": 3438.1117056192043,
+     "mean_haul_km": 4.100683404495666,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S06": "B5",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6742513.3830177365,
+     "net_cost_sgd_per_t": 449.5008922011824,
+     "net_climate_t": -206.82707522005012,
+     "registry_credit_t": 3438.17292477995,
+     "mean_haul_km": 4.080016616045635,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 5 t/day batch at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6742780.9843527945,
+     "net_cost_sgd_per_t": 449.5187322901863,
+     "net_climate_t": -206.42503450383356,
+     "registry_credit_t": 3438.5749654961664,
+     "mean_haul_km": 3.944292925472217,
+     "capex_total_sgd": 7844529.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S03": "S10",
+      "S04": "S10",
+      "S06": "C20",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6906258.686558025,
+     "net_cost_sgd_per_t": 460.417245770535,
+     "net_climate_t": -87.67462691863511,
+     "registry_credit_t": 3557.325373081365,
+     "mean_haul_km": 4.240809843574254,
+     "capex_total_sgd": 8501460.0,
+     "label": "10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6910226.7465610495,
+     "net_cost_sgd_per_t": 460.68178310406995,
+     "net_climate_t": -87.36180408579457,
+     "registry_credit_t": 3557.6381959142054,
+     "mean_haul_km": 4.135204944229281,
+     "capex_total_sgd": 8501460.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S04": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6923708.010889921,
+     "net_cost_sgd_per_t": 461.5805340593281,
+     "net_climate_t": -86.90271996723686,
+     "registry_credit_t": 3558.097280032763,
+     "mean_haul_km": 3.9802241466604715,
+     "capex_total_sgd": 8501460.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6926774.393184238,
+     "net_cost_sgd_per_t": 461.7849595456159,
+     "net_climate_t": -86.87645798258336,
+     "registry_credit_t": 3558.1235420174166,
+     "mean_haul_km": 3.971358443921455,
+     "capex_total_sgd": 8501460.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 6927132.384125485,
+     "net_cost_sgd_per_t": 461.8088256083657,
+     "net_climate_t": -86.81523882183683,
+     "registry_credit_t": 3558.184761178163,
+     "mean_haul_km": 3.9506916554714238,
+     "capex_total_sgd": 8501460.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S06": "C20",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "B5"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 7460473.559825377,
+     "net_cost_sgd_per_t": 497.36490398835844,
+     "net_climate_t": -206.3886309242962,
+     "registry_credit_t": 3438.611369075704,
+     "mean_haul_km": 3.932003552865078,
+     "capex_total_sgd": 9853965.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 5 t/day batch at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S04": "S10",
+      "S06": "C20",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 7641429.692479071,
+     "net_cost_sgd_per_t": 509.4286461652714,
+     "net_climate_t": -86.80433301257972,
+     "registry_credit_t": 3558.1956669874203,
+     "mean_haul_km": 3.9470099968201056,
+     "capex_total_sgd": 10510896.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S03": "S10",
+      "S04": "S10",
+      "S06": "C20",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 7644824.959598068,
+     "net_cost_sgd_per_t": 509.6549973065379,
+     "net_climate_t": -86.77883524230037,
+     "registry_credit_t": 3558.2211647576996,
+     "mean_haul_km": 3.938402282864285,
+     "capex_total_sgd": 10510896.0,
+     "label": "20 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 20 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    }
+   ]
+  },
+  "25000.0": {
+   "target_t": 25000.0,
+   "fingerprint": "5b811621ec8959e5",
+   "cheapest": {
+    "layout": {
+     "S01": "C50",
+     "S09": "C50"
+    },
+    "n_sites": 2,
+    "net_cost_sgd": 6571703.465646293,
+    "net_cost_sgd_per_t": 262.8681386258517,
+    "net_climate_t": -161.4188455245103,
+    "registry_credit_t": 5913.58115447549,
+    "mean_haul_km": 7.338737193540745,
+    "capex_total_sgd": 17002920.0,
+    "label": "50 t/day continuous at S01 + 50 t/day continuous at S09"
+   },
+   "most_credits": {
+    "layout": {
+     "S01": "C20",
+     "S02": "C20",
+     "S04": "S10",
+     "S06": "C50",
+     "S08": "S10",
+     "S09": "C20"
+    },
+    "n_sites": 6,
+    "net_cost_sgd": 10618823.429534638,
+    "net_cost_sgd_per_t": 424.7529371813855,
+    "net_climate_t": -151.64505434173498,
+    "registry_credit_t": 5923.354945658265,
+    "mean_haul_km": 5.359034705637791,
+    "capex_total_sgd": 19939788.0,
+    "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 50 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+   },
+   "shortest_haul": {
+    "layout": {
+     "S01": "C20",
+     "S02": "C20",
+     "S04": "S10",
+     "S06": "C50",
+     "S08": "S10",
+     "S09": "C20"
+    },
+    "n_sites": 6,
+    "net_cost_sgd": 10618823.429534638,
+    "net_cost_sgd_per_t": 424.7529371813855,
+    "net_climate_t": -151.64505434173498,
+    "registry_credit_t": 5923.354945658265,
+    "mean_haul_km": 5.359034705637791,
+    "capex_total_sgd": 19939788.0,
+    "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 50 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+   },
+   "options": [
+    {
+     "layout": {
+      "S01": "C50",
+      "S09": "C50"
+     },
+     "n_sites": 2,
+     "net_cost_sgd": 6571703.465646293,
+     "net_cost_sgd_per_t": 262.8681386258517,
+     "net_climate_t": -161.4188455245103,
+     "registry_credit_t": 5913.58115447549,
+     "mean_haul_km": 7.338737193540745,
+     "capex_total_sgd": 17002920.0,
+     "label": "50 t/day continuous at S01 + 50 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S08": "K2",
+      "S09": "C50"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 6916800.346364076,
+     "net_cost_sgd_per_t": 276.67201385456303,
+     "net_climate_t": -208.49837506747645,
+     "registry_credit_t": 5866.501624932524,
+     "mean_haul_km": 7.182372912188681,
+     "capex_total_sgd": 17157492.0,
+     "label": "50 t/day continuous at S01 + 2 t/day batch kiln at S08 + 50 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S04": "S10",
+      "S06": "K2",
+      "S08": "K2",
+      "S09": "C20"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 6935961.25358687,
+     "net_cost_sgd_per_t": 277.43845014347477,
+     "net_climate_t": -254.12358038261664,
+     "registry_credit_t": 5820.876419617383,
+     "mean_haul_km": 6.73143212125119,
+     "capex_total_sgd": 12984048.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 2 t/day batch kiln at S06 + 2 t/day batch kiln at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S04": "C20",
+      "S09": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 6938626.294222791,
+     "net_cost_sgd_per_t": 277.5450517689116,
+     "net_climate_t": -158.93723001735452,
+     "registry_credit_t": 5916.0627699826455,
+     "mean_haul_km": 6.836080619273771,
+     "capex_total_sgd": 14684340.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S04 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S09": "C20"
+     },
+     "n_sites": 3,
+     "net_cost_sgd": 6953226.435594846,
+     "net_cost_sgd_per_t": 278.1290574237938,
+     "net_climate_t": -158.05446189078793,
+     "registry_credit_t": 5916.945538109212,
+     "mean_haul_km": 6.657274030947469,
+     "capex_total_sgd": 14684340.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S04": "S10",
+      "S08": "B5",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7020719.751738127,
+     "net_cost_sgd_per_t": 280.8287900695251,
+     "net_climate_t": -277.47289781519703,
+     "registry_credit_t": 5797.527102184803,
+     "mean_haul_km": 6.614674461251191,
+     "capex_total_sgd": 13099977.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 5 t/day batch at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S08": "B5",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7047082.166338229,
+     "net_cost_sgd_per_t": 281.8832866535291,
+     "net_climate_t": -277.4569696006829,
+     "registry_credit_t": 5797.543030399317,
+     "mean_haul_km": 6.61144816704134,
+     "capex_total_sgd": 13099977.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 5 t/day batch at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7200438.491018122,
+     "net_cost_sgd_per_t": 288.01753964072486,
+     "net_climate_t": -157.04727392607128,
+     "registry_credit_t": 5917.952726073929,
+     "mean_haul_km": 6.453265936008161,
+     "capex_total_sgd": 13756908.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "S10",
+      "S04": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7219502.495231241,
+     "net_cost_sgd_per_t": 288.78009980924963,
+     "net_climate_t": -156.9059393216694,
+     "registry_credit_t": 5918.094060678331,
+     "mean_haul_km": 6.424638307002015,
+     "capex_total_sgd": 13756908.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S02 + 10 t/day semi-continuous at S04 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7224552.081553288,
+     "net_cost_sgd_per_t": 288.98208326213154,
+     "net_climate_t": -156.61415220437812,
+     "registry_credit_t": 5918.385847795622,
+     "mean_haul_km": 6.3655361969573665,
+     "capex_total_sgd": 13756908.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7226878.16459122,
+     "net_cost_sgd_per_t": 289.0751265836488,
+     "net_climate_t": -156.42708107091767,
+     "registry_credit_t": 5918.572918929082,
+     "mean_haul_km": 6.327644535328731,
+     "capex_total_sgd": 13756908.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S04": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7228137.7653227085,
+     "net_cost_sgd_per_t": 289.12551061290833,
+     "net_climate_t": -156.40450253144718,
+     "registry_credit_t": 5918.595497468553,
+     "mean_haul_km": 6.323071203452852,
+     "capex_total_sgd": 13756908.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 7474021.607561735,
+     "net_cost_sgd_per_t": 298.9608643024694,
+     "net_climate_t": -156.05237983528514,
+     "registry_credit_t": 5918.947620164715,
+     "mean_haul_km": 6.2517479917530645,
+     "capex_total_sgd": 12829476.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 7477522.035003719,
+     "net_cost_sgd_per_t": 299.10088140014875,
+     "net_climate_t": -155.71201481136268,
+     "registry_credit_t": 5919.287985188637,
+     "mean_haul_km": 6.18280632192892,
+     "capex_total_sgd": 12829476.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "C20",
+      "S08": "K2",
+      "S09": "C20"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 7655714.583226797,
+     "net_cost_sgd_per_t": 306.2285833290719,
+     "net_climate_t": -203.1889904213158,
+     "registry_credit_t": 5871.811009578684,
+     "mean_haul_km": 6.106945598807964,
+     "capex_total_sgd": 12520332.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S04 + 2 t/day batch kiln at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7927586.215415854,
+     "net_cost_sgd_per_t": 317.1034486166342,
+     "net_climate_t": -155.45407376457115,
+     "registry_credit_t": 5919.545926235429,
+     "mean_haul_km": 6.130559806475668,
+     "capex_total_sgd": 15766344.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S02": "C20",
+      "S04": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 4,
+     "net_cost_sgd": 7931817.01876273,
+     "net_cost_sgd_per_t": 317.2726807505092,
+     "net_climate_t": -155.42998145277306,
+     "registry_credit_t": 5919.570018547227,
+     "mean_haul_km": 6.125679856749669,
+     "capex_total_sgd": 15766344.0,
+     "label": "50 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "C20",
+      "S08": "K2",
+      "S09": "C20",
+      "S10": "K2"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 8002466.378891921,
+     "net_cost_sgd_per_t": 320.09865515567685,
+     "net_climate_t": -250.16772834708354,
+     "registry_credit_t": 5824.8322716529165,
+     "mean_haul_km": 5.93016575796706,
+     "capex_total_sgd": 12674904.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S04 + 2 t/day batch kiln at S08 + 20 t/day continuous at S09 + 2 t/day batch kiln at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "C20",
+      "S06": "K2",
+      "S08": "K2",
+      "S09": "C20"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 8015602.690544108,
+     "net_cost_sgd_per_t": 320.6241076217643,
+     "net_climate_t": -250.0561416944247,
+     "registry_credit_t": 5824.943858305575,
+     "mean_haul_km": 5.9075636407582675,
+     "capex_total_sgd": 12674904.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S04 + 2 t/day batch kiln at S06 + 2 t/day batch kiln at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "C20",
+      "S08": "B5",
+      "S09": "C20"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 8100742.382399596,
+     "net_cost_sgd_per_t": 324.02969529598386,
+     "net_climate_t": -273.5983498125397,
+     "registry_credit_t": 5801.40165018746,
+     "mean_haul_km": 5.829876405213736,
+     "capex_total_sgd": 12790833.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S04 + 5 t/day batch at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "C20",
+      "S10": "S10"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 8179932.6799065005,
+     "net_cost_sgd_per_t": 327.19730719626,
+     "net_climate_t": -154.87422198068634,
+     "registry_credit_t": 5920.125778019314,
+     "mean_haul_km": 6.013109576805087,
+     "capex_total_sgd": 14838912.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 8181118.4477448,
+     "net_cost_sgd_per_t": 327.244737909792,
+     "net_climate_t": -154.1425967706491,
+     "registry_credit_t": 5920.857403229351,
+     "mean_haul_km": 5.864917312264572,
+     "capex_total_sgd": 14838912.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "C20",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 5,
+     "net_cost_sgd": 8279207.791340249,
+     "net_cost_sgd_per_t": 331.1683116536099,
+     "net_climate_t": -153.26470667171634,
+     "registry_credit_t": 5921.735293328284,
+     "mean_haul_km": 5.687098778958131,
+     "capex_total_sgd": 13447764.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S04 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C50",
+      "S03": "S10",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 8453807.472278705,
+     "net_cost_sgd_per_t": 338.1522988911482,
+     "net_climate_t": -153.03513185763404,
+     "registry_credit_t": 5921.964868142366,
+     "mean_haul_km": 5.640597905131428,
+     "capex_total_sgd": 13911480.0,
+     "label": "50 t/day continuous at S01 + 10 t/day semi-continuous at S03 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "S10",
+      "S08": "S10",
+      "S09": "C20",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 8545346.277750457,
+     "net_cost_sgd_per_t": 341.8138511100183,
+     "net_climate_t": -152.17546550790485,
+     "registry_credit_t": 5922.824534492095,
+     "mean_haul_km": 5.466470631538281,
+     "capex_total_sgd": 12520332.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "C20",
+      "S08": "S10",
+      "S09": "S10",
+      "S10": "S10"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 8554243.606976386,
+     "net_cost_sgd_per_t": 342.16974427905546,
+     "net_climate_t": -152.13969935593468,
+     "registry_credit_t": 5922.860300644065,
+     "mean_haul_km": 5.45922612030273,
+     "capex_total_sgd": 12520332.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 20 t/day continuous at S04 + 10 t/day semi-continuous at S08 + 10 t/day semi-continuous at S09 + 10 t/day semi-continuous at S10"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "S10",
+      "S06": "S10",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 8563563.982386764,
+     "net_cost_sgd_per_t": 342.54255929547054,
+     "net_climate_t": -151.87966371207494,
+     "registry_credit_t": 5923.120336287925,
+     "mean_haul_km": 5.406555339694903,
+     "capex_total_sgd": 12520332.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 10 t/day semi-continuous at S06 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    },
+    {
+     "layout": {
+      "S01": "C20",
+      "S02": "C20",
+      "S04": "S10",
+      "S06": "C50",
+      "S08": "S10",
+      "S09": "C20"
+     },
+     "n_sites": 6,
+     "net_cost_sgd": 10618823.429534638,
+     "net_cost_sgd_per_t": 424.7529371813855,
+     "net_climate_t": -151.64505434173498,
+     "registry_credit_t": 5923.354945658265,
+     "mean_haul_km": 5.359034705637791,
+     "capex_total_sgd": 19939788.0,
+     "label": "20 t/day continuous at S01 + 20 t/day continuous at S02 + 10 t/day semi-continuous at S04 + 50 t/day continuous at S06 + 10 t/day semi-continuous at S08 + 20 t/day continuous at S09"
+    }
+   ]
+  }
+ }
+}

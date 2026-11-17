@@ -1,8 +1,10 @@
-# App + model (streamlit run app.py)
-streamlit>=1.50,<2
-pydeck>=0.9
+# Model + web server (python serve.py)
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
 pandas>=2.0
 numpy>=1.24
 scipy>=1.11
-plotly>=5.20
+# tests
 pytest>=8
+httpx>=0.27

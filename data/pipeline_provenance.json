@@ -50,11 +50,12 @@
    "TuasOne Waste-to-Energy Plant",
    "Tuas South Incineration Plant",
    "Tuas Nexus",
-   "Gee Hoe Seng"
+   "Gee Hoe Seng",
+   "Gardens by the Bay"
   ],
-  "found": 5,
+  "found": 6,
   "caveat": "Names geocoded from OSM; biomass power plants not identified by name in OSM",
-  "retrieved": "2026-11-16"
+  "retrieved": "2026-11-17"
  },
  "fx": {
   "source": "European Central Bank reference rates",
@@ -65,9 +66,16 @@
  "road_distances": {
   "source": "OSRM table service on OpenStreetMap roads (router.project-osrm.org; ODbL data)",
   "origins": "planning-area representative points (inside polygon), not collection depots",
-  "n_pairs": 825,
+  "n_pairs": 880,
   "fallback": "straight line x 1.35 for islands or points >2 km from a road",
-  "median_road_to_straight_ratio": 1.38,
-  "retrieved": "2026-11-16"
+  "median_road_to_straight_ratio": 1.383,
+  "retrieved": "2026-11-17"
+ },
+ "routes": {
+  "source": "OSRM route service on OpenStreetMap roads (router.project-osrm.org; ODbL data)",
+  "n_pairs": 550,
+  "with_geometry": 550,
+  "note": "Simplified geometry, used only to animate trucks on the map",
+  "retrieved": "2026-11-18"
  }
 }

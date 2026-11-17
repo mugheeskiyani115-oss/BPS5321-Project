@@ -332,6 +332,8 @@ FACILITY_QUERIES = [
     ("Tuas South Incineration Plant", "waste-to-energy plant", "current fate: incineration with energy recovery"),
     ("Tuas Nexus", "integrated waste & water facility", "context: IWMF under construction"),
     ("Gee Hoe Seng", "recycler / biochar seller", "context: local retail biochar supplier"),
+    ("Gardens by the Bay", "biomass boiler (park trimmings)",
+     "current fate: burns ~70% of its horticultural waste plus trimmings from other parks (CLC)"),
 ]
 
 
@@ -410,8 +412,42 @@ def step_fx():
     print(out.to_string(index=False))
 
 
+def step_routes(sleep_s: float = 1.05):
+    """Road geometry (OSRM route service, simplified) for every planning area -> candidate site pair, for the map's
+    truck animation. ~550 requests at <= 1 per second (OSRM demo-server etiquette); resumable."""
+    est = pd.read_csv(DATA / "planning_area_estimates.csv")
+    sites = pd.read_csv(DATA / "candidate_sites.csv")
+    out_file = DATA / "routes.json"
+    routes = json.loads(out_file.read_text()) if out_file.exists() else {}
+    todo = [(o, s) for o in est.itertuples() for s in sites.itertuples()
+            if f"{o.planning_area}|{s.site_id}" not in routes]
+    print(f"  {len(routes)} cached, {len(todo)} to fetch")
+    for k, (o, s) in enumerate(todo):
+        key = f"{o.planning_area}|{s.site_id}"
+        url = (f"https://router.project-osrm.org/route/v1/driving/{o.route_lon:.5f},{o.route_lat:.5f};"
+               f"{s.longitude:.5f},{s.latitude:.5f}")
+        try:
+            r = SESSION.get(url, params={"overview": "simplified", "geometries": "geojson"}, timeout=30)
+            js = r.json() if r.ok else {}
+            if js.get("code") == "Ok":
+                coords = js["routes"][0]["geometry"]["coordinates"]
+                routes[key] = [[round(x, 5), round(y, 5)] for x, y in coords]
+            else:
+                routes[key] = None   # e.g. islands: no road route
+        except requests.RequestException:
+            pass                     # retried on the next run
+        if k % 25 == 0:
+            out_file.write_text(json.dumps(routes, separators=(",", ":")))
+        time.sleep(sleep_s)
+    out_file.write_text(json.dumps(routes, separators=(",", ":")))
+    record("routes", source="OSRM route service on OpenStreetMap roads (router.project-osrm.org; ODbL data)",
+           n_pairs=len(routes), with_geometry=sum(v is not None for v in routes.values()),
+           note="Simplified geometry, used only to animate trucks on the map")
+    print(f"  {sum(v is not None for v in routes.values())} routes with geometry")
+
+
 STEPS = {"geo": step_geo, "trees": step_trees, "landcover": step_landcover, "allocate": step_allocate,
-         "sites": step_sites, "facilities": step_facilities, "roads": step_roads, "fx": step_fx}
+         "sites": step_sites, "facilities": step_facilities, "roads": step_roads, "fx": step_fx, "routes": step_routes}
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

@@ -7,11 +7,12 @@ import pandas as pd
 import pytest
 
 from biotwin import forecast as fc
-from biotwin import game
 from biotwin import network as nw
 from biotwin import optimise as op
 from biotwin import outlook as ol
 from biotwin import pathway as pw
+from biotwin import evaluate as E
+from biotwin import recommend
 from biotwin import validation as vd
 from biotwin.data import load_bundle
 
@@ -187,88 +188,93 @@ def test_validation_requires_sourced_records():
     assert r["wape"] == pytest.approx(0.1 / 1.1, rel=1e-6)
 
 
-# ------------------------------------------------------------------ game engine
-REFS = game.load_references(B)
+# ------------------------------------------------------------------ recommendations
+RECS = recommend.load(B)
 
 
-def test_precomputed_references_match_current_inputs():
-    assert REFS is not None, "run: python -I pipeline/build_game_refs.py"
-    assert set(REFS) == set(game.MISSIONS)
+def test_precomputed_recommendations_match_current_inputs():
+    assert RECS is not None, "run: python -I pipeline/build_recommendations.py"
+    assert set(RECS) == {float(t) for t in recommend.TARGETS}
+    for t, r in RECS.items():
+        assert r["options"] and r["cheapest"]["net_cost_sgd"] == min(o["net_cost_sgd"] for o in r["options"])
 
 
-def test_unlock_chain_levels_and_xp():
-    assert game.unlocked("first_spark", {}) and not game.unlocked("city_loop", {})
-    assert game.unlocked("city_loop", {"first_spark": {"stars": 1}})
-    assert game.level_for(0)["title"] == "Sapling" and game.level_for(900)["level"] == 3
-    assert game.total_xp({"a": {"score": 800}}, {"x"}) == 460
+def test_recommended_options_are_feasible_and_non_dominated():
+    r = RECS[9000.0]
+    F = np.array([[o["net_cost_sgd"], o["net_climate_t"], o["mean_haul_km"]] for o in r["options"]]) * op.SENSE
+    assert op.pareto_mask(F).all()
+    ev = nw.evaluate(NET, r["cheapest"]["layout"])
+    assert ev["feasible"] and ev["net_cost_sgd"] == pytest.approx(r["cheapest"]["net_cost_sgd"], rel=1e-9)
 
 
-def test_scoring_rewards_the_ai_answer_and_rejects_bad_layouts():
-    m, ref = game.MISSIONS["city_loop"], REFS["city_loop"]
-    ai = game.evaluate_layout(B, m, ref["best_cost_layout"])
-    r = game.score(m, ai, ref)
-    assert r["stars"] == 3 and r["score"] == 1000
-    assert game.score(m, game.evaluate_layout(B, m, {}), ref)["stars"] == 0
-    over = game.evaluate_layout(B, m, {"S01": "C100", "S08": "C100"})
-    assert not over["within_budget"] and game.score(m, over, ref)["stars"] == 0
+def test_compare_places_a_layout_against_the_options():
+    r = RECS[9000.0]
+    best = recommend.compare(nw.evaluate(NET, r["cheapest"]["layout"]), r)
+    assert best["comparable"] and best["cost_gap_pct"] == pytest.approx(0, abs=1e-9) and best["on_frontier"]
+    worse = recommend.compare(nw.evaluate(NET, {s: "B5" for s in NET.sites.site_id}), r)
+    assert worse["cost_gap_pct"] > 0 and not worse["on_frontier"]
+    assert not recommend.compare(nw.evaluate(NET, {"S01": "K2"}), r)["comparable"]
 
 
-def test_beat_the_ai_badge_for_front_layouts():
-    m, ref = game.MISSIONS["beat_the_ai"], REFS["beat_the_ai"]
-    ev = game.evaluate_layout(B, m, ref["front_layouts"][0])
-    res = game.score(m, ev, ref)
-    assert res["stars"] == 3 and "ai_slayer" in game.earned_badges(m, ev, res, False, B, ref)
+def test_balanced_option_and_description():
+    r = RECS[9000.0]
+    assert recommend.balanced(r) in r["options"]
+    assert recommend.describe({"S01": "C20", "S02": "S10", "S03": "S10"},
+                              {"C20": "20 t/day", "S10": "10 t/day"}) == "1 × 20 t/day + 2 × 10 t/day"
 
 
-def test_decade_is_reproducible_and_scored():
-    m, ref = game.MISSIONS["decade"], REFS["decade"]
-    df1, s1 = game.decade_with_reference(B, m, ref["best_cost_layout"], True, ref, seed=11)
-    df2, _ = game.decade_with_reference(B, m, ref["best_cost_layout"], True, ref, seed=11)
-    pd.testing.assert_frame_equal(df1, df2)
-    assert len(df1) == 10 and list(df1.year) == list(range(2026, 2036))
-    ev = game.evaluate_layout(B, m, ref["best_cost_layout"], True)
-    assert game.score(m, ev, ref, s1)["stars"] >= 2
-    assert game.score(m, ev, ref, None)["stars"] == 0          # the decade must be run to score
+def test_waste_data_check_is_documented():
+    chk = pd.read_csv(ROOT / "data" / "params" / "waste_data_check.csv")
+    assert {"source", "granularity", "verdict", "url"} <= set(chk.columns) and len(chk) >= 8
+    assert "Gardens by the Bay" in set(B.facilities["query"].fillna(""))
 
 
-# ------------------------------------------------------------------ app (headless)
-def _app():
-    from streamlit.testing.v1 import AppTest
-    return AppTest.from_file(str(ROOT / "app.py"), default_timeout=180)
+# ------------------------------------------------------------------ scenario evaluation
+def test_evaluation_of_a_chosen_plant():
+    r = E.run(B, E.Scenario(sites=("S09",), size_class="C50"))
+    ev, pf, bau = r["eval"], r["pro_forma"], r["bau"]
+    assert r["layout"] == {"S09": "C50"} and ev["processed_t"] == pytest.approx(pw.annual_capacity_t(B.plants.loc["C50"]))
+    y = pf["years"]
+    assert len(y) == 16 and y.cash_flow_sgd.iloc[0] == pytest.approx(-pf["capex_sgd"])
+    disc = (1 + pf["discount_rate"]) ** -y.year
+    assert pf["npv_sgd"] == pytest.approx(float((y.cash_flow_sgd * disc).sum()))
+    r2 = E.run(B, E.Scenario(sites=("S09",), size_class="C50", gate_fee_sgd_per_t=pf["break_even_gate_fee_sgd_per_t"]))
+    assert r2["pro_forma"]["npv_sgd"] == pytest.approx(0, abs=1)
+    assert bau["avoided_t"] == pytest.approx(ev["processed_t"] * A.baseline_avoided)
+    assert bau["mean_haul_km"] > 0 and [f["title"] for f in r["findings"]][0] == "Expected output"
+    assert len(r["sites"]) == 10 and r["sites"].net_cost_sgd_per_t.is_monotonic_increasing
 
 
-@pytest.mark.parametrize("page", [None, "ui_pages/play.py", "ui_pages/trophies.py", "ui_pages/lab.py",
-                                  "ui_pages/sources.py"])
-def test_every_page_renders_without_errors(page):
-    at = _app().run()
-    if page:
-        at.switch_page(page).run()
-    assert not at.exception, at.exception
-    assert not at.error, [e.value for e in at.error]
+def test_cash_flows_change_every_year_for_stated_reasons():
+    r = E.run(B, E.Scenario(sites=("S09",), size_class="C50", sell_credits=True))
+    y = r["pro_forma"]["years"].set_index("year")
+    ev = r["eval"]
+    assert y.utilisation[1] == pytest.approx(B.p("ramp_up_year1")) and y.utilisation[2] == 1.0       # ramp-up
+    assert y.staff_sgd[3] / y.staff_sgd[2] == pytest.approx(1 + B.p("wage_growth"))                     # MOM wages
+    assert y.maintenance_sgd[3] / y.maintenance_sgd[2] == pytest.approx(1 + B.p("inflation_long_run"))  # MAS
+    assert y.maintenance_sgd[1] == pytest.approx(ev["maintenance_sgd"] * (1 + B.p("inflation_2027")))
+    assert y.credit_price_eur[15] > y.credit_price_eur[1]                                              # Senken path
+    assert y.cash_flow_sgd.iloc[1:].nunique() == 15                                                    # no two years equal
 
 
-def test_play_build_submit_and_unlock():
-    at = _app().run()
-    at.switch_page("ui_pages/play.py").run()
-    next(s for s in at.selectbox if s.label.startswith("Site")).set_value("S05").run()
-    next(b for b in at.button if b.key == "build_first_spark_S05_S10").click().run()
-    assert at.session_state["layouts"]["first_spark"] == {"S05": "S10"}
-    next(b for b in at.button if "Submit" in b.label).click().run()
-    assert not at.exception and at.session_state["best"]["first_spark"]["stars"] >= 1
-    assert "groundbreaker" in at.session_state["badges"]
-    assert len(next(s for s in at.selectbox if s.label == "Mission").options) == 2
+def test_tool_picks_the_cheapest_plot_and_size_in_a_region():
+    r = E.run(B, E.Scenario(region="West"))
+    (site, size), = r["layout"].items()
+    assert B.sites.set_index("site_id").region[site] == "West"
+    for s in E.region_sites(B, "West"):
+        for c in B.plants.index:
+            ev, _ = E._eval_layout(B, E.Scenario(region="West"), {s: c})
+            assert ev["net_cost_sgd_per_t"] >= r["eval"]["net_cost_sgd_per_t"] - 1e-6
 
 
-def test_decade_mission_runs_in_the_app():
-    from ui import state as ui_state
-    at = _app()
-    at.session_state["_state_version"] = ui_state.VERSION
-    at.session_state["best"] = {k: {"score": 900, "stars": 2, "layout": {}, "credits": False}
-                                for k in ["first_spark", "city_loop", "carbon_captain", "beat_the_ai"]}
-    at.session_state["mission"] = "decade"
-    at.session_state["layouts"] = {k: {} for k in game.MISSIONS} | {"decade": {"S09": "C50"}}
-    at.run()
-    at.switch_page("ui_pages/play.py").run()
-    next(b for b in at.button if "Run the decade" in b.label).click().run()
-    assert not at.exception, at.exception
-    assert "decade" in at.session_state["best"] and "decade_survivor" in at.session_state["badges"]
+def test_decentralised_layout_and_advanced_inputs():
+    r = E.run(B, E.Scenario(sites=("S03", "S05", "S06"), size_class="S10", sell_credits=True,
+                            advanced=(("woody_share", 0.6),)))
+    assert len(r["layout"]) == 3 and r["assumptions"]["woody_share"] == 0.6
+    assert r["eval"]["credit_revenue_sgd"] > 0 and r["eval"]["cert_sgd"] == pytest.approx(3 * pw.cert_fixed_sgd_yr(
+        pw.default_assumptions(B)))
+    assert E.irr(100, 10, 5) is None and E.irr(100, 30, 5) == pytest.approx(0.1524, abs=1e-3)
+    with pytest.raises(ValueError):
+        E.run(B, E.Scenario(region="Nowhere"))
+
+

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>window.__errors=[];addEventListener("error",function(e){__errors.push(String(e.message||e))});</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BioTwin Singapore</title>
+  <meta name="description" content="Evaluate a horticultural-waste-to-biochar plant anywhere in Singapore: output, economics, carbon and trucking.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231baf7a' d='M20 3C9 3 4 9 4 15c0 2 .6 3.6 1.6 4.9C7 13 12 9 17 7c-4 3-8 7-9.6 13.6.9.3 1.8.4 2.6.4C16 21 21 15 20 3z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="boot" id="boot" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path fill="#1baf7a" d="M20 3C9 3 4 9 4 15c0 2 .6 3.6 1.6 4.9C7 13 12 9 17 7c-4 3-8 7-9.6 13.6.9.3 1.8.4 2.6.4C16 21 21 15 20 3z"/></svg>
+  </div>
+  <header class="nav">
+    <a class="brand" href="#/">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1baf7a" d="M20 3C9 3 4 9 4 15c0 2 .6 3.6 1.6 4.9C7 13 12 9 17 7c-4 3-8 7-9.6 13.6.9.3 1.8.4 2.6.4C16 21 21 15 20 3z"/></svg>
+      BioTwin
+    </a>
+    <nav aria-label="Main">
+      <a href="#/evaluate" data-route="evaluate">Evaluate</a>
+      <a href="#/results" data-route="results">Results</a>
+      <a href="#/saved" data-route="saved">Saved<span class="badge" id="savedCount"></span></a>
+      <a href="#/evidence" data-route="evidence">Evidence</a>
+    </nav>
+    <span class="nav-meta">Singapore · horticultural waste → biochar</span>
+  </header>
+  <main id="view" aria-live="polite"></main>
+  <div id="toasts" role="status"></div>
+  <div id="maptip" class="maptip"></div>
+  <noscript><p style="padding:6rem 2rem;text-align:center">BioTwin needs JavaScript to run.</p></noscript>
+  <script src="vendor/maplibre-gl.js"></script>
+  <script src="vendor/deck.gl.min.js"></script>
+  <script src="vendor/echarts.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
