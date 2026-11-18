@@ -23,6 +23,11 @@ ADVANCED = {   # editable advanced inputs: (Assumptions field, label, unit, min,
     "woody_share": ("Woody share of horticultural waste", "fraction", 0.5, 0.9, 0.05),
     "collectable_share": ("Share of woody waste a new plant can win", "fraction", 0.05, 1.0, 0.05),
     "biochar_price_usd": ("Biochar sale price", "US$/t biochar", 0.0, 1500.0, 10.0),
+    "capital_grant_fraction": ("Illustrative grant share of construction CAPEX (not awarded)", "fraction", 0.0, 0.50, 0.05),
+    "illustrative_tax_rate": ("Simplified income tax sensitivity (not tax advice)", "fraction", 0.0, 0.25, 0.01),
+    "continuous_crew_per_shift": ("Continuous plant crew per shift (0 = baseline model)", "people/shift", 0.0, 12.0, 0.5),
+    "seasonal_woody_amplitude": ("Seasonal woody-fraction decrease during monsoon", "fraction; sensitivity only", 0.0, 0.20, 0.0125),
+    "woody_share_uncertainty_sd": ("Hypothetical woody-fraction standard deviation (Monte Carlo)", "fraction; not observed", 0.0, 0.15, 0.01),
     "credit_price_eur": ("Carbon credit price", "€/t CO₂e", 0.0, 400.0, 5.0),
     "discount_rate": ("Discount rate", "per year", 0.0, 0.15, 0.01),
     "life_years": ("Analysis period (plant life)", "years", 5, 25, 1),
@@ -34,6 +39,7 @@ class Scenario:
     sites: tuple[str, ...] = ()            # empty -> tool picks the best site in `region`
     size_class: str | None = None          # None -> tool picks the cheapest size for the site(s)
     region: str = "All"
+    feedstock_basis: str = "vegetation_proxy"  # or six_sector_scenario (synthetic)
     gate_fee_sgd_per_t: float = 0.0
     sell_credits: bool = False
     advanced: tuple = ()                   # ((field, value), ...) overrides of defaults
@@ -62,7 +68,9 @@ def _capacity(b: Bundle, layout: dict) -> float:
 
 def _eval_layout(b: Bundle, sc: Scenario, layout: dict, with_flows: bool = False) -> tuple[dict, nw.Network]:
     a = assumptions(b, sc, target_t=_capacity(b, layout))
-    net = nw.build_network(b, a)
+    from .sector_scenario import BASIS_SIX, allocate_to_planning_areas
+    allocated_t = allocate_to_planning_areas(b.areas, a.national_t) if sc.feedstock_basis == BASIS_SIX else None
+    net = nw.build_network(b, a, allocated_t=allocated_t)
     return nw.evaluate(net, layout, with_flows=with_flows), net
 
 
@@ -356,3 +364,14 @@ def summary_row(res: dict, b: Bundle) -> dict:
             "Credits (t CO₂e/yr)": ev["registry_credit_t"],
             "Climate vs today (t CO₂e/yr)": ev["registry_credit_t"] - res["bau"]["avoided_t"],
             "Average trucking (km)": ev["mean_haul_km"], "Staff": ev["staff_fte"]}
+
+
+# BIOTWIN_COMMERCE_2026_FINANCE_WRAP
+# Existing pro_forma calculates all three revenues and cash OPEX. Keep it intact.
+# Add only optional grant, cash tax and an audit-ready cash-flow schedule.
+from .commercial_finance import apply_financial_scenario as _bt_apply_financial_scenario
+_bt_original_pro_forma = pro_forma
+
+def pro_forma(ev: dict, a, b=None) -> dict:
+    original = _bt_original_pro_forma(ev, a, b)
+    return _bt_apply_financial_scenario(original, ev, a, b)

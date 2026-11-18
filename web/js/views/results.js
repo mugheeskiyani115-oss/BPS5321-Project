@@ -1,5 +1,6 @@
 // Results: what this plant would do, year by year, against business as usual.
 import * as charts from "../charts.js";
+import { api } from "../api.js";
 import { BioMap } from "../map.js";
 import { countUp, csvCell, download, esc, fmt, reveal, segmented, tabs, toast } from "../ui.js";
 
@@ -24,6 +25,7 @@ export function mount(root, { meta, geo, store, go }) {
     Compared with burning the same waste for power, the climate effect is <b>${fmt.signed(m.net_climate_t)} t CO₂e</b> a year.`;
   const chips = [`Gate fee S$${fmt.int(sc.gate_fee)}/t`, sc.sell_credits ? "Selling credits" : "No credit sales",
     `${m.analysis_years} years at ${(m.discount_rate * 100).toFixed(0)}%`, sc.sites.length ? "Plots chosen by you" : "Plot chosen by the tool",
+    sc.feedstock_basis === "six_sector_scenario" ? "Six-sector synthetic scenario" : "55-area vegetation proxy",
     ...(Object.keys(sc.advanced || {}).length ? [`${Object.keys(sc.advanced).length} advanced input(s) changed`] : [])];
 
   const tiles = [
@@ -48,7 +50,10 @@ export function mount(root, { meta, geo, store, go }) {
       <div class="actions reveal" style="--d:.08s">
         <button class="btn" id="edit">Edit inputs</button>
         <button class="btn" id="save">Save</button>
-        <button class="btn primary" id="dl">Download</button>
+        <button class="btn" id="dl">Download CSV</button>
+        <label class="btn" for="mapUpload" style="cursor:pointer">Use my map screenshot</label>
+        <input id="mapUpload" type="file" accept="image/png,image/jpeg" hidden>
+        <button class="btn primary" id="pdf">Export PDF report</button>
       </div>
     </div>
     <p class="summary reveal" style="--d:.12s">${summary}</p>
@@ -63,6 +68,58 @@ export function mount(root, { meta, geo, store, go }) {
         <div class="k">${k}</div><div class="v ${tone || ""}" data-i="${i}">—</div><div class="n">${esc(n)}</div></div>`).join("")}</div>
     </div>
 
+    <section class="section">
+      <div class="section-head reveal"><div><h2 class="title-m">Project cash flow integrity</h2>
+        <p>Reconciled operating cash flows, investment and lifecycle costs. Negative NPV is a model result, not an automatic calculation error.</p></div></div>
+      ${r.finance_audit ? `<div class="card reveal" style="padding:1.2rem 1.4rem">
+        <p class="muted">Integrity check: <b>${esc(r.finance_audit.status)}</b> · Largest yearly discrepancy ${fmt.money(r.finance_audit.max_annual_gap_sgd)}</p>
+        <table class="tbl" style="margin-top:.7rem"><thead><tr><th>Year 2 operating summary</th><th class="num">S$ per year</th></tr></thead><tbody>
+          <tr><td>Biochar + gate fees + conditional credit sales</td><td class="num">${fmt.money(r.finance_audit.year2.revenue_sgd)}</td></tr>
+          <tr><td>Cash OPEX (labour, plant, land, transport, certification)</td><td class="num">${fmt.money(r.finance_audit.year2.cash_opex_sgd)}</td></tr>
+          <tr><td><b>Cash flow (revenue minus cash OPEX)</b></td><td class="num"><b>${fmt.money(r.finance_audit.year2.cash_flow_sgd)}</b></td></tr>
+        </tbody></table>
+        <p class="muted" style="margin-top:.7rem">Initial construction CAPEX is a separate year-zero outflow; levelised cost includes discounted CAPEX and discounted OPEX. It is not the same as yearly cash OPEX.</p>
+      </div>` : `<div class="card reveal" style="padding:1rem">Re-run this older saved evaluation to receive a financial reconciliation audit.</div>`}
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal"><div><h2 class="title-m">Seasonal composition sensitivity</h2>
+        <p>Illustrative monthly woody fraction. Not observed collection tonnages or a prediction of rainfall effects.</p></div></div>
+      <div class="card reveal" style="padding:1.2rem 1.4rem">
+        ${r.seasonality ? `<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5px;align-items:end;height:115px;margin:1.2rem 0">
+          ${r.seasonality.months.map((x) => `<div style="display:flex;flex-direction:column;height:100%;align-items:center;justify-content:flex-end;gap:6px" title="Month ${x.month}: ${(x.woody_share*100).toFixed(2)}% woody share">
+            <div style="background:${x.monsoon ? "#d95926" : "#3987e5"};width:100%;max-width:32px;height:${Math.max(8,x.woody_share*95)}px;border-radius:3px 3px 0 0"></div>
+            <small class="muted" style="font-size:.7rem">${x.month}</small></div>`).join("")}</div>
+          <p class="muted">500 synthetic composition draws; annual mean ${(r.seasonality.mean_woody_share*100).toFixed(2)}%; monsoon month values ${((r.seasonality.mean_woody_share-r.seasonality.amplitude)*100).toFixed(2)}%. Variation is ${r.seasonality.amplitude ? "enabled" : "off"}. Not connected to the 15-year cash-flow schedule without a validated monthly supply model.</p>
+          <details class="accordion"><summary>Show illustrative P10/P90 accessible woody supply ranges</summary><div class="acc-body">
+            <table class="tbl"><thead><tr><th>Month</th><th>Assumed woody fraction</th><th>P10 available tonnes</th><th>P90 available tonnes</th></tr></thead><tbody>
+            ${r.seasonality.months.map((x) => `<tr><td>${x.month}</td><td>${(100*x.woody_share).toFixed(2)}%</td><td>${fmt.int(x.p10_woody_available_t)}</td><td>${fmt.int(x.p90_woody_available_t)}</td></tr>`).join("")}</tbody></table>
+            <p class="muted">Ranges arise from a hypothetical normal distribution of composition, not observed monthly waste quantities.</p>
+          </div></details>` : "No seasonal profile available for this saved evaluation."}
+      </div>
+    </section>
+
+    <!-- BIOTWIN_COMMERCE_2026_RESULTS -->
+    <section class="section">
+      <div class="section-head reveal"><div><h2 class="title-m">Commercial viability & funding</h2>
+      <p>Physical product sales, conditional credit revenue, and the effects of hypothetical grant and tax assumptions.</p></div></div>
+      ${r.commercial ? `<div class="card reveal" style="padding:1.3rem">
+        <div class="grid g3" style="margin-bottom:1rem">
+          <div class="tile"><div class="k">Product sales, operating year 2</div><div class="v">${fmt.money(r.commercial.modelled_biochar_revenue_year2_sgd)}</div></div>
+          <div class="tile"><div class="k">Potential carbon credit sales, year 2</div><div class="v">${fmt.money(r.commercial.modelled_credit_revenue_year2_sgd)}</div></div>
+          <div class="tile"><div class="k">Gate fees, year 2</div><div class="v">${fmt.money(r.commercial.modelled_gate_fee_revenue_year2_sgd)}</div></div>
+        </div>
+        <table class="tbl"><thead><tr><th>Investment adjustment</th><th class="num">Modelled amount</th></tr></thead><tbody>
+        <tr><td>Gross plant construction CAPEX</td><td class="num">${fmt.money(r.commercial.gross_capex_sgd)}</td></tr>
+        <tr><td>Hypothetical public grant, not approved</td><td class="num">${fmt.money(r.commercial.illustrative_grant_sgd)}</td></tr>
+        <tr><td>Net initial funding required if grant awarded</td><td class="num">${fmt.money(r.commercial.net_initial_cash_outlay_sgd)}</td></tr>
+        <tr><td>Illustrative income taxes, total life</td><td class="num">${fmt.money(r.commercial.total_illustrative_cash_taxes_sgd)}</td></tr>
+        <tr><td>Annual NONCASH depreciation for tax sensitivity</td><td class="num">${fmt.money(r.commercial.annual_non_cash_depreciation_sgd)}</td></tr>
+        <tr><td><b>Scenario NPV</b></td><td class="num"><b>${fmt.money(r.commercial.after_scenario_npv_sgd)}</b></td></tr>
+        </tbody></table>
+        <p class="muted" style="font-size:.8rem;margin-top:1rem">Capital cost is expensed once as year-zero cash investment, never deducted twice. Grants are assumptions, not awarded funding. Carbon credits are conditional on certification and do not represent avoided-emission claims. A higher product price requires a buyer agreement and material qualification.</p>
+      </div>` : `<div class="card reveal" style="padding:1rem">Run a new evaluation to see grant, tax and dual-revenue reconciliation.</div>`}
+    </section>
     <section class="section">
       <div class="flow reveal" id="flow"></div>
     </section>
@@ -165,6 +222,39 @@ export function mount(root, { meta, geo, store, go }) {
     toast("Saved — open Saved to compare");
   });
   $("dl").addEventListener("click", () => download("biotwin_evaluation.csv", toCsv(r, plants, where)));
+  let uploadedMapCapture = null;
+  $("mapUpload").addEventListener("change", async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    if (!["image/png", "image/jpeg"].includes(file.type) || file.size > 3000000) {
+      toast("Choose a PNG or JPEG screenshot smaller than 3 MB", "err");
+      return;
+    }
+    try {
+      uploadedMapCapture = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("Unable to read screenshot"));
+        reader.readAsDataURL(file);
+      });
+      toast("Your 3D map screenshot has been attached to the PDF export");
+    } catch (error) { toast(error.message, "err"); }
+  });
+  $("pdf").addEventListener("click", async () => {
+    const button = $("pdf"); const oldLabel = button.textContent;
+    button.disabled = true; button.textContent = "Preparing report...";
+    try {
+      const screenshot = uploadedMapCapture || await map.captureForReport();
+      const pdf = await api.report(sc, screenshot);
+      const url = URL.createObjectURL(pdf);
+      const a = document.createElement("a");
+      a.href = url; a.download = "BioTwin_Scenario_Assessment.pdf";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+      toast("Consulting-style PDF report prepared");
+    } catch (error) { toast(error.message, "err"); }
+    finally { button.disabled = false; button.textContent = oldLabel; }
+  });
   reveal(root);
   return { destroy: () => map.destroy() };
 }

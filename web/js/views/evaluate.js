@@ -40,14 +40,88 @@ export function mount(root, { meta, geo, store, go }) {
 
         <div class="step">
           <div class="step-h"><span class="n done">3</span><h3>Business inputs</h3></div>
+          <div class="field" style="margin:.6rem 0 1.1rem">
+            <label for="feedstockBasis">Spatial feedstock allocation</label>
+            <select id="feedstockBasis" class="btn" style="width:100%;text-align:left;padding:0 .8rem;margin-top:.4rem">
+              <option value="vegetation_proxy">55 planning areas: vegetation-based estimates</option>
+              <option value="six_sector_scenario">6 PWC sectors: synthetic Word-document scenario</option>
+            </select>
+            <p class="muted" style="font-size:.77rem;margin-top:.4rem">Both use the measured national total. Six-sector shares are assumptions, not collector records. This choice changes the model's waste allocation.</p>
+          </div>
           <div class="field">
             <label for="gate">Gate fee you charge waste owners <b id="gateV" style="float:right;color:var(--text)"></b></label>
-            <div class="range"><input id="gate" type="range" min="0" max="150" step="5" aria-label="Gate fee">
+            <div class="range"><input id="gate" type="range" min="0" max="150" step="0.2" aria-label="Gate fee">
               <span class="mark" style="left:${(cap / 150) * 100}%"><span>incineration S$${cap.toFixed(0)}</span></span></div>
           </div>
           <div style="height:1.9rem"></div>
           <label class="switch"><input type="checkbox" id="credits"><span class="track"></span>
             <span><span style="color:var(--text)">Certify and sell carbon credits</span><br><span class="muted">Registry eligibility isn't established.</span></span></label>
+          <div class="field" style="margin:1.15rem 0 .65rem">
+            <label for="biocharPreset">Biochar sales scenario</label>
+            <select id="biocharPreset" class="btn" style="width:100%;margin-top:.35rem;text-align:left">
+              <option value="default">Original model: US$100/t biochar</option>
+              <option value="150">Illustrative commodity: S$150/t biochar</option>
+              <option value="300">Illustrative bulk: S$300/t biochar</option>
+              <option value="1000">Illustrative premium: S$1,000/t biochar</option>
+              <option value="custom">Custom price (advanced inputs)</option>
+            </select>
+            <p class="muted" style="font-size:.76rem;margin-top:.35rem">Prices are scenarios, not confirmed Singapore buyer quotations. The simulator converts S$ to US$ using the model FX rate.</p>
+          </div>
+          <div class="field" style="margin:.85rem 0">
+            <label for="staffPreset">Continuous / semi-continuous crew</label>
+            <select id="staffPreset" class="btn" style="width:100%;margin-top:.35rem;text-align:left">
+              <option value="0">Original size-scaled staffing model</option>
+              <option value="3">Automation sensitivity: 3 people per shift</option>
+              <option value="5">Moderate sensitivity: 5 people per shift</option>
+              <option value="custom">Custom crew (advanced inputs)</option>
+            </select>
+            <p class="muted" style="font-size:.76rem;margin-top:.35rem">Assumed staff per shift is multiplied by shift coverage and leave factors. Neither alternative has been verified by a plant vendor.</p>
+          </div>
+          <div class="field" style="margin:.85rem 0 1.15rem">
+            <label for="seasonPreset">Seasonal woody/leafy sensitivity</label>
+            <select id="seasonPreset" class="btn" style="width:100%;margin-top:.35rem;text-align:left">
+              <option value="0">Off: annual composition only</option>
+              <option value="0.1125">Illustrative wet/dry shift around current annual mean</option>
+              <option value="word75">Unverified Word example: 75% mean / 63.75%-78.75%</option>
+              <option value="custom">Custom seasonal variation (advanced inputs)</option>
+            </select>
+            <p class="muted" style="font-size:.76rem;margin-top:.35rem">This displays monthly composition sensitivity, not observed waste supply. Annual cash flows remain unchanged without a validated monthly dispatch/storage model.</p>
+          </div>
+          <!-- BIOTWIN_COMMERCE_2026: documented illustrations, never procurement quotes -->
+          <div class="card" style="padding:1rem;margin:1.15rem 0;background:rgba(255,255,255,.035)">
+            <h4 style="margin-bottom:.4rem">Commercial sensitivity</h4>
+            <label for="commercialScenario" class="muted">Choose a revenue scenario</label>
+            <select id="commercialScenario" class="btn" style="width:100%;margin:.5rem 0;text-align:left">
+              <option value="baseline">Original BioTwin assumptions</option>
+              <option value="industrial">Construction product S$300/t + illustrative CORCs S$230/tCO₂e</option>
+              <option value="premium">Unverified premium product S$1,000/t + illustrative CORCs</option>
+              <option value="custom">Custom prices using advanced inputs</option>
+            </select>
+            <p class="muted" style="font-size:.77rem;margin-bottom:1rem">Product values are unverified market scenarios. Carbon credit sales require separate certification and eligible end use; price does not imply issuance.</p>
+            <label for="staffingScenario" class="muted">Continuous plant automation sensitivity</label>
+            <select id="staffingScenario" class="btn" style="width:100%;margin:.5rem 0;text-align:left">
+              <option value="0">Original plant staffing model</option>
+              <option value="3">Hypothetical 3 workers per shift</option>
+              <option value="5">Hypothetical 5 workers per shift</option>
+              <option value="custom">Custom crew size in advanced inputs</option>
+            </select>
+            <p class="muted" style="font-size:.77rem;margin-bottom:1rem">Staffing excludes unverified vendor quotation; full FTE calculations include shift coverage, leave and supervisor.</p>
+            <label for="grantScenario" class="muted">Hypothetical capital grant (none approved)</label>
+            <select id="grantScenario" class="btn" style="width:100%;margin:.5rem 0;text-align:left">
+              <option value="0">No grant (base case)</option>
+              <option value="0.1">Assume 10% of construction CAPEX</option>
+              <option value="0.2">Assume 20% of construction CAPEX</option>
+              <option value="0.3">Assume 30% of construction CAPEX</option>
+              <option value="custom">Custom grant fraction in advanced inputs</option>
+            </select>
+            <label for="taxScenario" class="muted">Income tax sensitivity</label>
+            <select id="taxScenario" class="btn" style="width:100%;margin:.5rem 0;text-align:left">
+              <option value="0">Before tax, original model</option>
+              <option value="0.17">Illustrative 17% profit tax and straight-line depreciation</option>
+              <option value="custom">Custom assumed rate in advanced inputs</option>
+            </select>
+            <p class="muted" style="font-size:.77rem">Initial CAPEX remains a year-zero cost. Depreciation is noncash and is used only in the optional simplified tax scenario. Grants require formal eligibility and award verification.</p>
+          </div>
           <details class="accordion" id="adv" style="margin-top:1rem">
             <summary>Advanced inputs <span class="chev">›</span></summary>
             <div class="acc-body"><div class="grid g2" id="advFields" style="gap:.75rem;margin:.4rem 0 .8rem"></div>
@@ -122,7 +196,8 @@ export function mount(root, { meta, geo, store, go }) {
 
   function renderStats() {
     const r = inp().region;
-    const areas = meta.areas.filter((a) => r === "All" || a.region === r);
+    const dataAreas = inp().feedstock_basis === "six_sector_scenario" ? meta.areas_six : meta.areas;
+    const areas = dataAreas.filter((a) => r === "All" || a.region === r);
     const sites = regionSites();
     countUp($("stWoody"), areas.reduce((s, a) => s + a.woody_available_t, 0));
     countUp($("stPlots"), sites.length);
@@ -149,6 +224,112 @@ export function mount(root, { meta, geo, store, go }) {
   }
 
   // ---- step 3: inputs ---------------------------------------------------------------------------
+  const basisChoice = $("feedstockBasis");
+  basisChoice.value = inp().feedstock_basis || "vegetation_proxy";
+  basisChoice.addEventListener("change", () => {
+    store.setInputs({ feedstock_basis: basisChoice.value });
+    map.setSupply(basisChoice.value === "six_sector_scenario" ? meta.areas_six : meta.areas);
+    refresh();
+  });
+  map.setSupply(inp().feedstock_basis === "six_sector_scenario" ? meta.areas_six : meta.areas);
+  const presetInput = (key, value) => {
+    const next = { ...(inp().advanced || {}) };
+    if (value === null) delete next[key]; else next[key] = value;
+    store.setInputs({ advanced: next });
+    renderAdvanced();
+  };
+  const biocharPreset = $("biocharPreset");
+  const staffPreset = $("staffPreset");
+  const seasonPreset = $("seasonPreset");
+  const currentPriceUSD = Number(inp().advanced?.biochar_price_usd ?? meta.advanced?.biochar_price_usd?.default ?? 100);
+  const sgdFx = Number(meta.fx?.usd_sgd || 1.2881);
+  const currentSGD = currentPriceUSD * sgdFx;
+  biocharPreset.value = !Object.prototype.hasOwnProperty.call(inp().advanced || {}, "biochar_price_usd") ? "default"
+    : [150,300,1000].find((v) => Math.abs(currentSGD - v) < .5)?.toString() || "custom";
+  const currentCrew = Number(inp().advanced?.continuous_crew_per_shift || 0);
+  staffPreset.value = [0,3,5].includes(currentCrew) ? String(currentCrew) : "custom";
+  const currentAmplitude = Number(inp().advanced?.seasonal_woody_amplitude || 0);
+  seasonPreset.value = currentAmplitude === 0 ? "0" : Math.abs(currentAmplitude - .1125) < .0001
+    ? (Math.abs(Number(inp().advanced?.woody_share || meta.advanced?.woody_share?.default || 0.70) - .75) < 1e-6 ? "word75" : "0.1125") : "custom";
+  biocharPreset.addEventListener("change", () => {
+    if (biocharPreset.value === "custom") { $("adv").open = true; return; }
+    presetInput("biochar_price_usd", biocharPreset.value === "default" ? null : Number(biocharPreset.value) / sgdFx);
+  });
+  staffPreset.addEventListener("change", () => {
+    if (staffPreset.value === "custom") { $("adv").open = true; return; }
+    presetInput("continuous_crew_per_shift", staffPreset.value === "0" ? null : Number(staffPreset.value));
+  });
+  seasonPreset.addEventListener("change", () => {
+    if (seasonPreset.value === "custom") { $("adv").open = true; return; }
+    const next = { ...(inp().advanced || {}) };
+    if (seasonPreset.value === "0") delete next.seasonal_woody_amplitude;
+    else {
+      next.seasonal_woody_amplitude = 0.1125;
+      if (seasonPreset.value === "word75") next.woody_share = 0.75; // explicit, unverified annual composition override
+    }
+    store.setInputs({ advanced: next }); renderAdvanced();
+  });
+  // BIOTWIN_COMMERCE_2026_CONTROL
+  const commercialScenario = $("commercialScenario"), grantScenario = $("grantScenario"), taxScenario = $("taxScenario");
+  const fxUSD = Number(meta.fx?.usd_sgd || 1.2881), fxEUR = Number(meta.fx?.eur_sgd || 1.4236);
+  const commercialAdvanced = () => ({ ...(inp().advanced || {}) });
+  const commercialStore = (patch) => {
+    store.setInputs(patch);
+    if (typeof renderAdvanced === "function") renderAdvanced();
+  };
+  const makePreset = (mode) => {
+    if (mode === "custom") { $("adv").open = true; return; }
+    const adv = commercialAdvanced();
+    if (mode === "baseline") {
+      delete adv.biochar_price_usd; delete adv.credit_price_eur;
+      commercialStore({ advanced: adv, sell_credits: false, gate_fee: 0 });
+      $("credits").checked = false; $("gate").value = 0;
+    } else {
+      adv.biochar_price_usd = (mode === "premium" ? 1000 : 300) / fxUSD;
+      adv.credit_price_eur = 230 / fxEUR;
+      commercialStore({ advanced: adv, sell_credits: true, gate_fee: Number(meta.gate_fee_cap_sgd) });
+      $("credits").checked = true; $("gate").value = Number(meta.gate_fee_cap_sgd);
+    }
+    $("gate").dispatchEvent(new Event("input"));
+    if ($("biocharPreset")) $("biocharPreset").value = "custom";
+  };
+  // Reflect existing cached inputs rather than mislabelling them as a selected preset.
+  const priceSGD = Number(inp().advanced?.biochar_price_usd ?? meta.advanced?.biochar_price_usd?.default ?? 100) * fxUSD;
+  const creditSGD = Number(inp().advanced?.credit_price_eur ?? meta.advanced?.credit_price_eur?.default ?? 120.67) * fxEUR;
+  commercialScenario.value = !inp().sell_credits && !Object.hasOwn(inp().advanced || {}, "biochar_price_usd")
+    ? "baseline" : (inp().sell_credits && Math.abs(creditSGD - 230) < .5 && Math.abs(priceSGD - 300) < .5)
+    ? "industrial" : (inp().sell_credits && Math.abs(creditSGD - 230) < .5 && Math.abs(priceSGD - 1000) < .5)
+    ? "premium" : "custom";
+  commercialScenario.addEventListener("change", () => makePreset(commercialScenario.value));
+  const staffingScenario = $("staffingScenario");
+  const crew = Number(inp().advanced?.continuous_crew_per_shift || 0);
+  staffingScenario.value = [0,3,5].includes(crew) ? String(crew) : "custom";
+  staffingScenario.addEventListener("change", () => {
+    if (staffingScenario.value === "custom") { $("adv").open = true; return; }
+    const adv = commercialAdvanced();
+    if (Number(staffingScenario.value) === 0) delete adv.continuous_crew_per_shift;
+    else adv.continuous_crew_per_shift = Number(staffingScenario.value);
+    commercialStore({advanced: adv});
+    if ($("staffPreset")) $("staffPreset").value = staffingScenario.value;
+  });
+  const grant = Number(inp().advanced?.capital_grant_fraction || 0);
+  grantScenario.value = [0,.1,.2,.3].includes(grant) ? String(grant) : "custom";
+  grantScenario.addEventListener("change", () => {
+    if (grantScenario.value === "custom") { $("adv").open = true; return; }
+    const adv = commercialAdvanced();
+    if (Number(grantScenario.value) === 0) delete adv.capital_grant_fraction;
+    else adv.capital_grant_fraction = Number(grantScenario.value);
+    commercialStore({advanced: adv});
+  });
+  const tax = Number(inp().advanced?.illustrative_tax_rate || 0);
+  taxScenario.value = tax === 0 ? "0" : tax === .17 ? "0.17" : "custom";
+  taxScenario.addEventListener("change", () => {
+    if (taxScenario.value === "custom") { $("adv").open = true; return; }
+    const adv = commercialAdvanced();
+    if (Number(taxScenario.value) === 0) delete adv.illustrative_tax_rate;
+    else adv.illustrative_tax_rate = Number(taxScenario.value);
+    commercialStore({advanced: adv});
+  });
   const gate = $("gate");
   const paintGate = () => {
     gate.style.setProperty("--p", `${(gate.value / 150) * 100}%`);

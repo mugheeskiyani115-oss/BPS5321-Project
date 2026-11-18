@@ -35,6 +35,7 @@ export class BioMap {
     this.supply = Object.fromEntries(meta.areas.map((a) => [a.planning_area, a.woody_available_t]));
     this.regionOf = Object.fromEntries(meta.areas.map((a) => [a.planning_area, a.region]));
     this.vmax = Math.max(...Object.values(this.supply));
+    this.supplyVersion = 0;
     this.tip = document.getElementById("maptip");
     if (!window.maplibregl || !window.deck || !webglOK()) {
       el.innerHTML = `<div class="nomap">The 3D map needs WebGL, which this browser has turned off.<br>
@@ -44,7 +45,7 @@ export class BioMap {
     }
     this.ok = true;
     this.map = new maplibregl.Map({
-      container: el, style: BASEMAP, center: [103.82, 1.34], zoom: intro && !reduceMotion ? 9.4 : 10.2,
+      container: el, preserveDrawingBuffer: true, style: BASEMAP, center: [103.82, 1.34], zoom: intro && !reduceMotion ? 9.4 : 10.2,
       pitch: intro && !reduceMotion ? 20 : 50, bearing: intro && !reduceMotion ? -40 : -12, maxPitch: 70,
       attributionControl: { compact: true }, fadeDuration: 0,
     });
@@ -67,6 +68,13 @@ export class BioMap {
   }
 
   // ---- public API ------------------------------------------------------------------------------
+  setSupply(areas) {
+    if (!Array.isArray(areas)) return;
+    this.supply = Object.fromEntries(areas.map((a) => [a.planning_area, a.woody_available_t]));
+    this.vmax = Math.max(1, ...Object.values(this.supply));
+    this.supplyVersion += 1;
+    this.render();
+  }
   setRegion(region, animate = true) {
     if (!this.ok) return;
     this.s.region = region;
@@ -89,6 +97,59 @@ export class BioMap {
       this._fit([[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]], true);
     }
     this.render();
+  }
+  async captureForReport() {
+    if (!this.ok || !this.map || !this.loaded || !this.s.result) {
+      throw new Error("The results 3D map is not ready. Wait until its buildings and routes appear, then export again.");
+    }
+    const bounds = this.el.getBoundingClientRect();
+    if (bounds.width < 250 || bounds.height < 180) {
+      throw new Error("The 3D map is too small or hidden to capture. Maximize the browser and retry.");
+    }
+    // Wait for the current camera position and facility overlay to complete one draw.
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    this.map.triggerRepaint();
+    this.render();
+    this.overlay?._deck?.redraw?.(true);
+    const layers = [...this.el.querySelectorAll("canvas")].filter((c) => {
+      const r = c.getBoundingClientRect();
+      return c.width > 0 && c.height > 0 && r.width > 0 && r.height > 0;
+    });
+    if (layers.length < 2) {
+      throw new Error("The 3D overlay was not available for capture. The PDF requires the actual map; try another browser or enable WebGL.");
+    }
+    const scale = Math.min(1.4, 1600 / bounds.width, 1050 / bounds.height);
+    const output = document.createElement("canvas");
+    output.width = Math.max(400, Math.round(bounds.width * scale));
+    output.height = Math.max(250, Math.round(bounds.height * scale));
+    const ctx = output.getContext("2d", { willReadFrequently: true });
+    ctx.fillStyle = "#111111";
+    ctx.fillRect(0, 0, output.width, output.height);
+    let overlaysVisible = 0;
+    for (let i = 0; i < layers.length; i++) {
+      const layer = layers[i];
+      const rect = layer.getBoundingClientRect();
+      // Check that an actual deck.gl overlay was drawn, rather than embedding a blank map.
+      if (i > 0) {
+        const thumbnail = document.createElement("canvas");
+        thumbnail.width = 128; thumbnail.height = 96;
+        const tctx = thumbnail.getContext("2d", { willReadFrequently: true });
+        tctx.drawImage(layer, 0, 0, 128, 96);
+        const pixels = tctx.getImageData(0, 0, 128, 96).data;
+        for (let p = 3; p < pixels.length; p += 4) {
+          if (pixels[p] > 15) { overlaysVisible++; break; }
+        }
+      }
+      ctx.drawImage(layer, (rect.left - bounds.left) * scale,
+                    (rect.top - bounds.top) * scale, rect.width * scale, rect.height * scale);
+    }
+    if (!overlaysVisible) {
+      throw new Error("The map background is visible but the 3D facility overlay was not captured. Wait for the map to finish rendering, then retry.");
+    }
+    // Canvas export may be blocked by map-tile security; in that case show an error,
+    // rather than silently inserting an unrelated illustration into the report.
+    try { return output.toDataURL("image/jpeg", 0.85); }
+    catch (e) { throw new Error("Your browser blocked the 3D map screenshot. Enable WebGL or retry in Edge/Chrome. No substitute map will be used."); }
   }
   resize() { this.map?.resize(); }
   destroy() {
@@ -147,7 +208,7 @@ export class BioMap {
     const r = this.s.result, region = this.s.region;
     const sent = r ? Object.fromEntries(Object.entries(r.flows.reduce((m, f) => (m[f.origin] = (m[f.origin] || 0) + f.tonnes, m), {}))) : null;
     const sentMax = sent ? Math.max(1, ...Object.values(sent)) : 1;
-    const key = `${region}|${r ? r.metrics.processed_t + r.layout.map((l) => l.site_id).join() : ""}`;
+    const key = `${region}|${this.supplyVersion}|${r ? r.metrics.processed_t + r.layout.map((l) => l.site_id).join() : ""}`;
     const areaVal = (f) => {
       const pa = f.properties.planning_area;
       if (sent) return { v: sent[pa] || 0, max: sentMax, inside: !!sent[pa] };
@@ -156,7 +217,7 @@ export class BioMap {
     };
     const layers = [
       new deck.GeoJsonLayer({
-        id: "areas", data: this.geo, extruded: !r, pickable: true, opacity: r ? 0.6 : 0.82,
+        id: "areas", data: this.geo, extruded: true, pickable: true, opacity: r ? 0.6 : 0.82,
         getFillColor: (f) => { const a = areaVal(f); return a.inside ? ramp(a.v, a.max) : [...DIM, 210]; },
         getElevation: (f) => { const a = areaVal(f); return a.inside ? 80 + (a.v / a.max) * 1200 : 25; },
         getLineColor: [255, 255, 255, 30],
