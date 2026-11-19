@@ -82,7 +82,7 @@ export function mount(root, { meta, geo, store, go }) {
             <select id="seasonPreset" class="btn" style="width:100%;margin-top:.35rem;text-align:left">
               <option value="0">Off: annual composition only</option>
               <option value="0.1125">Illustrative wet/dry shift around current annual mean</option>
-              <option value="word75">Unverified Word example: 75% mean / 63.75%-78.75%</option>
+              <option value="word75">75% mean / 63.75%-78.75%</option>
               <option value="custom">Custom seasonal variation (advanced inputs)</option>
             </select>
             <p class="muted" style="font-size:.76rem;margin-top:.35rem">This displays monthly composition sensitivity, not observed waste supply. Annual cash flows remain unchanged without a validated monthly dispatch/storage model.</p>
@@ -94,7 +94,7 @@ export function mount(root, { meta, geo, store, go }) {
             <select id="commercialScenario" class="btn" style="width:100%;margin:.5rem 0;text-align:left">
               <option value="baseline">Original BioTwin assumptions</option>
               <option value="industrial">Construction product S$300/t + illustrative CORCs S$230/tCO₂e</option>
-              <option value="premium">Unverified premium product S$1,000/t + illustrative CORCs</option>
+              <option value="premium">S$1,000/t + illustrative CORCs</option>
               <option value="custom">Custom prices using advanced inputs</option>
             </select>
             <p class="muted" style="font-size:.77rem;margin-bottom:1rem">Product values are unverified market scenarios. Carbon credit sales require separate certification and eligible end use; price does not imply issuance.</p>
