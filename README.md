@@ -1,122 +1,120 @@
-# BioTwin Singapore — planning tool for horticultural waste → biochar
+# BioTwin Singapore
 
-**Research question:** where, and at what scale, should Singapore process woody horticultural waste into biochar,
-and what are the cost, transport and net-carbon trade-offs?
+**Spatial decision support tool for converting Singapore's horticultural waste into biochar**
 
-A REopt-style evaluation tool on a tested planning model. You choose a region and plot(s), choose a plant and set
-business inputs. You then get the expected output, a 15-year pro forma (capital cost, year-by-year cash flow, NPV,
-payback, IRR and break-even gate fee), business as usual vs your plant, numbered findings, and how every other plot
-and plant size compares.
+BioTwin is an interactive research prototype for assessing potential biochar production facilities in Singapore. It brings together spatial feedstock estimates, candidate locations, road transport, plant sizing, financial analysis and carbon accounting in one web interface.
 
-## Run it
+**Repository:** [BPS5321-Project](https://github.com/mugheeskiyani115-oss/BPS5321-Project)  
+**Branch to use:** `main`  
+**Application port:** `8001`
+
+> **Recommended for reviewers:** Use GitHub Codespaces (Option A) to run the complete application in a browser. GitHub itself hosts the source code; the Python server must be started before the website is available.
+
+## A. Run in GitHub Codespaces (recommended)
+
+This approach requires a GitHub account with access to the repository and access to GitHub Codespaces. No local Python installation is required.
+
+1. Open the [`main` branch](https://github.com/mugheeskiyani115-oss/BPS5321-Project/tree/main).
+2. Click **Code → Codespaces → Create codespace on main**. If Codespaces is not offered, use Option B below.
+3. When the online VS Code workspace opens, select **Terminal → New Terminal**.
+4. Run the following commands in the repository's root directory:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   python serve.py --host 0.0.0.0 --port 8001
+   ```
+
+5. Open the **Ports** tab in Codespaces. Find port **8001** and click **Open in Browser** (or follow the port forwarding prompt).
+6. The **BioTwin Singapore** home page should appear. Select **Evaluate** to configure a scenario.
+
+**Stopping the application:** Return to the terminal and press **Ctrl+C**. To conserve Codespaces usage, stop the Codespace from [github.com/codespaces](https://github.com/codespaces) when finished.
+
+**Returning to an existing Codespace:** A Codespace does not automatically receive new GitHub commits. With no uncommitted local edits, update it by running:
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-PYTHONPATH= python serve.py                                                  # http://localhost:8000
-PYTHONPATH= PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests       # 46 tests (model + API)
+git switch main
+git pull --ff-only origin main
 ```
 
-Use `python serve.py --port 9000` to run on another port. `PYTHONPATH=` clears a ROS path that some machines load and
-that breaks Python packages. The front end is plain JavaScript modules with vendored libraries, so there is no
-Node or build step and no internet is needed at run time except for basemap tiles.
+Then start the application again using the two commands in Step 4 (the dependency installation generally only needs to be repeated when requirements change).
 
-To rebuild the data (needs internet), run `pip install -r requirements-pipeline.txt`, then
-`python -I pipeline/build_data.py all` and `python -I pipeline/build_recommendations.py`. Run the second command
-again after any change to `data/params/parameters.csv`.
+## B. Run locally on Windows
 
-## Pages
+**Prerequisites:** Python 3.10 or newer (Python 3.11 recommended) and an internet connection for the initial installation and map tiles. Git is needed only if cloning rather than downloading the ZIP. Install Python with the option to add it to PATH, or use the Windows `py` launcher.
 
-| Page | What it does |
-|---|---|
-| Home | What the tool does and how an evaluation works, with headline national numbers |
-| Evaluate | **1 Location:** pick a region (the map flies there). Let the tool pick the cheapest plot, or click plots on the map or in the list; several plots make a decentralised network. **2 Plant:** pick a size, or let the tool size it. **3 Business inputs:** gate fee slider marked at the incineration fee, sell credits, and advanced inputs with defaults and a reset. Then **Get results**. |
-| Results | Map with trucks driving real road routes to the plant, key metrics, process flow, business as usual vs your plant, findings, year-by-year cash flow (each year or cumulative, plus a table), comparisons (cost per tonne, other plots, plant sizes), assumptions, and Save / Download CSV / Edit inputs |
-| Saved | Saved evaluations side by side, with charts and CSV export (stored in the browser) |
-| Evidence | Waste-data check, every parameter with its tag and source link, validation upload |
+1. Download the project from the `main` branch using **Code → Download ZIP** and extract it, **or** clone it:
 
-### Animations
+   ```powershell
+   git clone --branch main https://github.com/mugheeskiyani115-oss/BPS5321-Project.git
+   cd BPS5321-Project
+   ```
 
-- **Page changes:** cross-fades using the View Transitions API.
-- **Scrolling:** sections fade in as they come into view.
-- **Numbers:** count up to their values.
-- **Controls:** the segmented controls and tabs slide, the switch springs, and the slider fill follows the thumb.
-- **Map:** flies to each region; plot columns rise and change colour; selected plots pulse; after a run, trucks drive
-  the cached OSRM road routes to the plant.
-- **Charts:** bars appear in sequence and lines draw in.
-- **Process flow:** an animated SVG.
+   If you downloaded a ZIP, open PowerShell in the extracted project folder instead.
 
-Everything respects the operating system's reduced-motion setting. If WebGL is not available, the map shows a
-fallback message instead.
+2. Create the Python environment and install dependencies (from the folder containing `requirements.txt`):
 
-## Architecture
+   ```powershell
+   py -3 -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+   ```
 
-| Path | Role |
-|---|---|
-| `biotwin/` | Model: `data` (loads and fingerprints inputs), `pathway` (carbon and itemised costs), `network` (road matrix, LP allocation, layout evaluation), `evaluate` (scenario → layout, pro forma, business as usual, findings, comparisons), `optimise` (NSGA-II), `recommend`, `forecast`, `outlook` (10-year credits), `validation` |
-| `api/server.py`, `serve.py` | FastAPI: `GET /api/meta`, `/api/geo`, `/api/evidence`, `/api/health`; `POST /api/evaluate`, `/api/validate`; serves `web/` |
-| `web/` | Front end: `js/app.js` (router), `js/views/*` (pages), `js/map.js` (MapLibre + deck.gl on a CARTO dark OSM basemap), `js/charts.js` (ECharts), `js/ui.js`, `js/store.js`, `css/app.css`; `vendor/` holds MapLibre 4.7.1, deck.gl 9.0.38 and ECharts 5.5.1 |
-| `pipeline/` | `build_data.py` (steps: geo, trees, landcover, allocate, sites, facilities, roads, fx, routes) and `build_recommendations.py` |
-| `data/` | Inputs, `params/parameters.csv` (every parameter with a tag and source), `routes.json` (road geometry for truck animation) |
-| `biotwin_core.py`, `tests/test_core.py` | Interim-case model, kept for its original tests |
+3. Start the website. **Either** double-click `RUN_BIOTWIN_8001.bat` (which expects `.venv` to exist), **or** run:
 
-## Model (one basis, no toggles)
+   ```powershell
+   .\.venv\Scripts\python.exe serve.py --port 8001
+   ```
 
-- **Carbon (Notebook 2):** per wet tonne, 0.165 t biochar, 0.372 tCO2e stored, 0.234 registry credit, and −0.009 net
-  against current use. Small kilns give about 0.12.
-- **Plant cost (itemised Singapore):** the components are
-  - vendor turnkey capex;
-  - crews to cover operating hours, at MOM 2025 median wages plus 17% CPF, on the Employment Act 44-hour week;
-  - SP Group electricity;
-  - maintenance at 8% of capex a year;
-  - JTC posted land rent at each site.
+4. Open [http://127.0.0.1:8001](http://127.0.0.1:8001) in your web browser if it does not open automatically.
 
-  This basis was chosen over generic vendor opex (US$30–90/t) because that figure leaves out Singapore wages and land.
-- **Haulage:** a truck-day cost (S$800 a day for a tipper with operator) applied to OSRM road times.
-- **Credits:** Senken CORC index and price path, minus Puro.earth fees per credit and annual verification.
-- **Gate-fee benchmark:** the NEA incineration fee of S$82.20/t excluding GST.
+Keep the terminal window open while using the website. Press **Ctrl+C** to stop it.
 
-### Why the cash flow changes every year
+## C. Run locally on macOS or Linux
 
-Notebook 2 held prices, wages, supply and credits flat, so every year after the first was identical. The pro forma
-now builds in 2026 and runs from 2027, in nominal dollars:
+From a terminal, with Python 3.10+ and Git installed:
 
-| Driver | Value | Source |
-|---|---|---|
-| Year-1 output | 75% of capacity, then 100% | Assumption, informed by commercial plant ramp-ups |
-| Staff costs | +3.5% a year | Derived from MOM 2025 nominal wage growth (+4.9%) |
-| Other prices (gate fee, biochar, maintenance, land, power, trucking) | +1.75% (2026), +2.0% (2027), +2.0% long run | MAS core inflation forecast; long run is an assumption |
-| Carbon credit price | Senken base path, scaled to the price you enter | Web |
+```bash
+git clone --branch main https://github.com/mugheeskiyani115-oss/BPS5321-Project.git
+cd BPS5321-Project
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python serve.py --port 8001
+```
 
-The parameter register in `data/params/parameters.csv` has 48 parameters: 22 from published sources, 4 from
-Notebook 2, 5 calculated, 16 assumptions and 1 research-PDF fallback.
+Visit [http://127.0.0.1:8001](http://127.0.0.1:8001). Press **Ctrl+C** in the terminal to stop the server.
 
-## Key findings (cheapest plant: 50 t/day at the cheapest plot, about 15,700 t/yr)
+## Using BioTwin
 
-| Case | NPV, 15 years | Payback |
-|---|---|---|
-| No gate fee, no credits | −S$33.0M | none |
-| Gate fee at the incineration rate (S$82.20/t) | −S$20.6M | none |
-| Incineration gate fee plus credits | −S$14.3M | none |
-| S$200/t gate fee plus credits | +S$3.3M | year 7 |
+| Page | Purpose |
+| --- | --- |
+| **Home** | Project overview and context for the horticultural waste to biochar pathway. |
+| **Evaluate** | Select a region, candidate plant site or sites, plant capacity, feedstock allocation and business assumptions; run a scenario. |
+| **Results** | Review transport routes, plant performance, costs, financial outcomes, carbon metrics and alternative configurations. |
+| **Saved** | Compare previously saved evaluations in the same browser. |
+| **Evidence** | Inspect source assumptions, parameter information and available data validation tools. |
 
-- The plant costs S$8.5M to build and about S$276 per tonne over its life.
-- It breaks even at a gate fee of S$220/t, or S$178/t if credits are sold.
-- Labour dominates Singapore running costs, so one larger plant beats several small kilns.
-- On carbon, biochar roughly ties with today's biomass-power fate (Notebook 2: −0.009 tCO2e/t).
-- The gap widens over time because staff costs rise faster than prices.
-- Real road distances are 1.38× straight-line.
+For a quick demonstration, open **Evaluate**, retain the default inputs, select the desired site and plant configuration, and click **Get results**. The application performs the evaluation through its Python API and displays the outputs in the browser.
 
-## Waste data (checked 17 Nov 2026)
+## Troubleshooting
 
-No public dataset breaks horticultural waste down below the national total. Sources checked: data.gov.sg, NEA, NParks,
-town-council tenders and research (see `data/params/waste_data_check.csv`). NParks tracks volumes from its landscape
-contractors and NEA holds collector returns in WRMS; both need a formal data request.
+| Issue | What to do |
+| --- | --- |
+| **Website does not open** | Check that the Python server is still running. In Codespaces, open the forwarded **8001** port; locally, use `http://127.0.0.1:8001`. |
+| **Port 8001 already in use** | Stop the previous BioTwin server using **Ctrl+C**, then retry. Close other processes using the port if necessary. |
+| **`ModuleNotFoundError` or missing library** | Install dependencies again with the Python interpreter used to run the server: `python -m pip install -r requirements.txt`, or the `.venv` interpreter on Windows. |
+| **Changes to GitHub are not showing** | In the existing Codespace, pull the latest `main` commit, restart the server, then refresh the browser with **Ctrl+Shift+R**. |
+| **Map does not render correctly** | Use an updated Chrome, Edge or Firefox browser with WebGL enabled, and check that map tile services are reachable. |
+| **Windows launcher says `.venv` not found** | Complete Windows installation Step 2 before opening `RUN_BIOTWIN_8001.bat`. |
 
-## Still needed
+To check whether the backend is responding, open `/api/health` at the same host and port; for a local run, visit [http://127.0.0.1:8001/api/health](http://127.0.0.1:8001/api/health).
 
-- Independent tonnage records (NParks contractor reports, NEA WRMS, town councils or collectors).
-- A Singapore operating-cost or plant quote.
-- A biochar buyer quote.
-- The Notebook 2 country profile, to replace derived values.
-- NEA's position on small-kiln emissions.
+## Technical structure
+
+- **Backend:** FastAPI and Uvicorn, started by `serve.py`; API definitions in `api/server.py`.
+- **Analytical model:** Python modules in `biotwin/`.
+- **Frontend:** JavaScript, HTML and CSS in `web/` (no Node.js build step required).
+- **Inputs:** Bundled model data and assumptions in `data/`.
+- **Dependencies:** Listed in `requirements.txt`.
+- **Optional checks:** Run `python -m pytest -q tests` from the repository root, after installing dependencies.
+
+The project runs locally or in a Codespace. A **permanent public URL** would require separately deploying the FastAPI application to a hosting service; GitHub Pages alone cannot execute the Python backend.
