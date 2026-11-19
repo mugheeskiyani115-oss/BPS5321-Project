@@ -70,7 +70,7 @@ export function mount(root, { meta, geo, store, go }) {
 
     <section class="section">
       <div class="section-head reveal"><div><h2 class="title-m">Project cash flow integrity</h2>
-        <p>Reconciled operating cash flows, investment and lifecycle costs. Negative NPV is a model result, not an automatic calculation error.</p></div></div>
+        <p>Reconciled operating cash flows, investment and lifecycle costs.</p></div></div>
       ${r.finance_audit ? `<div class="card reveal" style="padding:1.2rem 1.4rem">
         <p class="muted">Integrity check: <b>${esc(r.finance_audit.status)}</b> · Largest yearly discrepancy ${fmt.money(r.finance_audit.max_annual_gap_sgd)}</p>
         <table class="tbl" style="margin-top:.7rem"><thead><tr><th>Year 2 operating summary</th><th class="num">S$ per year</th></tr></thead><tbody>
@@ -125,14 +125,14 @@ export function mount(root, { meta, geo, store, go }) {
     </section>
 
     <section class="section">
-      <div class="section-head reveal"><div><h2 class="title-m">Business as usual vs your plant</h2>
-        <p>The same tonnes of woody waste, followed through today's route and through your plant.</p></div></div>
+      <div class="section-head reveal"><div><h2 class="title-m">Business as usual vs our plant</h2>
+        <p>The same tonnes of woody waste, followed through today's route and through our plant.</p></div></div>
       <div class="card reveal" style="padding:.4rem .6rem">${compareTable(r)}</div>
       <p class="muted reveal" style="margin-top:.6rem">Today's destinations are approximated by the mapped waste-to-energy plants and Gardens by the Bay's biomass plant; Singapore's biomass power plants are not mapped.</p>
     </section>
 
     <section class="section">
-      <div class="section-head reveal"><div><h2 class="title-m">Findings</h2><p>Generated from the numbers, in the order a reviewer would ask.</p></div></div>
+      <div class="section-head reveal"><div><h2 class="title-m">Findings</h2><p>The findings are as follows.</p></div></div>
       ${r.findings.map((f, i) => `<div class="finding reveal" style="--d:${0.04 * i}s"><div class="i">${String(i + 1).padStart(2, "0")}</div>
         <div><h4>${esc(f.title)}</h4><p>${esc(f.text)}</p></div></div>`).join("")}
     </section>
