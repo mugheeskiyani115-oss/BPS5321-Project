@@ -44,7 +44,7 @@ export function mount(root, { meta, geo, store, go }) {
             <label for="feedstockBasis">Spatial feedstock allocation</label>
             <select id="feedstockBasis" class="btn" style="width:100%;text-align:left;padding:0 .8rem;margin-top:.4rem">
               <option value="vegetation_proxy">55 planning areas: vegetation-based estimates</option>
-              <option value="six_sector_scenario">6 PWC sectors: synthetic Word-document scenario</option>
+              <option value="six_sector_scenario">6 PWC sectors</option>
             </select>
             <p class="muted" style="font-size:.77rem;margin-top:.4rem">Both use the measured national total. Six-sector shares are assumptions, not collector records. This choice changes the model's waste allocation.</p>
           </div>
