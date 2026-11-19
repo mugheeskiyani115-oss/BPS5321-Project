@@ -4,7 +4,7 @@ const KEY = "biotwin.v2";
 const listeners = new Set();
 
 const defaults = () => ({
-  inputs: { region: "All", mode: "auto", sites: [], size: null, gate_fee: 0, sell_credits: false, advanced: {} },
+  inputs: { region: "All", feedstock_basis: "vegetation_proxy", mode: "auto", sites: [], size: null, gate_fee: 0, sell_credits: false, advanced: {} },
   result: null,
   saved: [],
 });
@@ -52,6 +52,7 @@ export const store = {
 export function requestBody(inputs) {
   return {
     region: inputs.region,
+    feedstock_basis: inputs.feedstock_basis || "vegetation_proxy",
     sites: inputs.mode === "manual" ? inputs.sites : [],
     size: inputs.size,
     gate_fee: Number(inputs.gate_fee) || 0,

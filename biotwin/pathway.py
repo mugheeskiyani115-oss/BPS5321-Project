@@ -65,6 +65,11 @@ class Assumptions:
     normal_hours: float = 44.0
     leave_allowance: float = 1.07
     labour_exponent: float = 0.25
+    capital_grant_fraction: float = 0.0  # 0-50%; illustrative grant, NOT awarded
+    illustrative_tax_rate: float = 0.0  # 0 or a modelled income-tax sensitivity
+    continuous_crew_per_shift: float = 0.0  # 0 uses existing size-scaled model; >0 is scenario assumption
+    seasonal_woody_amplitude: float = 0.0  # sensitivity only, not measured monthly tonnes
+    woody_share_uncertainty_sd: float = 0.05  # hypothetical standard deviation of composition draws
     electricity_kwh_per_t: float = 60.0
     electricity_price: float = 0.2859
     maintenance_share: float = 0.08
@@ -88,6 +93,11 @@ class Assumptions:
             "biochar_yield": 0 < self.biochar_yield < 1, "discount_rate": 0 <= self.discount_rate < 1,
             "life_years": self.life_years >= 1, "fx": min(self.usd_sgd, self.eur_sgd, self.gbp_sgd) > 0,
             "gate_fee": self.gate_fee_sgd_per_t >= 0, "truck": self.truck_hours > self.handling_h > 0,
+            "capital_grant_fraction": 0 <= self.capital_grant_fraction <= 0.5,
+            "illustrative_tax_rate": 0 <= self.illustrative_tax_rate <= 0.25,
+            "continuous_crew_per_shift": 0 <= self.continuous_crew_per_shift <= 12,
+            "seasonal_woody_amplitude": 0 <= self.seasonal_woody_amplitude <= 0.2,
+            "woody_share_uncertainty_sd": 0 <= self.woody_share_uncertainty_sd <= 0.15,
         }
         bad = [k for k, ok in checks.items() if not ok]
         if bad:
@@ -165,6 +175,10 @@ def annual_capex_sgd(plant: pd.Series, a: Assumptions) -> float:
 
 
 def workers_per_shift(plant: pd.Series, a: Assumptions) -> float:
+    # Technology-specific assumption, not a validated supplier crew roster.
+    technology = str(plant.get("technology", "")).lower()
+    if a.continuous_crew_per_shift > 0 and "continuous" in technology:
+        return a.continuous_crew_per_shift
     w = float(plant["workers_per_shift"])
     if str(plant.get("labour_scaling", "rule")) == "linear":
         return w

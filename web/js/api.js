@@ -28,6 +28,16 @@ export const api = {
   evaluate: (inputs) => request("api/evaluate", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs),
   }),
+  report: async (inputs, mapCapture = null) => {
+    const res = await fetch("api/report", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...inputs, map_capture: mapCapture }),
+    });
+    if (!res.ok) {
+      const details = await res.json().catch(() => ({}));
+      throw new Error(typeof details.detail === "string" ? details.detail : `PDF report failed (HTTP ${res.status})`);
+    }
+    return res.blob();
+  },
   validate: (unit, file) => {
     const fd = new FormData();
     fd.append("unit", unit);

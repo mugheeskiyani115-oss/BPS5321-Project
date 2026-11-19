@@ -25,3 +25,12 @@ Thumbs.db
 
 # Raw downloads cached by pipeline/build_data.py (re-downloadable, ~220 MB)
 data/raw/
+
+# BioTwin upgrade installer backups
+*.before-consulting-upgrade.bak
+
+# Finance upgrade backups
+*.pre-finance-upgrade.bak
+
+# Local safety backups from commercial model upgrade
+.biotwin_backups/

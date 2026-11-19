@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.gzip import GZipMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -29,6 +29,9 @@ from biotwin import evaluate as E
 from biotwin import forecast as fc
 from biotwin import pathway as pw
 from biotwin import validation as vd
+from biotwin.finance_audit import audit_financial_result, seasonal_composition
+from biotwin import sector_scenario as sector
+from biotwin.reporting import make_report
 from biotwin.data import DATA, load_bundle
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -96,6 +99,8 @@ def _meta() -> dict:
                     "staff": costs.at[sc, "staff_fte"], "cost_sgd_per_t": costs.at[sc, "cost_sgd_per_t"]}
                    for sc, p in b.plants.iterrows()],
         "facilities": b.facilities[["name", "facility_type", "latitude", "longitude"]] if len(b.facilities) else [],
+        "areas_six": pd.DataFrame({"planning_area": b.areas.planning_area, "region": b.areas.region,
+                                "woody_available_t": sector.allocate_to_planning_areas(b.areas, a.national_t) * a.woody_share * a.collectable_share}),
         "areas": pd.DataFrame({"planning_area": b.areas.planning_area, "region": b.areas.region,
                                "lat": b.areas.latitude, "lon": b.areas.longitude, "woody_available_t": supply,
                                "estimated_t": b.areas.estimated_t}),
@@ -124,6 +129,7 @@ def geo():
 # ----------------------------------------------------------------------------- evaluation
 class EvalRequest(BaseModel):
     region: str = "All"
+    feedstock_basis: str = "vegetation_proxy"
     sites: list[str] = Field(default_factory=list, max_length=10)
     size: str | None = None
     gate_fee: float = Field(0.0, ge=0, le=500)
@@ -133,6 +139,8 @@ class EvalRequest(BaseModel):
 
 def _scenario(req: EvalRequest) -> E.Scenario:
     b = bundle()
+    if req.feedstock_basis not in sector.BASIS:
+        raise HTTPException(400, "Unknown feedstock basis")
     if req.region not in ("All", *E.REGIONS):
         raise HTTPException(400, f"Unknown region '{req.region}'")
     known = set(b.sites.site_id)
@@ -150,6 +158,7 @@ def _scenario(req: EvalRequest) -> E.Scenario:
             raise HTTPException(400, f"{E.ADVANCED[f][0]} must be between {lo} and {hi}")
         adv.append((f, int(v) if f == "life_years" else float(v)))
     return E.Scenario(sites=tuple(dict.fromkeys(req.sites)), size_class=req.size, region=req.region,
+                      feedstock_basis=req.feedstock_basis,
                       gate_fee_sgd_per_t=req.gate_fee, sell_credits=req.sell_credits, advanced=tuple(sorted(adv)))
 
 
@@ -158,6 +167,17 @@ def _run(sc: E.Scenario) -> dict:
     b = bundle()
     res = E.run(b, sc)
     ev, pf, bau = res["eval"], res["pro_forma"], res["bau"]
+    actual_a = res["assumptions"]
+    finance_audit = audit_financial_result({
+        "years": pf["years"].to_dict(orient="records"),
+        "metrics": {"discount_rate": pf["discount_rate"], "capex_sgd": pf["capex_sgd"],
+                    "npv_sgd": pf["npv_sgd"], "levelised_cost_sgd_per_t": pf["levelised_cost_sgd_per_t"]},
+    })
+    seasonality = seasonal_composition(
+        float(actual_a["woody_share"]), float(actual_a.get("seasonal_woody_amplitude", 0.0)),
+        float(actual_a["national_t"]), float(actual_a["collectable_share"]),
+        float(actual_a.get("woody_share_uncertainty_sd", 0.05)),
+    )
     names = b.sites.set_index("site_id")
     per_site = ev["per_site"].set_index("site_id")
     rt = routes()
@@ -186,8 +206,29 @@ def _run(sc: E.Scenario) -> dict:
     for key in ["inflation_2027", "inflation_long_run", "wage_growth", "ramp_up_year1"]:
         used.append({"input": key, "value": reg.at[key, "value"], "default": reg.at[key, "value"],
                      "unit": reg.at[key, "unit"], "source": reg.at[key, "source"], "tag": reg.at[key, "tag"]})
+    used.extend([
+        {"input": "continuous_crew_per_shift", "value": actual_a.get("continuous_crew_per_shift", 0.0),
+         "default": 0.0, "unit": "people/shift (0 = baseline)",
+         "source": "Illustrative automation/crew scenario; supplier quotation needed", "tag": "assumption"},
+        {"input": "seasonal_woody_amplitude", "value": actual_a.get("seasonal_woody_amplitude", 0.0),
+         "default": 0.0, "unit": "woody share fraction", "source": "Unvalidated seasonal sensitivity, not measured monthly tonnes", "tag": "assumption"},
+        {"input": "woody_share_uncertainty_sd", "value": actual_a.get("woody_share_uncertainty_sd", 0.05),
+         "default": 0.05, "unit": "woody fraction SD", "source": "Illustrative 500-draw Monte Carlo composition uncertainty, not empirically calibrated", "tag": "assumption"},
+    ])
+    used.extend([
+        {"input": "capital_grant_fraction", "value": float(a.get("capital_grant_fraction", 0.0)),
+         "default": 0.0, "unit": "share of construction CAPEX", "tag": "assumption",
+         "source": "Hypothetical funding scenario; NEA 3R Fund / EnterpriseSG eligibility and award not established"},
+        {"input": "illustrative_tax_rate", "value": float(a.get("illustrative_tax_rate", 0.0)),
+         "default": 0.0, "unit": "fraction; simplified illustration", "tag": "assumption",
+         "source": "Illustrative profit tax with straight-line noncash depreciation; not Singapore tax capital allowance advice"},
+        {"input": "continuous_crew_per_shift", "value": float(a.get("continuous_crew_per_shift", 0.0)),
+         "default": 0.0, "unit": "people/shift (0 = original)", "tag": "assumption",
+         "source": "Automation sensitivity only; vendor staffing schedule needed"},
+    ])
     return clean({
         "scenario": {"region": sc.region, "sites": list(sc.sites), "size": sc.size_class,
+                     "feedstock_basis": sc.feedstock_basis,
                      "gate_fee": sc.gate_fee_sgd_per_t, "sell_credits": sc.sell_credits,
                      "advanced": dict(sc.advanced)},
         "layout": [{"site_id": s, "name": names.name[s], "region": names.region[s], "size_class": c,
@@ -206,6 +247,7 @@ def _run(sc: E.Scenario) -> dict:
                     "net_cost_sgd_per_t": ev["net_cost_sgd_per_t"], "supply_available_t": res["supply_t"],
                     "analysis_years": pf["analysis_years"], "discount_rate": pf["discount_rate"]},
         "bau": bau, "years": pf["years"], "drivers": pf["drivers"],
+        "finance_audit": finance_audit, "commercial": pf.get("commercial", {}), "seasonality": seasonality,
         "cost_per_t": {k: v / t for k, v in levelised.items() if v},
         "income_per_t": {k: v / t for k, v in income.items() if v},
         "findings": res["findings"], "sites_compare": res["sites"], "sizes_compare": res["sizes"],
@@ -222,6 +264,32 @@ def evaluate(req: EvalRequest):
         raise HTTPException(422, str(exc)) from exc
 
 
+# ----------------------------------------------------------------------------- downloadable consultant-style report
+class ReportRequest(EvalRequest):
+    # Optional in-browser capture of this exact selected 3D scene (not a stock image).
+    map_capture: str | None = None
+
+
+@app.post("/api/report")
+def report(req: ReportRequest):
+    sc = _scenario(req)
+    try:
+        result = _run(sc)  # exactly the same model and scenario as /api/evaluate
+        from biotwin.area_profile import site_profiles, parse_browser_capture
+        b = bundle()
+        profiles = site_profiles(b, result.get("layout") or [])
+        capture = parse_browser_capture(req.map_capture)
+        if capture is None:
+            raise ValueError("The actual 3D map screenshot is required. Open Results, wait for the map to render, then export again. No substitute map will be used.")
+        pdf = make_report(result, sector_comparison=sector.comparison(b.areas),
+                          site_view_png=capture, site_profiles=profiles, map_source="browser")
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    return Response(content=pdf, media_type="application/pdf", headers={
+        "Content-Disposition": 'attachment; filename="BioTwin_Scenario_Assessment.pdf"',
+        "Cache-Control": "no-store",
+    })
+
 # ----------------------------------------------------------------------------- evidence & validation
 @lru_cache(maxsize=1)
 def _evidence() -> dict:
@@ -232,6 +300,8 @@ def _evidence() -> dict:
         "plants": b.plants.reset_index(),
         "estimates": {u: vd.estimates_by(b.areas, b.areas.estimated_t, u) for u in vd.UNITS},
         "units": vd.UNITS,
+        "pwc_scenario": {"status": "synthetic_unvalidated", "year": 2025,
+                         "national_observed_t": 232000, "rows": sector.comparison(b.areas)},
     })
 
 

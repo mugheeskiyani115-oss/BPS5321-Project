@@ -13,12 +13,12 @@ export function mount(root) {
   const body = root.querySelector("#body");
   const show = (v) => {
     if (!data) return;
-    body.innerHTML = { waste: waste, sources: sources, validation: validation }[v](data);
+    body.innerHTML = { waste: waste, sectors: sectors, sources: sources, validation: validation }[v](data);
     if (v === "sources") wireSources(body, data);
     if (v === "validation") wireValidation(body, data);
     reveal(body);
   };
-  const t = tabs(root.querySelector("#tabs"), [{ value: "waste", label: "Waste data" }, { value: "sources", label: "Sources" },
+  const t = tabs(root.querySelector("#tabs"), [{ value: "waste", label: "Waste data" }, { value: "sectors", label: "Six-sector scenario" }, { value: "sources", label: "Sources" },
     { value: "validation", label: "Validation" }], "waste", show);
   api.evidence().then((d) => { data = d; show("waste"); t.set("waste"); }).catch((e) => {
     body.innerHTML = `<p>Couldn't load evidence: ${esc(e.message)}</p>`;
@@ -42,6 +42,26 @@ function waste(d) {
       <b style="color:var(--text)">estimates</b> it from NParks tree records and satellite greenery (and labels it as an estimate).
       The national figures cross-check across sources. NParks and NEA hold the detailed records.</p>
     ${table(d.waste_data_check, [["source", "Source"], ["verdict", "Verdict"], ["granularity", "Detail"], ["what_it_has", "What it has"], ["url", "", link]])}`;
+}
+
+function sectors(d) {
+  const rows = d.pwc_scenario?.rows || [];
+  const largest = Math.max(1, ...rows.map((r) => r.synthetic_t));
+  return `<div class="reveal"><h2 class="title-m">Six Public Waste Collection sectors</h2>
+    <p style="max-width:830px;margin:.7rem 0 1.1rem">The 2025 national total (232,000 tonnes) is an observed NEA statistic. The six sector weights below are <b>synthetic estimates from the group's Word document</b>, not actual operator collection records. Their national reconciliation proves only mass balance, not spatial accuracy. Use Evaluate to switch between the vegetation-proxy and synthetic sector allocation scenarios.</p>
+    <div class="grid g2" style="margin-bottom:1rem">
+      <div class="tile"><div class="k">Observed national waste</div><div class="v">232,000 t</div><div class="n">NEA 2025</div></div>
+      <div class="tile"><div class="k">Sector measurement status</div><div class="v">Not validated</div><div class="n">No independent operator tonnage records supplied</div></div>
+    </div>
+    <div class="card" style="padding:1.3rem 1.4rem;margin-bottom:1.2rem">
+      ${rows.map((r) => `<div style="display:grid;grid-template-columns:minmax(160px,1.5fr) 2fr 100px;gap:12px;align-items:center;margin:.7rem 0">
+        <b>${esc(r.pwc_sector)}</b><div style="background:#27323b;height:12px;border-radius:8px"><div style="background:#16afa3;width:${(100*r.synthetic_t/largest).toFixed(1)}%;height:100%;border-radius:8px"></div></div>
+        <span style="text-align:right">${fmt.int(r.synthetic_t)} t</span></div>`).join("")}
+    </div>
+    ${table(rows, [["pwc_sector", "PWC sector"], ["word_share_pct", "Assumed share", (v) => `${fmt.dec(v,1)}%`],
+      ["synthetic_t", "Word proxy t", fmt.int], ["original_proxy_t", "Vegetation proxy t", fmt.int],
+      ["difference_t", "Difference t", (v) => fmt.signed(v)]])}
+    <p class="muted" style="margin-top:1rem">The document also assumes a 75% woody / 25% leafy split on a dry-mass basis. BioTwin's original woody-share input is not silently changed because the mass bases are unverified.</p></div>`;
 }
 
 function sources(d) {
