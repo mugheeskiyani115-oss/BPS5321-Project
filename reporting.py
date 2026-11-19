@@ -375,7 +375,7 @@ def make_report(result: dict, *, sector_comparison: list[dict] | None = None,
               P('DEMONSTRATION / TECHNICAL DISCUSSION DRAFT','coverK'),
               P('Selected configuration: '+t(location),'coverS'),
               P('Modelled plant: '+t(names),'coverS'),
-              P('Prepared '+dated+'  |  2025 feedstock baseline','coverS'),
+              P('Prepared '+dated,'coverS'),
               PageBreak()]
 
     # PAGE 2
@@ -505,25 +505,8 @@ def make_report(result: dict, *, sector_comparison: list[dict] | None = None,
                 'This counterfactual must be verified with local waste operators before external investment claims.','muted'),
               PageBreak()]
 
-    # PAGE 6
-    story += heading('06 / 2025 spatial scenarios','Six-sector allocation cross-check')
-    if sector_comparison:
-        story.append(P('The document provides six Public Waste Collection sector shares. These allocations are <b>synthetic estimates</b>, '
-                       'although the national total is based on published statistics. The table compares them with BioTwin\'s vegetation proxy allocation.'))
-        story.append(table(['Public Waste Collector sector','Word proxy (t)','Tree proxy (t)','Difference (t)'],
-                           [[x['pwc_sector'],num(x['synthetic_t']),num(x['original_proxy_t']),
-                             num(x['difference_t'])] for x in sector_comparison],
-                           [70*mm,31*mm,31*mm,40*mm],small=True))
-        story.append(Spacer(1,6*mm))
-        story.append(Bars([(x['pwc_sector'],x['synthetic_t']) for x in sector_comparison],height=190))
-    else:
-        story.append(P('Six-sector comparison data was not supplied for this report.'))
-    story.append(P('<b>Interpretive rule:</b> matching the published national total is a mass balance check, not spatial validation. '
-                   'The 75% woody / 25% leafy document split is an unverified composition assumption and is not silently substituted for the app\'s existing feedstock basis.','muted'))
-    story.append(PageBreak())
-
     # PAGE 7
-    story += heading('07 / Project finance','Annual cash-flow schedule')
+    story += heading('06 / Project finance','Annual cash-flow schedule')
     selected=years
     story.append(P('Indicative nominal cash flows, including construction year and the app\'s operating assumptions. All amounts in S$ thousands.'))
     story.append(table(['Year','Tonnes','Revenue (S$k)','OPEX (S$k)','Other net (S$k)','Cash flow (S$k)'],
@@ -535,28 +518,78 @@ def make_report(result: dict, *, sector_comparison: list[dict] | None = None,
                        [23*mm,23*mm,32*mm,32*mm,31*mm,31*mm],small=True))
     story += [P('Cash flow = revenue - cash OPEX + grants - cash taxes - capital expenditure. The construction investment is deducted once; noncash depreciation is not a cash expense.','muted'),PageBreak()]
 
-    # PAGE 8
-    story += heading('08 / Evidence register','Assumptions and next steps')
-    key=('woody_share','collectable_share','biochar_price_usd','corc_spot_eur','discount_rate',
-         'plant_life_years','capital_grant_fraction','illustrative_tax_rate','operator_wage_sgd_month','electricity_price_sgd_kwh','haul_ef_kg_per_tkm')
-    found=[a for a in r.get('assumptions',[]) if a.get('input') in key]
-    if not found:found=r.get('assumptions',[])[:9]
-    story.append(table(['Model input','Value used','Data classification','Origin'],
-                       [[a.get('input'),num(a.get('value'),3),a.get('tag',''),str(a.get('source',''))[:70]] for a in found],
-                       [50*mm,25*mm,26*mm,71*mm],small=True))
-    story.append(P('Important qualifications','h2'))
-    for x in [
-        'The six-sector Word document contains no independently recorded operator tonnages. Its values cannot be used as a validation dataset.',
-        'The model holds the national total fixed by construction. Spatial sector shares and planning-area quantities remain estimates.',
-        'Facility sites have not been confirmed available, permitted or priced by suppliers for this exact project.',
-        'Carbon credit quantities are conditional on registration, monitoring, verification and eligible use.',
-        'Before procurement: obtain measured collections, plant and haul quotations, environmental permits, land availability and an independent lifecycle assessment.',
-    ]:story.append(P('- '+t(x)))
-    story.append(P('Data lineage','h2'))
-    story.append(P('NEA national horticultural waste, 2025: 232,000 tonnes. Vegetation proxies: NParks tree inventory and ESA WorldCover as modelled by the project. '
-                   'Alternative sector shares: supplied Word document, expressly labelled synthetic. Candidate sites, costs and carbon factors: BioTwin evidence register and underlying reference sources.'))
-    story.append(Spacer(1,4*mm))
-    story.append(P('Prepared with BioTwin Singapore as a scenario screening document. Independent consultant review and project feasibility studies are recommended prior to investment decisions.','muted'))
+    # PAGE 8 - FINAL CONCLUSION: scenario-specific, with no evidence register or sector table.
+    story += heading('07 / Conclusion', 'Decision assessment and recommendation')
+    npv_value = m.get('npv_sgd')
+    net_value = m.get('net_climate_t')
+    fee_value = m.get('break_even_gate_fee_sgd_per_t')
+    try:
+        npv_value = float(npv_value)
+        valid_npv = isfinite(npv_value)
+    except (TypeError, ValueError):
+        valid_npv = False
+    try:
+        net_value = float(net_value)
+        valid_net = isfinite(net_value)
+    except (TypeError, ValueError):
+        valid_net = False
+
+    story.append(P('Final screening outcome', 'h2'))
+    story.append(metrics([('Project NPV', money(m.get('npv_sgd'))),
+                          ('Break-even gate fee', money(fee_value) + '/t'),
+                          ('Net climate difference', num(m.get('net_climate_t')) + ' tCO2e/y')]))
+    story.append(Spacer(1, 5*mm))
+
+    if valid_npv and npv_value < 0:
+        investment_verdict = ('Under the assumptions selected for this evaluation, the configuration has a negative net '
+                              'present value. It does not demonstrate a financially viable investment at the tested prices, '
+                              'costs and throughput. A lower relative system cost is not, by itself, evidence of investability.')
+        investment_label = 'Financial assessment: investment not justified on current inputs'
+    elif valid_npv and npv_value >= 0:
+        investment_verdict = ('Under the selected scenario inputs, the project has a non-negative net present value. '
+                              'This indicates a potentially attractive modelled case, not a confirmed bankable project: '
+                              'capital, product offtake, credit revenues and operating contracts are not independently secured.')
+        investment_label = 'Financial assessment: potentially attractive scenario'
+    else:
+        investment_verdict = ('The financial outcome cannot be determined from the supplied results. '
+                              'The project should not be represented as financially feasible until the model output is complete.')
+        investment_label = 'Financial assessment: outcome unavailable'
+    story.append(P(t(investment_label), 'h2'))
+    story.append(P(t(investment_verdict)))
+
+    story.append(P('Operational implications', 'h2'))
+    story.append(P('The assessed configuration locates ' + t(names or 'the selected plant configuration') +
+                   ' at ' + t(location) + ', with annual processed feedstock of <b>' +
+                   num(m.get('processed_t')) + ' tonnes</b> and modelled average feedstock transport of <b>' +
+                   num(m.get('mean_haul_km'), 1) + ' km</b>. These are planning outputs for candidate locations, '
+                   'not completed engineering designs, planning approvals or supplier commitments.'))
+
+    story.append(P('Carbon interpretation', 'h2'))
+    if valid_net and net_value < 0:
+        carbon_verdict = ('Relative to the selected existing-use baseline, the model indicates a negative net '
+                          'climate difference. Gross biochar carbon storage does not establish an incremental '
+                          'climate benefit when the displaced waste management pathway is considered.')
+    elif valid_net and net_value > 0:
+        carbon_verdict = ('The model indicates a positive net climate difference relative to the assumed '
+                          'existing-use baseline. This is conditional on measured process emissions, '
+                          'the actual fate of the waste and the durability of the resulting biochar.')
+    elif valid_net:
+        carbon_verdict = ('The model estimates no incremental net climate advantage under the selected baseline.')
+    else:
+        carbon_verdict = ('A defensible net climate comparison is not available for this scenario.')
+    story.append(P(t(carbon_verdict)))
+    story.append(P('Potential credit quantities describe a separate registry screening basis; they are not '
+                   'issued credits or a substitute for comparative lifecycle analysis.', 'muted'))
+
+    story.append(P('Overall conclusion', 'h2'))
+    story.append(P('BioTwin provides a repeatable preliminary decision framework that links geographically '
+                   'allocated feedstock, candidate facility locations, transport routing, cash-flow economics '
+                   'and carbon accounting. The present analysis is a <b>scenario screening assessment</b>, '
+                   'not a construction recommendation or a validated investment appraisal.'))
+    story.append(P('The findings are best used to compare alternatives and identify commercially consequential '
+                   'uncertainties. Any proposal advanced beyond screening requires independent verification '
+                   'of waste supply, available sites, vendor costs, product demand and the existing waste-use baseline.',
+                   'muted'))
 
     doc.build(story,onFirstPage=lambda c,d:frame(c,d,True,preview_mode),onLaterPages=lambda c,d:frame(c,d,False,preview_mode))
     return pdf.getvalue()
